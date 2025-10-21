@@ -162,77 +162,207 @@ export default function Home() {
 
         <div className="rn-service-area rn-section-gap section-separator" id="features">
           <div className="container">
-              <div className="row">
-                  <div className="col-lg-12">
-                      <div className="section-title text-left" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
-                          <h2 className="title">O que fazemos</h2>
-                      </div>
-                  </div>
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="section-title text-left" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
+                  <h2 className="title">O que fazemos</h2>
+                </div>
               </div>
-              <div className="row row--25 mt_md--10 mt_sm--10">
-                  <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                      <div className="rn-service">
-                          <div className="inner">
-                              <div className="icon">
-                                  <Layout />
-                              </div>
-                              <div className="content">
-                                  <h4 className="title"><a href="#portfolio">WebSites</a></h4>
-                                  <p className="description">Desenvolvimento de sites e landpages em html.</p>
-                                  <a className="read-more-button" href="#portfolio"><ArrowRight /></a>
-                              </div>
-                          </div>
-                          <a className="over-link" href="#portfolio"></a>
-                      </div>
+            </div>
+            <div className="row row--25 mt_md--10 mt_sm--10">
+              <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                <div className="rn-service">
+                  <div className="inner">
+                    <div className="icon">
+                      <Layout />
+                    </div>
+                    <div className="content">
+                      <h4 className="title"><a href="#portfolio">WebSites</a></h4>
+                      <p className="description">Desenvolvimento de sites e landpages em html.</p>
+                      <a className="read-more-button" href="#portfolio"><ArrowRight /></a>
+                    </div>
                   </div>
-                  <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                      <div className="rn-service">
-                          <div className="inner">
-                              <div className="icon">
-                                  <Smartphone />
-                              </div>
-                              <div className="content">
-                                  <h4 className="title"><a href="#app">Aplicativos Mobile</a></h4>
-                                  <p className="description">Desenvolvimento de aplicativos para IOS e Android.</p>
-                                  <a className="read-more-button" href="#app"><ArrowRight /></a>
-                              </div>
-                          </div>
-                          <a className="over-link" href="#app"></a>
-                      </div>
-                  </div>
-                  <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                      <div className="rn-service">
-                          <div className="inner">
-                              <div className="icon">
-                                  <Slack />
-                              </div>
-                              <div className="content">
-                                  <h4 className="title"><a href="#visual">Indentidade Visual</a></h4>
-                                  <p className="description">Logo marca,cartão de visita, e todo Designer com a cara do seu negocio.</p>
-                                  <a className="read-more-button" href="#visual"><ArrowRight /></a>
-                              </div>
-                          </div>
-                          <a className="over-link" href="#visual"></a>
-                      </div>
-                  </div>
-                   <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                      <div className="rn-service">
-                          <div className="inner">
-                              <div className="icon">
-                                  <Instagram />
-                              </div>
-                              <div className="content">
-                                  <h4 className="title"><a href="#redes">Rede Sociais</a></h4>
-                                  <p className="description">Artes para posts no Instagram, Facebook etc...</p>
-                                  <a className="read-more-button" href="#redes"><ArrowRight /></a>
-                              </div>
-                          </div>
-                          <a className="over-link" href="#redes"></a>
-                      </div>
-                  </div>
+                  <a className="over-link" href="#portfolio"></a>
+                </div>
               </div>
+              <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                <div className="rn-service">
+                  <div className="inner">
+                    <div className="icon">
+                      <Smartphone />
+                    </div>
+                    <div className="content">
+                      <h4 className="title"><a href="#app">Aplicativos Mobile</a></h4>
+                      <p className="description">Desenvolvimento de aplicativos para IOS e Android.</p>
+                      <a className="read-more-button" href="#app"><ArrowRight /></a>
+                    </div>
+                  </div>
+                  <a className="over-link" href="#app"></a>
+                </div>
+              </div>
+              <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                <div className="rn-service">
+                  <div className="inner">
+                    <div className="icon">
+                      <Slack />
+                    </div>
+                    <div className="content">
+                      <h4 className="title"><a href="#visual">Indentidade Visual</a></h4>
+                      <p className="description">Logo marca,cartão de visita, e todo Designer com a cara do seu negocio.</p>
+                      <a className="read-more-button" href="#visual"><ArrowRight /></a>
+                    </div>
+                  </div>
+                  <a className="over-link" href="#visual"></a>
+                </div>
+              </div>
+              <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                <div className="rn-service">
+                  <div className="inner">
+                    <div className="icon">
+                      <Instagram />
+                    </div>
+                    <div className="content">
+                      <h4 className="title"><a href="#redes">Rede Sociais</a></h4>
+                      <p className="description">Artes para posts no Instagram, Facebook etc...</p>
+                      <a className="read-more-button" href="#redes"><ArrowRight /></a>
+                    </div>
+                  </div>
+                  <a className="over-link" href="#redes"></a>
+                </div>
+              </div>
+            </div>
           </div>
-      </div>
+        </div>
+
+        <div className="rn-portfolio-area rn-section-gap section-separator" id="portfolio">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="section-title text-center">
+                  <span className="subtitle">Veja nosso portfólio e de seu feedback</span>
+                  <h1 className="title">Portfólio</h1>
+                </div>
+              </div>
+            </div>
+            <div className="inner">
+              <div className="section-title text-center">
+                <div className="icon">
+                  <h4 className="title sec-title"><Layout />Websites</h4>
+                </div>
+              </div>
+              <div className="testimonial-activation testimonial-pb mb--30">
+                
+                <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                  <div className="inner">
+                    <div className="card-info">
+                      <div className="card-thumbnail">
+                        <a href="https://lebrontech.github.io/Restaurante-Gusto/" target="_blank">
+                          <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/p1/340/250" alt="portfolio-large-02" decoding="async" data-ai-hint="restaurant website" />
+                        </a>
+                      </div>
+                      <div className="card-content">
+                        <h3 className="title">Restaurante Gusto</h3>
+                        <span className="subtitle mt--10">Clique na Imagem</span>
+                      </div>
+                    </div>
+                    <div className="card-description">
+                      <div className="title-area">
+                        <div className="title-info">
+                          <div className="skill-share-inner">
+                            <span className="subtitle">Ferramentas</span>
+                            <ul className="skill-share">
+                              <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
+                              <li><Image src="https://picsum.photos/seed/tool2/40/40" alt="vscode" width={40} height={40} data-ai-hint="vscode logo" /></li>
+                              <li><Image src="https://picsum.photos/seed/tool3/40/40" alt="wordpress" width={40} height={40} data-ai-hint="wordpress logo" /></li>
+                              <li><Image src="https://picsum.photos/seed/tool4/40/40" alt="javascript" width={40} height={40} data-ai-hint="javascript logo" /></li>
+                              <li><Image src="https://picsum.photos/seed/tool5/40/40" alt="html" width={40} height={40} data-ai-hint="html logo" /></li>
+                              <li><Image src="https://picsum.photos/seed/tool6/40/40" alt="css" width={40} height={40} data-ai-hint="css logo" /></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <span className="designation">
+                        Site responsivo desenvolvido em HTML usando JavaScript e CSS, com design agradavel e intuitivo
+                      </span>
+                      <a href="https://lebrontech.github.io/Restaurante-Gusto/" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                  <div className="inner">
+                    <div className="card-info">
+                      <div className="card-thumbnail">
+                        <a href="https://ionelourencodecor.lojavirtualnuvem.com.br/" target="_blank">
+                          <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/p2/340/250" alt="portfolio-large-02" decoding="async" data-ai-hint="ecommerce website" />
+                        </a>
+                      </div>
+                      <div className="card-content">
+                        <h3 className="title">IoneDecor</h3>
+                        <span className="subtitle mt--10">Clique na Imagem</span>
+                      </div>
+                    </div>
+                    <div className="card-description">
+                      <div className="title-area">
+                        <div className="title-info">
+                            <div className="skill-share-inner">
+                              <span className="subtitle mt--10">Ferramentas</span>
+                              <ul className="skill-share d-flex liststyle">
+                                  <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>                                               
+                                  <li><Image src="https://picsum.photos/seed/tool7/40/40" alt="shopify" width={40} height={40} data-ai-hint="shopify logo" /></li>
+                                  <li><Image src="https://picsum.photos/seed/tool4/40/40" alt="javascript" width={40} height={40} data-ai-hint="javascript logo" /></li>
+                                  <li><Image src="https://picsum.photos/seed/tool5/40/40" alt="html" width={40} height={40} data-ai-hint="html logo" /></li>
+                              </ul>
+                            </div>
+                        </div>
+                      </div>
+                      <span className="designation">
+                        Site responsivo desenvolvido para MARKETPLACE, com checkout e design minimalista                                       
+                      </span>
+                      <a href="https://ionelourencodecor.lojavirtualnuvem.com.br/" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                  <div className="inner">
+                    <div className="card-info">
+                      <div className="card-thumbnail">
+                        <a href="https://leandrolebron2203.wixsite.com/capital-arte" target="_blank">
+                          <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/p3/340/250" alt="portfolio-large-02" decoding="async" data-ai-hint="art gallery website" />
+                        </a>
+                      </div>
+                      <div className="card-content">
+                        <h3 className="title">Capital Arte</h3>
+                        <span className="subtitle mt--10">Clique na Imagem</span>
+                      </div>
+                    </div>
+                    <div className="card-description">
+                      <div className="title-area">
+                        <div className="title-info">
+                          <div className="skill-share-inner">
+                            <span className="subtitle mt--10">Ferramentas</span>
+                            <ul className="skill-share d-flex liststyle">
+                                <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
+                                <li><Image src="https://picsum.photos/seed/tool4/40/40" alt="javascript" width={40} height={40} data-ai-hint="javascript logo" /></li>
+                                <li><Image src="https://picsum.photos/seed/tool5/40/40" alt="html" width={40} height={40} data-ai-hint="html logo" /></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <span className="designation">
+                        Site responsivo, institucional para apresentação da marca
+                      </span>
+                      <a href="https://leandrolebron2203.wixsite.com/capital-arte" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
       </main>
     </>
   );
