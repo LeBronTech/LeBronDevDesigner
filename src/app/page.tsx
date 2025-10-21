@@ -871,6 +871,91 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="rn-contact-area rn-section-gap section-separator" id="contacts">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="section-title text-center">
+                            <span className="subtitle">Contato</span>
+                            <h2 className="title">Fale conosco</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row mt--50 mt_md--40 mt_sm--40 mt-contact-sm">
+                    <div className="col-lg-5">
+                        <div className="contact-about-area">
+                            <div className="thumbnail">
+                                <Image src="https://picsum.photos/seed/contact/500/500" alt="contact-img" width={500} height={500} data-ai-hint="office workspace" />
+                            </div>
+                            <div className="title-area">
+                                <h4 className="title">Leandro</h4>
+                                <span></span>
+                            </div>
+                            <div className="description">
+                                <p>Estamos disponiveis tambem para trabalhos freelancer
+                                </p>
+                                <span className="telefone">Phone: <a href="https://api.whatsapp.com/send?phone=5561984836034&text=Olá%20gostaria%20de%20fazer%20um%20orçamento">61984836034</a></span>
+                                <span className="mail">Email: <a href="mailto:lebronempresas@gmail.com?subject=&body=Ol%C3%A1%20gostaria%20de%20fazer%20um%20or%C3%A7amento">lebronempresas@gmail.com</a></span>
+                            </div>
+                            <div className="social-area">
+                                <div className="name">Siga-nos</div>
+                                <div className="social-icone">
+                                    <a href="https://wa.me/5561984836034" target="_blank"><Image src={placeholderImages.whatsapp.src} alt="WhatsApp" width={40} height={40} data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} /></a>
+                                    <a href="https://www.behance.net/lebrondesigner1" target="_blank"><Image src={placeholderImages.behance.src} alt="Behance" width={40} height={40} data-ai-hint={placeholderImages.behance['data-ai-hint']} /></a>
+                                    <a href="https://instagram.com/lebrondesign"><Instagram /></a> 
+                                    <a href="https://github.com/LeBronTech"><Github /></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos-delay="600" className="col-lg-7 contact-input">
+                        <div className="contact-form-wrapper">
+                            <div className="introduce">
+                                <form className="rnt-contact-form rwt-dynamic-form row" id="contact-form" method="POST" action="mail.php">
+                                    <div className="col-lg-6">
+                                        <div className="form-group">
+                                            <label htmlFor="contact-name">Seu nome</label>
+                                            <input className="form-control form-control-lg" name="contact-name" id="contact-name" type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-6">
+                                        <div className="form-group">
+                                            <label htmlFor="contact-phone">Telefone</label>
+                                            <input className="form-control" name="contact-phone" id="contact-phone" type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-12">
+                                        <div className="form-group">
+                                            <label htmlFor="contact-email">Email</label>
+                                            <input className="form-control form-control-sm" id="contact-email" name="contact-email" type="email" />
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-12">
+                                        <div className="form-group">
+                                            <label htmlFor="subject">Assunto</label>
+                                            <input className="form-control form-control-sm" id="subject" name="subject" type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-12">
+                                        <div className="form-group">
+                                            <label htmlFor="contact-message">Sua Menssagem</label>
+                                            <textarea name="contact-message" id="contact-message" cols={30} rows={10}></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-12">
+                                        <Button type="submit" className="rn-btn">
+                                            <span>Enviar</span>
+                                            <ArrowRight />
+                                        </Button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
       </main>
     </>
