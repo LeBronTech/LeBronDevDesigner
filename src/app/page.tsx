@@ -1,9 +1,56 @@
 'use client';
 import Image from "next/image";
-import { ArrowUp, Github, Instagram, MessageCircle } from "lucide-react";
+import { ArrowUp, Behance, Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
+import { cn } from "@/lib/utils";
+
+const TypingEffect = ({ words }: { words: string[] }) => {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentWord, setCurrentWord] = useState('');
+
+  useEffect(() => {
+    if (index >= words.length) return; // Stop if index is out of bounds
+
+    if (isDeleting) {
+      if (subIndex > 0) {
+        const timer = setTimeout(() => {
+          setSubIndex(subIndex - 1);
+          setCurrentWord(words[index].substring(0, subIndex - 1));
+        }, 100);
+        return () => clearTimeout(timer);
+      } else {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % words.length);
+        return;
+      }
+    }
+
+    if (subIndex < words[index].length) {
+      const timer = setTimeout(() => {
+        setSubIndex(subIndex + 1);
+        setCurrentWord(words[index].substring(0, subIndex + 1));
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+
+    const timer = setTimeout(() => {
+      setIsDeleting(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [subIndex, isDeleting, index, words]);
+
+  return (
+    <span className="inline-block relative">
+      {currentWord}
+      <span className="absolute right-[-2px] top-0 bottom-0 w-0.5 bg-foreground animate-ping" />
+    </span>
+  );
+};
+
 
 export default function Home() {
   
@@ -26,7 +73,6 @@ export default function Home() {
       });
     });
 
-    // Back to top button
     const backToTop = document.querySelector('.backto-top');
     if (backToTop) {
       window.addEventListener('scroll', () => {
@@ -47,95 +93,55 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <header className="rn-header haeder-default black-logo-version header--fixed header--sticky">
-        <div className="header-wrapper rn-popup-mobile-menu m-0 row align-items-center">
-          <div className="col-lg-2 col-6">
-            <div className="header-left">
-              <div className="logo">
-                <a href="#home">
-                  <Image src={placeholderImages.logo.src} alt="logo" width={120} height={40} data-ai-hint={placeholderImages.logo['data-ai-hint']} />
-                </a>
-              </div>
+    <div className="bg-background min-h-screen text-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-24">
+            <div className="logo">
+              <a href="#home" className="flex items-center gap-2">
+                <span className="text-3xl font-bold font-oxanium gradient-text">Lebr{"{"}o{"}"}n</span>
+                <span className="text-sm tracking-widest">DEV<br/>DESIGNER</span>
+              </a>
             </div>
-          </div>
-          <div className="col-lg-10 col-6">
-            <div className="header-center">
-              <nav className="mainmenu-nav navbar-example2 d-none d-xl-block onepagenav">
-                <ul className="primary-menu nav nav-pills">
-                  <li className="nav-item"><a className="nav-link smoth-animation" href="#home">Home</a></li>
-                  <li className="nav-item"><a className="nav-link smoth-animation" href="#sobre">Sobre</a></li>
-                  <li className="nav-item"><a className="nav-link smoth-animation" href="#portfolio">Portfólio</a></li>
-                  <li className="nav-item"><a className="nav-link smoth-animation" href="#curriculo">Currículo</a></li>
-                  <li className="nav-item"><a className="nav-link smoth-animation" href="#depoimentos">Depoimentos</a></li>
-                  <li className="nav-item"><a className="nav-link smoth-animation" href="#contacts">Contato</a></li>
-                </ul>
-              </nav>
-            </div>
+            <nav className="hidden md:flex mainmenu-nav">
+              <ul className="primary-menu flex space-x-6">
+                <li><a className="nav-link smoth-animation" href="#home">HOME</a></li>
+                <li><a className="nav-link smoth-animation" href="#sobre">SOBRE</a></li>
+                <li><a className="nav-link smoth-animation" href="#portfolio">PORTFÓLIO</a></li>
+                <li><a className="nav-link smoth-animation" href="#curriculo">CURRÍCULO</a></li>
+                <li><a className="nav-link smoth-animation" href="#depoimentos">DEPOIMENTOS</a></li>
+                <li><a className="nav-link smoth-animation" href="#contacts">CONTATO</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </header>
 
       <main className="main-page-wrapper">
-        <div id="home" className="rn-slider-area section-separator">
+        <div id="home" className="min-h-screen flex items-center justify-center section-separator">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen">
-              <div className="w-full lg:w-3/4 text-center lg:text-left">
-                <div className="content">
-                  <h1 className="title text-5xl md:text-7xl font-bold">
-                    <span className="gradient-text">LebrOn</span>
-                  </h1>
-                  <p className="description mt-4 text-lg text-gray-400">
-                    DEV-DESIGNER
-                  </p>
-                </div>
-                <div className="mt-8 flex flex-col md:flex-row gap-12 justify-center lg:justify-start">
-                  <div>
-                    <span className="title text-sm uppercase tracking-wider text-gray-400">SIGA-NOS</span>
-                    <div className="flex gap-4 mt-4">
-                      <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn">
-                        <Image src={placeholderImages.behance.src} alt="Behance" width={24} height={24} data-ai-hint={placeholderImages.behance['data-ai-hint']} />
-                      </a>
-                      <a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><MessageCircle /></a>
-                      <a href="https://www.instagram.com/lebrondesign" target="_blank" className="rn-btn"><Instagram /></a>
-                      <a href="https://github.com/LeBronTech" target="_blank" className="rn-btn"><Github /></a>
-                    </div>
-                  </div>
-                  <div>
-                    <span className="title text-sm uppercase tracking-wider text-gray-400">FERRAMENTAS QUE USAMOS</span>
-                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-4 mt-4">
-                      {placeholderImages.tools.map((tool) => (
-                        <div key={tool.alt} className="p-3 bg-card rounded-lg shadow-lg flex items-center justify-center w-16 h-16">
-                          <Image src={tool.src} alt={tool.alt} width={32} height={32} data-ai-hint={tool['data-ai-hint']} />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="text-center">
+              <span className="text-sm uppercase tracking-[5px] text-gray-400">BEM-VINDO</span>
+              <h1 className="text-5xl md:text-7xl font-bold mt-4">Somos a</h1>
+              <h2 className="text-5xl md:text-7xl font-bold mt-2">
+                <span className="gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
+              </h2>
+              <h3 className="text-4xl md:text-6xl mt-4 typing-container">
+                <TypingEffect words={["Apps.", "Websites.", "Logos."]} />
+              </h3>
+              <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                Usamos as mais variadas ferramentas do mercado, para trazer aos nossos clientes a melhor experiência e suporte para seu negócio
+              </p>
             </div>
-          </div>
-        </div>
-        
-        <div className="backto-top opacity-0 transition-opacity">
-          <div>
-            <ArrowUp />
           </div>
         </div>
       </main>
 
-      <footer className="rn-footer-area rn-section-gap section-separator">
-        <div className="container mx-auto px-4">
-            <div className="text-center">
-                <div className="logo">
-                    <a href="#home">
-                      <Image src={placeholderImages.logo.src} alt="logo" width={120} height={40} data-ai-hint={placeholderImages.logo['data-ai-hint']}/>
-                    </a>
-                </div>
-                <p className="description mt-4">© 2025. Direitos reservados a <a target="_blank" href="https://github.com/LeBronTech" className="text-primary hover:underline">Lebron Tech.</a></p>
-            </div>
+      <div className="backto-top opacity-0 transition-opacity">
+        <div>
+          <ArrowUp />
         </div>
-    </footer>
-    </>
+      </div>
+    </div>
   );
 }
