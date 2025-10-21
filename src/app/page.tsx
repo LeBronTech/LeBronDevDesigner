@@ -1,13 +1,10 @@
 'use client';
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Download, Github, Instagram, Layout, Slack, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import Head from "next/head";
-import { Progress } from "@/components/ui/progress";
 
 
 export default function Home() {
@@ -144,12 +141,10 @@ export default function Home() {
                           <span className="designation">Lebron</span>
                         </div>
                         <div className="col-lg-10">
-                            <Button asChild>
-                              <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank">
+                            <a className="rn-btn" href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank">
                                 <span>Currículo</span>
                                 <ArrowRight />
-                              </a>
-                            </Button>
+                            </a>
                         </div>
                       </div>
                       <div className="card-description">
@@ -710,72 +705,6 @@ export default function Home() {
                       </div>
                     </div>
                   )}
-
-                  {activeTab === 'professional' && (
-                  <div id="professional" role="tabpanel" aria-labelledby="professional-tab">
-                    <div className="personal-experience-inner mt--40">
-                      <div className="row row--40">
-                        <div className="col-lg-6 col-md-6 col-12">
-                          <div className="progress-wrapper">
-                            <div className="content">
-                              <span className="subtitle">Habilidades</span>
-                              <h4 className="maintitle">Design</h4>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">PHOTOSHOP</h6>
-                                <div className="progress"><Progress value={75} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">FIGMA</h6>
-                                <div className="progress"><Progress value={75} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">ADOBE XD</h6>
-                                <div className="progress"><Progress value={60} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">ADOBE ILLUSTRATOR</h6>
-                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">Corel</h6>
-                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-6 col-12 mt_sm--60">
-                          <div className="progress-wrapper">
-                            <div className="content">
-                              <span className="subtitle">Habilidades</span>
-                              <h4 className="maintitle">Development</h4>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">HTML</h6>
-                                <div className="progress"><Progress value={85} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">CSS</h6>
-                                <div className="progress"><Progress value={80} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">JAVASCRIPT</h6>
-                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">SOFTWARE</h6>
-                                <div className="progress"><Progress value={75} className="progress-bar" /></div>
-                              </div>
-                              <div className="progress-charts">
-                                <h6 className="heading heading-h6">PLUGIN</h6>
-                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  )}
-
                 </div>
               </div>
             </div>
