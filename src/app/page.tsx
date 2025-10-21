@@ -357,9 +357,78 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
+            
+            <div className="container" id="app">
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="section-title text-center">
+                    <div className="icon"><h4 className="title sec-title"><Smartphone />Apps</h4></div>
+                    <div className="portfolio-slick-activation slick-arrow-style-one rn-slick-dot-style">
+                      <div className="rn-portfolio-slick preview-type-gallery">
+                        <div className="rn-portfolio portfolio-card-only-popup">
+                          <div className="inner">
+                            <div className="thumbnail">
+                              <a href="#!"><Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/app1/340/250" alt="Burger Home" data-ai-hint="burger app" /></a>
+                            </div>
+                            <div className="content">
+                              <div className="category-info">
+                                <div className="category-list">
+                                  <a>Burger Home</a>
+                                </div>
+                              </div>
+                              <h4 className="title">
+                                <a href="#!">Em Breve <ArrowRight /></a>
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="rn-portfolio-slick preview-type-gallery">
+                        <div className="rn-portfolio portfolio-card-only-popup">
+                          <div className="inner">
+                            <div className="thumbnail">
+                              <a href="#!"><Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/app2/340/250" alt="Analise" data-ai-hint="analytics app" /></a>
+                            </div>
+                            <div className="content">
+                              <div className="category-info">
+                                <div className="category-list">
+                                  <a>Analise</a>
+                                </div>
+                              </div>
+                              <h4 className="title">
+                                <a href="#!">Em Breve <ArrowRight /></a>
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="rn-portfolio-slick preview-type-gallery">
+                        <div className="rn-portfolio portfolio-card-only-popup">
+                          <div className="inner">
+                            <div className="thumbnail">
+                              <a href="#!"><Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/app3/340/250" alt="Saude" data-ai-hint="health app" /></a>
+                            </div>
+                            <div className="content">
+                              <div className="category-info">
+                                <div className="category-list">
+                                  <a >Saude</a>
+                                </div>
+                              </div>
+                              <h4 className="title">
+                                <a href="#!">Em Breve <ArrowRight /></a>
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
