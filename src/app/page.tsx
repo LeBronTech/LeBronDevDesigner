@@ -7,10 +7,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import Head from "next/head";
+import { Progress } from "@/components/ui/progress";
+
 
 export default function Home() {
   const words = ["Designer.", "Programador.", "Apps.", "Logo marcas.", "WebSites."];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState('education');
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -598,7 +602,7 @@ export default function Home() {
                                   <div className="skill-share-inner">
                                     <span className="subtitle mt--10">Ferramentas</span>
                                     <ul className="skill-share d-flex liststyle">
-                                      {placeholderImages.portfolio.social2.tools.map((tool) => (
+                                     {placeholderImages.portfolio.social2.tools.map((tool) => (
                                         <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
                                       ))}
                                     </ul>
@@ -616,7 +620,157 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
+        <div className="rn-resume-area rn-section-gap section-separator" id="curriculo">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="section-title text-center">
+                  <h2 className="title">Currículo</h2>
+                </div>
+              </div>
+            </div>
+            <div className="row mt--45">
+              <div className="col-lg-12">
+                <ul className="rn-nav-list nav nav-tabs" id="myTab" role="tablist">
+                  <li className="nav-item">
+                    <a className={`nav-link ${activeTab === 'education' ? 'active' : ''}`} onClick={() => setActiveTab('education')} id="education-tab" data-bs-toggle="tab" href="#education" role="tab" aria-controls="education" aria-selected={activeTab === 'education'}>Formação</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className={`nav-link ${activeTab === 'professional' ? 'active' : ''}`} onClick={() => setActiveTab('professional')} id="professional-tab" data-bs-toggle="tab" href="#professional" role="tab" aria-controls="professional" aria-selected={activeTab === 'professional'}>Habilidades</a>
+                  </li>
+                </ul>
+
+                <div className="rn-nav-content tab-content" id="myTabContents">
+                  {activeTab === 'education' && (
+                    <div id="education" role="tabpanel" aria-labelledby="education-tab">
+                      <div className="personal-experience-inner mt--40">
+                        <div className="row">
+                          <div className="col-lg-6 col-md-12 col-12">
+                            <div className="content">
+                              <span className="subtitle">2018-2020</span>
+                              <h4 className="maintitle">Faculdade</h4>
+                              <div className="experience-list">
+                                <div className="resume-single-list">
+                                  <div className="inner">
+                                    <div className="heading">
+                                      <div className="title">
+                                        <h4>Web Disigner</h4>
+                                        <span>Faculdade Projeção</span>
+                                      </div>
+                                      <div className="date-of-time">
+                                        <span>2018</span>
+                                      </div>
+                                    </div>
+                                    <p className="description">Formação em Html,CSS,JavaScript e desenvolvimento do primeiro site.</p>
+                                  </div>
+                                </div>
+                                <div className="resume-single-list">
+                                  <div className="inner">
+                                    <div className="heading">
+                                      <div className="title">
+                                        <h4> App Mobile</h4>
+                                        <span></span>
+                                      </div>
+                                      <div className="date-of-time">
+                                        <span>2019</span>
+                                      </div>
+                                    </div>
+                                    <p className="description">Certificação de desnvolvimento em Android.</p>
+                                  </div>
+                                </div>
+                                <div className="resume-single-list">
+                                  <div className="inner">
+                                    <div className="heading">
+                                      <div className="title">
+                                        <h4>Disigner</h4>
+                                        <span></span>
+                                      </div>
+                                      <div className="date-of-time">
+                                        <span>2020</span>
+                                      </div>
+                                    </div>
+                                    <p className="description"> Certificação em photoshop,canvas,figma e coredraw.</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'professional' && (
+                  <div id="professional" role="tabpanel" aria-labelledby="professional-tab">
+                    <div className="personal-experience-inner mt--40">
+                      <div className="row row--40">
+                        <div className="col-lg-6 col-md-6 col-12">
+                          <div className="progress-wrapper">
+                            <div className="content">
+                              <span className="subtitle">Habilidades</span>
+                              <h4 className="maintitle">Design</h4>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">PHOTOSHOP</h6>
+                                <div className="progress"><Progress value={75} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">FIGMA</h6>
+                                <div className="progress"><Progress value={75} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">ADOBE XD</h6>
+                                <div className="progress"><Progress value={60} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">ADOBE ILLUSTRATOR</h6>
+                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">Corel</h6>
+                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-12 mt_sm--60">
+                          <div className="progress-wrapper">
+                            <div className="content">
+                              <span className="subtitle">Habilidades</span>
+                              <h4 className="maintitle">Development</h4>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">HTML</h6>
+                                <div className="progress"><Progress value={85} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">CSS</h6>
+                                <div className="progress"><Progress value={80} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">JAVASCRIPT</h6>
+                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">SOFTWARE</h6>
+                                <div className="progress"><Progress value={75} className="progress-bar" /></div>
+                              </div>
+                              <div className="progress-charts">
+                                <h6 className="heading heading-h6">PLUGIN</h6>
+                                <div className="progress"><Progress value={70} className="progress-bar" /></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  )}
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
