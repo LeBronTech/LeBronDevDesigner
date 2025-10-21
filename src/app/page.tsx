@@ -25,7 +25,7 @@ export default function Home() {
       <Head>
         <link rel="stylesheet" href="/css/style.css" />
       </Head>
-      <main className="main-page-wrapper bg-background text-foreground">
+      <main className="main-page-wrapper">
         <header className="rn-header haeder-default black-logo-version header--fixed header--sticky">
           <div className="header-wrapper rn-popup-mobile-menu m-0 row align-items-center">
             <div className="col-lg-2 col-3">
@@ -422,6 +422,120 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="rn-portfolio-area rn-section-gap section-separator" id="visual">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-12">
+                    <div className="section-title text-center">
+                      <div className="inner">
+                        <div className="icon">
+                          <h4 className="title sec-title"><Slack />Identidade Visual</h4>
+                        </div>
+                      </div>
+                      <div className="testimonial-activation testimonial-pb mb--30">
+                        <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                          <div className="inner">
+                            <div className="card-info">
+                              <div className="card-thumbnail">
+                                <a href="https://www.behance.net/lebrondesigner1" target="_blank">
+                                  <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/id1/340/250" alt="Doo&Dou" data-ai-hint="pet brand identity" />
+                                </a>
+                              </div>
+                              <div className="card-content">
+                                <h3 className="title">Doo&Dou</h3>
+                                <span className="subtitle mt--10">Clique na Imagem</span>
+                              </div>
+                            </div>
+                            <div className="card-description">
+                              <div className="title-area">
+                                <div className="title-info">
+                                  <div className="skill-share-inner">
+                                    <span className="subtitle mt--10">Ferramentas</span>
+                                    <ul className="skill-share d-flex liststyle">
+                                      <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
+                                      <li><Image src="https://picsum.photos/seed/tool8/40/40" alt="illustrator" width={40} height={40} data-ai-hint="illustrator logo" /></li>
+                                      <li><Image src="https://picsum.photos/seed/tool9/40/40" alt="canva" width={40} height={40} data-ai-hint="canva logo" /></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <span className="designation">Indentidade criada para passar confiaça aos donos dos pets, baseada na cor alaranjada</span>
+                              <a href="https://www.instagram.com/lebrondesign/" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                          <div className="inner">
+                            <div className="card-info">
+                              <div className="card-thumbnail">
+                                <a href="https://www.instagram.com/lebrondesign/" target="_blank">
+                                  <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/id2/340/250" alt="Automotic" data-ai-hint="car brand identity" />
+                                </a>
+                              </div>
+                              <div className="card-content">
+                                <h3 className="title">Automotic</h3>
+                                <span className="subtitle mt--10">Clique na Imagem</span>
+                              </div>
+                            </div>
+                            <div className="card-description">
+                              <div className="title-area">
+                                <div className="title-info">
+                                  <div className="skill-share-inner">
+                                    <span className="subtitle mt--10">Ferramentas</span>
+                                    <ul className="skill-share d-flex liststyle">
+                                      <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
+                                      <li><Image src="https://picsum.photos/seed/tool8/40/40" alt="illustrator" width={40} height={40} data-ai-hint="illustrator logo" /></li>
+                                      <li><Image src="https://picsum.photos/seed/tool9/40/40" alt="canva" width={40} height={40} data-ai-hint="canva logo" /></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <span className="designation">Indentidade criada com base na cor amarela, como a logo em formato arrendondado remetendo ao ramo automobilístico</span>
+                              <a href="https://www.instagram.com/lebrondesign/" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                          <div className="inner">
+                            <div className="card-info">
+                              <div className="card-thumbnail">
+                                <a href="https://www.instagram.com/lebrondesign/" target="_blank">
+                                  <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/id3/340/250" alt="Capilar Ela" data-ai-hint="hair product identity" />
+                                </a>
+                              </div>
+                              <div className="card-content">
+                                <h3 className="title">Capilar Ela</h3>
+                                <span className="subtitle mt--10">Clique na imagem</span>
+                              </div>
+                            </div>
+                            <div className="card-description">
+                              <div className="title-area">
+                                <div className="title-info">
+                                  <div className="skill-share-inner">
+                                    <span className="subtitle mt--10">Ferramentas</span>
+                                    <ul className="skill-share d-flex liststyle">
+                                      <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
+                                      <li><Image src="https://picsum.photos/seed/tool8/40/40" alt="illustrator" width={40} height={40} data-ai-hint="illustrator logo" /></li>
+                                      <li><Image src="https://picsum.photos/seed/tool9/40/40" alt="canva" width={40} height={40} data-ai-hint="canva logo" /></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <span className="designation">Indentidade baseada na cor rosa, fonte arredondada e em minúsculo para passar a impressão amigável</span>
+                              <a href="https://www.instagram.com/lebrondesign/" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
