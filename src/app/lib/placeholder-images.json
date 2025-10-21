@@ -71,5 +71,9 @@
     "banner": {
         "src": "https://picsum.photos/seed/15/500/500",
         "data-ai-hint": "portfolio abstract"
+    },
+    "about": {
+        "src": "https://picsum.photos/seed/16/340/340",
+        "data-ai-hint": "man portrait"
     }
 }
