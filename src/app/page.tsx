@@ -774,6 +774,104 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="rn-testimonial-area rn-section-gap section-separator" id="depoimentos">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="section-title text-center">
+                  <span className="subtitle">O que os clientes dizem</span>
+                  <h2 className="title">Depoimentos</h2>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="testimonial-activation testimonial-pb mb--30">
+                  <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                    <div className="inner">
+                      <div className="card-info">
+                        <div className="card-thumbnail">
+                          <Image src="https://picsum.photos/seed/t1/340/340" alt="Testimonial-image" width={340} height={340} data-ai-hint="man portrait" />
+                        </div>
+                        <div className="card-content">
+                          <span className="subtitle mt--10">App</span>
+                          <h3 className="title">Andersson Quentilha</h3>
+                          <span className="designation">CEO de loja</span>
+                        </div>
+                      </div>
+                      <div className="card-description">
+                        <div className="title-area">
+                          <div className="title-info">
+                            <h3 className="title">Aplicativo para loja</h3>
+                            <span className="date">Via Whatsapp</span>
+                          </div>
+                        </div>
+                        <div className="seperator"></div>
+                        <p className="discription">
+                          Já fazia algum tempo que queria fazer um aplicativo para minha loja, entrei em contato com o Leandro que foi muito atencioso e tirou minhas dúvidas e em poucos dias já estava com o aplicativo funcionando.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                    <div className="inner">
+                      <div className="card-info">
+                        <div className="card-thumbnail">
+                          <Image src="https://picsum.photos/seed/t2/340/340" alt="Testimonial-image" width={340} height={340} data-ai-hint="man portrait" />
+                        </div>
+                        <div className="card-content">
+                          <span className="subtitle mt--10">Site</span>
+                          <h3 className="title">Jone Duone Joe</h3>
+                          <span className="designation">Dono de Restaurante</span>
+                        </div>
+                      </div>
+                      <div className="card-description">
+                        <div className="title-area">
+                          <div className="title-info">
+                            <h3 className="title">Site para restaurante</h3>
+                            <span className="date">Via Direct</span>
+                          </div>
+                        </div>
+                        <div className="seperator"></div>
+                        <p className="discription">
+                          A equipe que trabalhou no nosso site foi extremamente profissional, ouvindo nossas necessidades e incorporando-as de forma criativa no design e funcionalidades. Também ficamos impressionados com a adaptabilidade do site para dispositivos móveis, permitindo que nossos clientes acessem e façam reservas de onde estiverem.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                    <div className="inner">
+                      <div className="card-info">
+                        <div className="card-thumbnail">
+                           <Image src="https://picsum.photos/seed/t3/340/340" alt="Testimonial-image" width={340} height={340} data-ai-hint="woman portrait" />
+                        </div>
+                        <div className="card-content">
+                          <span className="subtitle mt--10">LogoTipo</span>
+                          <h3 className="title">Ione Lourenço</h3>
+                          <span className="designation">Produtora de Almofadas</span>
+                        </div>
+                      </div>
+                      <div className="card-description">
+                        <div className="title-area">
+                          <div className="title-info">
+                            <h3 className="title">Criação de Logo</h3>
+                            <span className="date">Via Whatsapp</span>
+                          </div>
+                        </div>
+                        <div className="seperator"></div>
+                        <p className="discription">
+                          A nova logo para nossa loja de almofadas capturou perfeitamente a essência do nosso negócio: simples, aconchegante e moderna.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </main>
     </>
   );
