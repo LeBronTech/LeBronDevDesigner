@@ -67,7 +67,7 @@ export default function Home() {
                     <div className="inner">
                       <span className="subtitle" id="home">Bem-Vindo</span>
                       <h1 className="title">Somos a <br />
-                        <span className="span text-primary">Lebr{'{'}n Dev-Designer</span>
+                        <span className="span">Lebr{'{'}n Dev-Designer</span>
                       </h1>
                       <span className="header-caption">
                         <span className="cd-headline clip is-full-width">
@@ -142,6 +142,14 @@ export default function Home() {
                           <span className="subtitle mt--10">Designer & Programador</span>
                           <h3 className="title">Leandro José</h3>
                           <span className="designation">Lebron</span>
+                        </div>
+                        <div className="col-lg-10">
+                            <Button asChild>
+                              <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank">
+                                <span>Currículo</span>
+                                <ArrowRight />
+                              </a>
+                            </Button>
                         </div>
                       </div>
                       <div className="card-description">

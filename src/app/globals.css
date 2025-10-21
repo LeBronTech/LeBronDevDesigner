@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
+    --background: 340 10% 15%;
     --foreground: 210 40% 98%;
 
     --card: 222.2 84% 4.9%;
@@ -13,7 +13,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 263 60% 58%;
+    --primary: 278 68% 55%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -39,36 +39,57 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-  }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 263 60% 58%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 263 60% 58%;
+    --color-primary: 278 68% 55%;
+    --color-secondary: #f4f5f6;
+    --color-tertiary: #0d1013;
+    --color-gray: #f6f6f6;
+    --color-subtitle: #f9004d;
+    --background-color-1: linear-gradient(145deg, #1e2024, #23272b);
+    --background-color-2: #212428;
+    --shadow-1: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    --shadow-2: inset 21px 21px 19px #181a1d, inset -21px -21px 19px #202225;
+    --inner-shadow: 1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset;
+    --shadow-white-3: 5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff;
+    --gradient-box-w: linear-gradient(145deg, #e2e8ec, #ffffff);
+    --gradient-red-hover: linear-gradient(145deg, #ff014f, #d11414);
+    --color-heading: hsl(var(--foreground));
+    --color-heading-wv: #1e2125;
+    --color-body: #878e99;
+    --color-body-white: #3c3e41;
+    --color-lightn: #c4cfde;
+    --color-midgray: #878787;
+    --color-light: #E4E6EA;
+    --color-lighter: #CED0D4;
+    --color-lightest: #F0F2F5;
+    --color-border: #E6E6E6;
+    --color-white: #ffffff;
+    --color-white-75: rgba(255, 255, 255, 0.75);
+    --color-success: #3EB75E;
+    --color-danger: #FF0003;
+    --color-warning: #FF8F3C;
+    --color-info: #1BA2DB;
+    --p-light: 300;
+    --p-regular: 400;
+    --p-medium: 500;
+    --p-semi-bold: 600;
+    --p-bold: 700;
+    --p-extra-bold: 800;
+    --p-black: 900;
+    --s-light: 300;
+    --s-regular: 400;
+    --s-medium: 500;
+    --s-semi-bold: 600;
+    --s-bold: 700;
+    --s-extra-bold: 800;
+    --s-black: 900;
+    --transition: 0.4s;
+    --h1: 70px;
+    --h2: 60px;
+    --h3: 50px;
+    --h4: 40px;
+    --h5: 30px;
+    --h6: 20px;
   }
 }
 
@@ -77,7 +98,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #212428;
+    color: hsl(var(--foreground));
     font-family: var(--font-primary);
   }
   .main-page-wrapper {
@@ -121,6 +143,40 @@
       gap: 0.5rem;
       flex-wrap: wrap;
   }
+
+  .rn-service, .testimonial, .rn-portfolio, .rn-blog, .contact-about-area, .contact-form-wrapper, .rn-resume-area .personal-experience-inner .resume-single-list {
+    background: var(--background-color-1);
+    box-shadow: var(--shadow-1);
+  }
+
+  .rn-service:hover::before, .testimonial:hover::before, .rn-portfolio:hover::before, .rn-blog:hover::before {
+    background: linear-gradient(to right bottom, #212428, #16181c);
+  }
+
+  .rn-nav-list {
+    background: var(--background-color-1);
+    box-shadow: var(--shadow-1);
+  }
+
+  .rn-nav-list .nav-item .nav-link.active, .rn-nav-list .nav-item .nav-link:hover {
+    box-shadow: var(--shadow-1);
+    color: hsl(var(--primary));
+  }
+
+  .rn-pricing .pricing-header .header-right span {
+    box-shadow: var(--shadow-1);
+  }
+
+  .progress-charts .progress {
+    background: #212428;
+    box-shadow: var(--inner-shadow);
+  }
+
+  .rn-header.header--fixed.sticky {
+    background-color: rgba(33, 36, 40, 0.87);
+    box-shadow: var(--shadow-1);
+    backdrop-filter: blur(15px);
+  }
 }
 
 .cd-words-wrapper {
@@ -139,5 +195,134 @@
 }
 .cd-words-wrapper b.is-visible {
   position: relative;
+  opacity: 1;
+}
+
+.section-separator::after {
+  position: absolute;
+  max-width: 1270px;
+  height: 1px;
+  background: #121415;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.section-title span.subtitle {
+    color: var(--color-body);
+    font-weight: 500;
+}
+.section-title h2.title, .section-title h1.title {
+    color: var(--color-lightn);
+}
+
+.rn-service .inner .icon svg {
+  color: hsl(var(--primary));
+}
+
+.rn-service .inner .content .title a {
+  color: var(--color-lightn);
+}
+
+.rn-service .inner .content .read-more-button svg {
+  color: hsl(var(--primary));
+}
+
+.card-description .seperator {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: #1a1d23;
+  margin: 20px 0;
+}
+
+.card-info .card-thumbnail {
+  margin-bottom: 1rem;
+}
+
+.progress {
+    overflow: visible;
+}
+
+.progress-bar {
+    overflow: visible;
+    position: relative;
+    border-radius: 14px;
+    background: linear-gradient(145deg, hsl(var(--primary)) 0%, #2ebf91 100%);
+}
+
+.rn-resume-area .personal-experience-inner .experience-list {
+    padding-left: 31px;
+    border-left: 5px solid #17191c;
+}
+.rn-resume-area .personal-experience-inner .resume-single-list .inner .heading {
+    border-bottom: 1px solid #1a1d23;
+}
+.rn-resume-area .personal-experience-inner .resume-single-list .inner::before {
+    position: absolute;
+    content: "";
+    width: 28px;
+    height: 5px;
+    right: 100%;
+    top: 63px;
+    transform: translateY(-7px);
+    background: #1b1c1d;
+    z-index: 0;
+}
+.rn-resume-area .personal-experience-inner .resume-single-list .inner::after {
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 5px solid #17191c;
+    border-radius: 100%;
+    right: 104%;
+    top: 55px;
+    transform: translateY(-7px);
+    background: #222529;
+    transition: var(--transition);
+}
+.rn-resume-area .personal-experience-inner .resume-single-list:hover .inner::after {
+    background: hsl(var(--primary));
+}
+
+.rn-btn {
+  display: inline-block;
+  padding: 15px 35px;
+  list-style: none;
+  text-decoration: none;
+  color: hsl(var(--primary));
+  border-radius: 6px;
+  background: var(--background-color-1);
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  font-weight: 500;
+  border: 0 none;
+}
+
+.rn-btn::before {
+  content: "";
+  position: absolute;
+  transition: var(--transition);
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right bottom, #212428, #16181c);
+  opacity: 0;
+  z-index: -1;
+}
+
+.rn-btn:hover {
+  transform: translateY(-5px);
+}
+
+.rn-btn:hover::before {
   opacity: 1;
 }
