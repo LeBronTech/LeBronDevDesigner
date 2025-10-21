@@ -943,12 +943,6 @@ export default function Home() {
                                             <textarea name="contact-message" id="contact-message" cols={30} rows={10}></textarea>
                                         </div>
                                     </div>
-                                    <div className="col-lg-12">
-                                        <Button type="submit" className="rn-btn">
-                                            <span>Enviar</span>
-                                            <ArrowRight />
-                                        </Button>
-                                    </div>
                                 </form>
                             </div>
                         </div>
