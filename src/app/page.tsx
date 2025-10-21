@@ -251,13 +251,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="testimonial-activation testimonial-pb mb--30">
-                
                 <div className="testimonial mt--50 mt_md--40 mt_sm--40">
                   <div className="inner">
                     <div className="card-info">
                       <div className="card-thumbnail">
                         <a href="https://lebrontech.github.io/Restaurante-Gusto/" target="_blank">
-                          <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/p1/340/250" alt="portfolio-large-02" decoding="async" data-ai-hint="restaurant website" />
+                          <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.website1.src} alt="Restaurante Gusto" data-ai-hint={placeholderImages.portfolio.website1['data-ai-hint']} />
                         </a>
                       </div>
                       <div className="card-content">
@@ -271,12 +270,9 @@ export default function Home() {
                           <div className="skill-share-inner">
                             <span className="subtitle">Ferramentas</span>
                             <ul className="skill-share">
-                              <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
-                              <li><Image src="https://picsum.photos/seed/tool2/40/40" alt="vscode" width={40} height={40} data-ai-hint="vscode logo" /></li>
-                              <li><Image src="https://picsum.photos/seed/tool3/40/40" alt="wordpress" width={40} height={40} data-ai-hint="wordpress logo" /></li>
-                              <li><Image src="https://picsum.photos/seed/tool4/40/40" alt="javascript" width={40} height={40} data-ai-hint="javascript logo" /></li>
-                              <li><Image src="https://picsum.photos/seed/tool5/40/40" alt="html" width={40} height={40} data-ai-hint="html logo" /></li>
-                              <li><Image src="https://picsum.photos/seed/tool6/40/40" alt="css" width={40} height={40} data-ai-hint="css logo" /></li>
+                               {placeholderImages.portfolio.website1.tools.map((tool) => (
+                                <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                              ))}
                             </ul>
                           </div>
                         </div>
@@ -294,7 +290,7 @@ export default function Home() {
                     <div className="card-info">
                       <div className="card-thumbnail">
                         <a href="https://ionelourencodecor.lojavirtualnuvem.com.br/" target="_blank">
-                          <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/p2/340/250" alt="portfolio-large-02" decoding="async" data-ai-hint="ecommerce website" />
+                          <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.website2.src} alt="IoneDecor" data-ai-hint={placeholderImages.portfolio.website2['data-ai-hint']} />
                         </a>
                       </div>
                       <div className="card-content">
@@ -308,10 +304,9 @@ export default function Home() {
                             <div className="skill-share-inner">
                               <span className="subtitle mt--10">Ferramentas</span>
                               <ul className="skill-share d-flex liststyle">
-                                  <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>                                               
-                                  <li><Image src="https://picsum.photos/seed/tool7/40/40" alt="shopify" width={40} height={40} data-ai-hint="shopify logo" /></li>
-                                  <li><Image src="https://picsum.photos/seed/tool4/40/40" alt="javascript" width={40} height={40} data-ai-hint="javascript logo" /></li>
-                                  <li><Image src="https://picsum.photos/seed/tool5/40/40" alt="html" width={40} height={40} data-ai-hint="html logo" /></li>
+                                {placeholderImages.portfolio.website2.tools.map((tool) => (
+                                  <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                                ))}
                               </ul>
                             </div>
                         </div>
@@ -329,7 +324,7 @@ export default function Home() {
                     <div className="card-info">
                       <div className="card-thumbnail">
                         <a href="https://leandrolebron2203.wixsite.com/capital-arte" target="_blank">
-                          <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/p3/340/250" alt="portfolio-large-02" decoding="async" data-ai-hint="art gallery website" />
+                           <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.website3.src} alt="Capital Arte" data-ai-hint={placeholderImages.portfolio.website3['data-ai-hint']} />
                         </a>
                       </div>
                       <div className="card-content">
@@ -343,9 +338,9 @@ export default function Home() {
                           <div className="skill-share-inner">
                             <span className="subtitle mt--10">Ferramentas</span>
                             <ul className="skill-share d-flex liststyle">
-                                <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
-                                <li><Image src="https://picsum.photos/seed/tool4/40/40" alt="javascript" width={40} height={40} data-ai-hint="javascript logo" /></li>
-                                <li><Image src="https://picsum.photos/seed/tool5/40/40" alt="html" width={40} height={40} data-ai-hint="html logo" /></li>
+                              {placeholderImages.portfolio.website3.tools.map((tool) => (
+                                  <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                                ))}
                             </ul>
                           </div>
                         </div>
@@ -445,7 +440,7 @@ export default function Home() {
                             <div className="card-info">
                               <div className="card-thumbnail">
                                 <a href="https://www.behance.net/lebrondesigner1" target="_blank">
-                                  <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/id1/340/250" alt="Doo&Dou" data-ai-hint="pet brand identity" />
+                                  <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.identity1.src} alt="Doo&Dou" data-ai-hint={placeholderImages.portfolio.identity1['data-ai-hint']} />
                                 </a>
                               </div>
                               <div className="card-content">
@@ -459,9 +454,9 @@ export default function Home() {
                                   <div className="skill-share-inner">
                                     <span className="subtitle mt--10">Ferramentas</span>
                                     <ul className="skill-share d-flex liststyle">
-                                      <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
-                                      <li><Image src="https://picsum.photos/seed/tool8/40/40" alt="illustrator" width={40} height={40} data-ai-hint="illustrator logo" /></li>
-                                      <li><Image src="https://picsum.photos/seed/tool9/40/40" alt="canva" width={40} height={40} data-ai-hint="canva logo" /></li>
+                                      {placeholderImages.portfolio.identity1.tools.map((tool) => (
+                                        <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                                      ))}
                                     </ul>
                                   </div>
                                 </div>
@@ -477,7 +472,7 @@ export default function Home() {
                             <div className="card-info">
                               <div className="card-thumbnail">
                                 <a href="https://www.instagram.com/lebrondesign/" target="_blank">
-                                  <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/id2/340/250" alt="Automotic" data-ai-hint="car brand identity" />
+                                  <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.identity2.src} alt="Automotic" data-ai-hint={placeholderImages.portfolio.identity2['data-ai-hint']} />
                                 </a>
                               </div>
                               <div className="card-content">
@@ -491,9 +486,9 @@ export default function Home() {
                                   <div className="skill-share-inner">
                                     <span className="subtitle mt--10">Ferramentas</span>
                                     <ul className="skill-share d-flex liststyle">
-                                      <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
-                                      <li><Image src="https://picsum.photos/seed/tool8/40/40" alt="illustrator" width={40} height={40} data-ai-hint="illustrator logo" /></li>
-                                      <li><Image src="https://picsum.photos/seed/tool9/40/40" alt="canva" width={40} height={40} data-ai-hint="canva logo" /></li>
+                                      {placeholderImages.portfolio.identity2.tools.map((tool) => (
+                                        <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                                      ))}
                                     </ul>
                                   </div>
                                 </div>
@@ -509,7 +504,7 @@ export default function Home() {
                             <div className="card-info">
                               <div className="card-thumbnail">
                                 <a href="https://www.instagram.com/lebrondesign/" target="_blank">
-                                  <Image loading="lazy" width="340" height="250" src="https://picsum.photos/seed/id3/340/250" alt="Capilar Ela" data-ai-hint="hair product identity" />
+                                  <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.identity3.src} alt="Capilar Ela" data-ai-hint={placeholderImages.portfolio.identity3['data-ai-hint']} />
                                 </a>
                               </div>
                               <div className="card-content">
@@ -523,19 +518,98 @@ export default function Home() {
                                   <div className="skill-share-inner">
                                     <span className="subtitle mt--10">Ferramentas</span>
                                     <ul className="skill-share d-flex liststyle">
-                                      <li><Image src="https://picsum.photos/seed/tool1/40/40" alt="photoshop" width={40} height={40} data-ai-hint="photoshop logo" /></li>
-                                      <li><Image src="https://picsum.photos/seed/tool8/40/40" alt="illustrator" width={40} height={40} data-ai-hint="illustrator logo" /></li>
-                                      <li><Image src="https://picsum.photos/seed/tool9/40/40" alt="canva" width={40} height={40} data-ai-hint="canva logo" /></li>
+                                      {placeholderImages.portfolio.identity3.tools.map((tool) => (
+                                        <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                                      ))}
                                     </ul>
                                   </div>
                                 </div>
                               </div>
                               <span className="designation">Indentidade baseada na cor rosa, fonte arredondada e em minúsculo para passar a impressão amigável</span>
-                              <a href="https://www.instagram.com/lebrondesign/" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                              <a href="https://www.instagram.com/lebrondesign/" target="_blank"  className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
                             </div>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div className="rn-portfolio-area rn-section-gap section-separator" id="redes">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-12">
+                    <div className="section-title text-center">
+                      <div className="inner">
+                        <div className="icon">
+                          <h4 className="title sec-title"><Instagram />Rede Sociais</h4>
+                        </div>
+                      </div>
+                      <div className="testimonial-activation testimonial-pb mb--30">
+                        <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                          <div className="inner">
+                            <div className="card-info">
+                              <div className="card-thumbnail">
+                                <a href="https://www.behance.net/gallery/189159481/Criativo-para-Rede-Socias" target="_blank">
+                                  <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.social1.src} alt="Hamburgueria" data-ai-hint={placeholderImages.portfolio.social1['data-ai-hint']} />
+                                </a>
+                              </div>
+                              <div className="card-content">
+                                <h3 className="title">Hamburgueria</h3>
+                                <span className="subtitle mt--10">Clique na Imagem</span>
+                              </div>
+                            </div>
+                            <div className="card-description">
+                              <div className="title-area">
+                                <div className="title-info">
+                                  <div className="skill-share-inner">
+                                    <span className="subtitle">Ferramentas</span>
+                                    <ul className="skill-share d-flex liststyle">
+                                      {placeholderImages.portfolio.social1.tools.map((tool) => (
+                                        <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <span className="designation">Criativos de Hamburgueria para rede socias<br /></span>
+                              <a href="https://www.behance.net/gallery/189159481/Criativo-para-Rede-Socias" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="testimonial mt--50 mt_md--40 mt_sm--40">
+                          <div className="inner">
+                            <div className="card-info">
+                              <div className="card-thumbnail">
+                                <a href="https://www.behance.net/gallery/189872917/Criativos-para-Pizzaria" target="_blank">
+                                  <Image loading="lazy" width="340" height="250" src={placeholderImages.portfolio.social2.src} alt="Pizzaria" data-ai-hint={placeholderImages.portfolio.social2['data-ai-hint']} />
+                                </a>
+                              </div>
+                              <div className="card-content">
+                                <h3 className="title">Pizzaria</h3>
+                                <span className="subtitle mt--10">Clique na Imagem</span>
+                              </div>
+                            </div>
+                            <div className="card-description">
+                              <div className="title-area">
+                                <div className="title-info">
+                                  <div className="skill-share-inner">
+                                    <span className="subtitle mt--10">Ferramentas</span>
+                                    <ul className="skill-share d-flex liststyle">
+                                      {placeholderImages.portfolio.social2.tools.map((tool) => (
+                                        <li key={tool.alt}><Image src={tool.src} alt={tool.alt} width={40} height={40} data-ai-hint={tool['data-ai-hint']} /></li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <span className="designation">Criativos de pizzaria para rede socias</span>
+                              <a href="https://www.behance.net/gallery/189872917/Criativos-para-Pizzaria" target="_blank" className="rn-btn w-75 text-center"> <span>Ver projeto</span>  <ArrowRight /></a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
