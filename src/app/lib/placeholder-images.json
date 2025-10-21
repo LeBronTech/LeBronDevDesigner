@@ -1,117 +1,135 @@
 {
     "logo": {
-        "src": "https://picsum.photos/seed/1/120/40",
+        "src": "https://i.postimg.cc/sX8VsnnV/logo.png",
         "data-ai-hint": "logo"
     },
     "behance": {
-        "src": "https://picsum.photos/seed/2/40/40",
+        "src": "https://i.postimg.cc/cHJHst0z/beha.png",
         "data-ai-hint": "behance logo"
     },
     "whatsapp": {
-        "src": "https://picsum.photos/seed/3/40/40",
+        "src": "https://i.postimg.cc/nhk9pJqZ/whatsapp.png",
         "data-ai-hint": "whatsapp logo"
     },
     "tools": [
-        { "src": "https://picsum.photos/seed/4/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-        { "src": "https://picsum.photos/seed/5/40/40", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-        { "src": "https://picsum.photos/seed/6/40/40", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
-        { "src": "https://picsum.photos/seed/7/40/40", "alt": "react", "data-ai-hint": "react logo" },
-        { "src": "https://picsum.photos/seed/8/40/40", "alt": "javascript", "data-ai-hint": "javascript logo" },
-        { "src": "https://picsum.photos/seed/9/40/40", "alt": "html", "data-ai-hint": "html logo" },
-        { "src": "https://picsum.photos/seed/10/40/40", "alt": "css", "data-ai-hint": "css logo" },
-        { "src": "https://picsum.photos/seed/11/40/40", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
-        { "src": "https://picsum.photos/seed/12/40/40", "alt": "vscode", "data-ai-hint": "vscode logo" },
-        { "src": "https://picsum.photos/seed/13/40/40", "alt": "shopify", "data-ai-hint": "shopify logo" },
-        { "src": "https://picsum.photos/seed/14/40/40", "alt": "capcut", "data-ai-hint": "capcut logo" }
+        { "src": "https://i.postimg.cc/hvdKj9w0/photoshop.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+        { "src": "https://i.postimg.cc/HxjYGG9S/ilus.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+        { "src": "https://i.postimg.cc/sgcGsr5R/word.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
+        { "src": "https://i.postimg.cc/nzMF88Gv/icons-02.png", "alt": "react", "data-ai-hint": "react logo" },
+        { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+        { "src": "https://i.postimg.cc/N0dsPGmd/icons-04.png", "alt": "html", "data-ai-hint": "html logo" },
+        { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "css", "data-ai-hint": "css logo" },
+        { "src": "https://i.postimg.cc/bJdyXX9T/icons-06.png", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
+        { "src": "https://i.postimg.cc/CxNnSgk6/vscode.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
+        { "src": "https://i.postimg.cc/y8B3Mdg0/shopify.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
+        { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" }
     ],
     "banner": {
-        "src": "https://picsum.photos/seed/15/500/500",
+        "src": "https://i.postimg.cc/TwPwR5fB/banner-03.png",
         "data-ai-hint": "portfolio abstract"
     },
     "about": {
-        "src": "https://picsum.photos/seed/16/340/340",
+        "src": "https://i.postimg.cc/P54vTj1n/soueu.webp",
         "data-ai-hint": "man portrait"
     },
     "portfolio": {
         "website1": {
-            "src": "https://picsum.photos/seed/p1/340/250",
+            "src": "https://i.postimg.cc/Y0Wt91Vh/p1.jpg",
             "data-ai-hint": "restaurant website",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool2/40/40", "alt": "vscode", "data-ai-hint": "vscode logo" },
-                { "src": "https://picsum.photos/seed/tool3/40/40", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
-                { "src": "https://picsum.photos/seed/tool4/40/40", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                { "src": "https://picsum.photos/seed/tool5/40/40", "alt": "html", "data-ai-hint": "html logo" },
-                { "src": "https://picsum.photos/seed/tool6/40/40", "alt": "css", "data-ai-hint": "css logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
+                { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
+                { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" },
+                { "src": "https://i.postimg.cc/xCqfrr35/icons-06.png", "alt": "css", "data-ai-hint": "css logo" }
             ]
         },
         "website2": {
-            "src": "https://picsum.photos/seed/p2/340/250",
+            "src": "https://i.postimg.cc/XqCnJwhd/p2.jpg",
             "data-ai-hint": "ecommerce website",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool7/40/40", "alt": "shopify", "data-ai-hint": "shopify logo" },
-                { "src": "https://picsum.photos/seed/tool4/40/40", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                { "src": "https://picsum.photos/seed/tool5/40/40", "alt": "html", "data-ai-hint": "html logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
+                { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
             ]
         },
         "website3": {
-            "src": "https://picsum.photos/seed/p3/340/250",
+            "src": "https://i.postimg.cc/yxZ7dF5y/p3.jpg",
             "data-ai-hint": "art gallery website",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool4/40/40", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                { "src": "https://picsum.photos/seed/tool5/40/40", "alt": "html", "data-ai-hint": "html logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
             ]
         },
         "identity1": {
-            "src": "https://picsum.photos/seed/id1/340/250",
+            "src": "https://i.postimg.cc/50t0xQb3/Automotic4.jpg",
             "data-ai-hint": "pet brand identity",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool8/40/40", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://picsum.photos/seed/tool9/40/40", "alt": "canva", "data-ai-hint": "canva logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
             ]
         },
         "identity2": {
-            "src": "https://picsum.photos/seed/id2/340/250",
+            "src": "https://i.postimg.cc/DwKwSM77/DooDou4.jpg",
             "data-ai-hint": "car brand identity",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool8/40/40", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://picsum.photos/seed/tool9/40/40", "alt": "canva", "data-ai-hint": "canva logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
             ]
         },
         "identity3": {
-            "src": "https://picsum.photos/seed/id3/340/250",
+            "src": "https://i.postimg.cc/SRBN7ZCq/Capilar2.jpg",
             "data-ai-hint": "hair product identity",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool8/40/40", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://picsum.photos/seed/tool9/40/40", "alt": "canva", "data-ai-hint": "canva logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
             ]
         },
         "social1": {
-            "src": "https://picsum.photos/seed/social1/340/250",
+            "src": "https://i.postimg.cc/PxctT66j/hamburgueriacapa.png",
             "data-ai-hint": "burger social media",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool8/40/40", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://picsum.photos/seed/tool9/40/40", "alt": "canva", "data-ai-hint": "canva logo" },
-                { "src": "https://picsum.photos/seed/tool10/40/40", "alt": "figma", "data-ai-hint": "figma logo" },
-                { "src": "https://picsum.photos/seed/tool11/40/40", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
+                { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
+                { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
             ]
         },
         "social2": {
-            "src": "https://picsum.photos/seed/social2/340/250",
+            "src": "https://i.postimg.cc/Vk10x60Q/pizzariacapa.png",
             "data-ai-hint": "pizza social media",
             "tools": [
-                { "src": "https://picsum.photos/seed/tool1/40/40", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://picsum.photos/seed/tool8/40/40", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://picsum.photos/seed/tool9/40/40", "alt": "canva", "data-ai-hint": "canva logo" },
-                { "src": "https://picsum.photos/seed/tool10/40/40", "alt": "figma", "data-ai-hint": "figma logo" },
-                { "src": "https://picsum.photos/seed/tool11/40/40", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
+                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
+                { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
+                { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
             ]
         }
+    },
+    "testimonials": [
+        {
+            "src": "https://i.postimg.cc/mgGgP5T2/final-home-1st.png",
+            "data-ai-hint": "man portrait"
+        },
+        {
+            "src": "https://i.postimg.cc/dVKVhxJh/final-home-2nd.png",
+            "data-ai-hint": "man portrait"
+        },
+        {
+            "src": "https://i.postimg.cc/nzMF881J/ione.jpg",
+            "data-ai-hint": "woman portrait"
+        }
+    ],
+    "contact": {
+        "src": "https://i.postimg.cc/WbZ4bvcj/contact1.png",
+        "data-ai-hint": "contact us"
     }
 }
