@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, Montserrat } from "next/font/google";
+import { Poppins, Montserrat, Oxanium } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +15,12 @@ const montserrat = Montserrat({
   variable: "--font-secondary",
 });
 
+const oxanium = Oxanium({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-oxanium",
+});
+
 export const metadata: Metadata = {
   title: "Lebron Disigner",
   description: "Site portfólio LeBron Dev-Designer",
@@ -26,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn("antialiased", poppins.variable, montserrat.variable)}>
+    <html lang="en" className="dark">
+      <body className={cn("antialiased", poppins.variable, montserrat.variable, oxanium.variable)}>
         {children}
       </body>
     </html>
