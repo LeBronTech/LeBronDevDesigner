@@ -2,13 +2,11 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Download, Github, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Download, Github, Instagram, Layout, Slack, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import Head from "next/head";
-import { Progress } from "@/components/ui/progress";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export default function Home() {
   const words = ["Designer.", "Programador.", "Apps.", "Logo marcas.", "WebSites."];
@@ -141,12 +139,6 @@ export default function Home() {
                           <h3 className="title">Leandro José</h3>
                           <span className="designation">Lebron</span>
                         </div>
-                        <div className="col-lg-10 mt-4">
-                            <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank" className="rn-btn">
-                              <span>Currículo</span>
-                              <ArrowRight />
-                            </a>
-                        </div>
                       </div>
                       <div className="card-description">
                         <div className="title-area">
@@ -168,6 +160,79 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="rn-service-area rn-section-gap section-separator" id="features">
+          <div className="container">
+              <div className="row">
+                  <div className="col-lg-12">
+                      <div className="section-title text-left" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
+                          <h2 className="title">O que fazemos</h2>
+                      </div>
+                  </div>
+              </div>
+              <div className="row row--25 mt_md--10 mt_sm--10">
+                  <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                      <div className="rn-service">
+                          <div className="inner">
+                              <div className="icon">
+                                  <Layout />
+                              </div>
+                              <div className="content">
+                                  <h4 className="title"><a href="#portfolio">WebSites</a></h4>
+                                  <p className="description">Desenvolvimento de sites e landpages em html.</p>
+                                  <a className="read-more-button" href="#portfolio"><ArrowRight /></a>
+                              </div>
+                          </div>
+                          <a className="over-link" href="#portfolio"></a>
+                      </div>
+                  </div>
+                  <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                      <div className="rn-service">
+                          <div className="inner">
+                              <div className="icon">
+                                  <Smartphone />
+                              </div>
+                              <div className="content">
+                                  <h4 className="title"><a href="#app">Aplicativos Mobile</a></h4>
+                                  <p className="description">Desenvolvimento de aplicativos para IOS e Android.</p>
+                                  <a className="read-more-button" href="#app"><ArrowRight /></a>
+                              </div>
+                          </div>
+                          <a className="over-link" href="#app"></a>
+                      </div>
+                  </div>
+                  <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                      <div className="rn-service">
+                          <div className="inner">
+                              <div className="icon">
+                                  <Slack />
+                              </div>
+                              <div className="content">
+                                  <h4 className="title"><a href="#visual">Indentidade Visual</a></h4>
+                                  <p className="description">Logo marca,cartão de visita, e todo Designer com a cara do seu negocio.</p>
+                                  <a className="read-more-button" href="#visual"><ArrowRight /></a>
+                              </div>
+                          </div>
+                          <a className="over-link" href="#visual"></a>
+                      </div>
+                  </div>
+                   <div className="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                      <div className="rn-service">
+                          <div className="inner">
+                              <div className="icon">
+                                  <Instagram />
+                              </div>
+                              <div className="content">
+                                  <h4 className="title"><a href="#redes">Rede Sociais</a></h4>
+                                  <p className="description">Artes para posts no Instagram, Facebook etc...</p>
+                                  <a className="read-more-button" href="#redes"><ArrowRight /></a>
+                              </div>
+                          </div>
+                          <a className="over-link" href="#redes"></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
       </main>
     </>
   );
