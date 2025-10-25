@@ -6,9 +6,7 @@ import Link from "next/link";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -50,8 +48,6 @@ const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) 
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // This is a simplified way to trigger the animation.
-    // In a real app, you'd use an intersection observer.
     const timer = setTimeout(() => setProgress(percentage), 100); 
     return () => clearTimeout(timer);
   }, [percentage]);
@@ -100,8 +96,8 @@ export default function Home() {
   }, [portfolio]);
 
   const subCategories = useMemo(() => {
-    if (activeFilter === 'Todos' || activeFilter === 'Logos' || activeFilter === 'Apps' || activeFilter === 'Redes Sociais') return [];
-    const cats = new Set(portfolio.filter(p => p.mainCategory === activeFilter).map(p => p.category).filter(Boolean));
+    if (activeFilter === 'Todos' || !portfolio.some(p => p.mainCategory === activeFilter && p.category)) return [];
+    const cats = new Set(portfolio.filter(p => p.mainCategory === activeFilter).map(p => p.category).filter(Boolean) as string[]);
     return ['Todos', ...Array.from(cats)];
   }, [activeFilter, portfolio]);
 
@@ -212,7 +208,7 @@ export default function Home() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
-                  <SheetHeader>
+                   <SheetHeader>
                     <SheetTitleComponent className="sr-only">Menu Principal</SheetTitleComponent>
                     <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>
                         <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
@@ -319,7 +315,7 @@ export default function Home() {
             </div>
         </div>
 
-        <div id="ferramentas" className="py-24 section-separator">
+         <div id="ferramentas" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12" data-aos="fade-up">
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Ferramentas</span>
@@ -357,7 +353,7 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
             
-            <div className="flex justify-center flex-wrap gap-4 mb-8" data-aos="fade-up">
+            <div className="flex justify-center flex-wrap gap-2 mb-4" data-aos="fade-up">
                 {mainCategories.map(category => (
                     <Button
                       key={category}
@@ -371,14 +367,14 @@ export default function Home() {
             </div>
 
             {subCategories.length > 0 && (
-                <div className="flex justify-center flex-wrap gap-2 mb-12 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                <div className="flex justify-center flex-wrap gap-1 mb-12" data-aos="fade-up" data-aos-delay="100">
                     {subCategories.map(category => (
                         <Button
                           key={category}
                           variant={activeSubFilter === category ? "secondary" : "ghost"}
                           size="sm"
                           onClick={() => handleSubFilterClick(category)}
-                          className="capitalize rounded-full px-4 text-sm"
+                          className="capitalize rounded-full px-4 text-xs"
                         >
                           {category}
                         </Button>
@@ -541,3 +537,4 @@ export default function Home() {
     </div>
   );
 }
+
