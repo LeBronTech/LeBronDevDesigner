@@ -18,7 +18,7 @@
     --popover: 222 24% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 254 28% 61%; /* #7d6cba */
+    --primary: 263 60% 58%; /* #7d6cba */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -207,27 +207,6 @@
   }
 }
 
-.gradient-border {
-  --borderWidth: 3px;
-  background: transparent;
-  position: relative;
-  border-radius: 50%;
-}
-
-.gradient-border:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(60deg, #7d6cba, #41b59a, #23a6d5, #7d6cba);
-  border-radius: 50%;
-  z-index: -1;
-  animation: animatedgradient 3s ease alternate infinite;
-  background-size: 300% 300%;
-  transform: translate(-50%, -50%);
-}
 
 @keyframes animatedgradient {
   0% {

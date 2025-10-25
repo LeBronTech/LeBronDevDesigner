@@ -1,7 +1,7 @@
 
 'use client';
 import Image from "next/image";
-import { ArrowUp, Behance, Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowUp, Github, Instagram } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
@@ -12,9 +12,8 @@ import { cn } from "@/lib/utils";
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -130,16 +129,16 @@ export default function Home() {
                         <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas que usamos</span>
                         <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
                           {placeholderImages.tools.map(tool => (
-                            <li key={tool.alt}><Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} /></li>
+                            <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center"><Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} /></li>
                           ))}
                         </ul>
                     </div>
                   </div>
               </div>
               <div className="order-1 lg:order-2 relative flex justify-center">
-                <div className="thumbnail style-2 gradient-border">
+                <div className="thumbnail style-2">
                     <div className="inner">
-                        <Image src={placeholderImages.banner.src} width={500} height={500} alt="Personal Portfolio Images" className="rounded-full w-full" data-ai-hint={placeholderImages.banner['data-ai-hint']}/>
+                        <Image src={placeholderImages.banner.src} width={500} height={500} alt="Personal Portfolio Images" className="rounded-lg w-full" data-ai-hint={placeholderImages.banner['data-ai-hint']}/>
                     </div>
                 </div>
               </div>
@@ -150,7 +149,7 @@ export default function Home() {
         <div id="sobre" className="py-24 section-separator">
           <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <span className="text-primary uppercase tracking-widest gradient-title-animation">Sobre</span>
+                <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Sobre</span>
                 <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
               </div>
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -185,7 +184,7 @@ export default function Home() {
         <div id="portfolio" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="text-primary uppercase tracking-widest gradient-title-animation">Portfólio</span>
+              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Portfólio</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
           </div>
@@ -194,7 +193,7 @@ export default function Home() {
         <div id="curriculo" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="text-primary uppercase tracking-widest gradient-title-animation">Currículo</span>
+              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Currículo</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Minhas Habilidades</h2>
             </div>
           </div>
@@ -203,7 +202,7 @@ export default function Home() {
         <div id="depoimentos" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="text-primary uppercase tracking-widest gradient-title-animation">Depoimentos</span>
+              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Depoimentos</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">O que os clientes dizem</h2>
             </div>
           </div>
@@ -212,7 +211,7 @@ export default function Home() {
         <div id="contacts" className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="text-primary uppercase tracking-widest gradient-title-animation">Contato</span>
+              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Contato</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Fale conosco</h2>
             </div>
           </div>
