@@ -92,7 +92,7 @@ export default function Home() {
 
   const mainCategories = useMemo(() => {
     const cats = new Set(portfolio.map(p => p.mainCategory));
-    return ['Todos', ...Array.from(cats)];
+    return ['Todos', 'Websites', 'Apps', 'Identidade Visual', 'Logos', 'Redes Sociais'];
   }, [portfolio]);
 
   const subCategories = useMemo(() => {
@@ -281,6 +281,57 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div id="siga-me-ferramentas" className="py-24 section-separator">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div className="md:col-span-1" data-aos="fade-up" data-aos-delay="200">
+                <div className="skill-share-inner">
+                    <span className="title text-sm tracking-wider gradient-title-animation">Siga-nos</span>
+                    <ul className="social-share flex list-none gap-4 mt-4">
+                        <li>
+                          <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                            <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" data-ai-hint={placeholderImages.behance['data-ai-hint']} />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://wa.me/5561984836034" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                            <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                            <Instagram size={30} className="text-primary filter-primary" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://github.com/LeBronTech" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                            <Github size={30} className="text-primary filter-primary" />
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+              <div className="md:col-span-2" data-aos="fade-up" data-aos-delay="400">
+                <div className="skill-share-inner">
+                    <span className="title text-sm tracking-wider gradient-title-animation">Ferramentas que usamos</span>
+                    <div className="flex flex-wrap justify-start gap-4 mt-4">
+                      {placeholderImages.tools.design.map((tool, index) => (
+                        <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn">
+                          <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-primary"/>
+                        </div>
+                      ))}
+                      {placeholderImages.tools.development.map((tool, index) => (
+                        <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn">
+                          <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-primary"/>
+                        </div>
+                      ))}
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         
         <div id="sobre" className="py-24 section-separator">
             <div className="container mx-auto px-4">
@@ -315,37 +366,6 @@ export default function Home() {
             </div>
         </div>
 
-         <div id="ferramentas" className="py-24 section-separator">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12" data-aos="fade-up">
-              <span className="subtitle uppercase tracking-widest gradient-title-animation">Ferramentas</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Ferramentas que Usamos</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div data-aos="fade-up" data-aos-delay="200">
-                <h3 className="text-2xl font-bold mb-6 text-center">Design</h3>
-                <div className="flex flex-wrap justify-center gap-6">
-                  {placeholderImages.tools.design.map((tool, index) => (
-                    <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn">
-                      <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-primary"/>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div data-aos="fade-up" data-aos-delay="400">
-                <h3 className="text-2xl font-bold mb-6 text-center">Desenvolvimento</h3>
-                <div className="flex flex-wrap justify-center gap-6">
-                  {placeholderImages.tools.development.map((tool, index) => (
-                    <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn">
-                      <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-primary"/>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div id="portfolio" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12" data-aos="fade-up">
@@ -353,7 +373,7 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
             
-            <div className="flex justify-center flex-wrap gap-2 mb-4" data-aos="fade-up">
+             <div className="flex flex-wrap justify-center items-center gap-2 mb-4" data-aos="fade-up">
                 {mainCategories.map(category => (
                     <Button
                       key={category}
@@ -367,7 +387,7 @@ export default function Home() {
             </div>
 
             {subCategories.length > 0 && (
-                <div className="flex justify-center flex-wrap gap-1 mb-12" data-aos="fade-up" data-aos-delay="100">
+                <div className="flex flex-wrap justify-center items-center gap-1 mb-12" data-aos="fade-up" data-aos-delay="100">
                     {subCategories.map(category => (
                         <Button
                           key={category}
@@ -390,7 +410,7 @@ export default function Home() {
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
-                  <Card className="cursor-pointer overflow-hidden group">
+                  <Card className="cursor-pointer overflow-hidden group bg-card">
                     <CardHeader className="p-0">
                       <div className="relative">
                         <Image src={project.src} alt={project.title} width={400} height={300} className="rounded-t-lg object-cover h-60 w-full transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
@@ -400,7 +420,7 @@ export default function Home() {
                       </div>
                     </CardHeader>
                     <CardContent className="p-4">
-                      <h3 className="text-xl font-semibold">{project.title}</h3>
+                      <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
                       <p className="text-sm text-primary">{project.category || project.mainCategory}</p>
                     </CardContent>
                   </Card>
@@ -537,4 +557,3 @@ export default function Home() {
     </div>
   );
 }
-
