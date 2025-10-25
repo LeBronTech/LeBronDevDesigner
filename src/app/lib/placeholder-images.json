@@ -16,7 +16,9 @@
         "design": [
             { "src": "https://i.postimg.cc/hvdKj9w0/photoshop.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
             { "src": "https://i.postimg.cc/HxjYGG9S/ilus.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-            { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" }
+            { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" },
+            { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
+            { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" }
         ],
         "development": [
             { "src": "https://i.postimg.cc/g00TPxwS/toppng-com-react-native-svg-transformer-allows-you-import-svg-aperture-science-innovators-logo-986x1.png", "alt": "react", "data-ai-hint": "react logo" },
@@ -26,7 +28,9 @@
             { "src": "https://i.postimg.cc/brK94JXq/pngwing-com.png", "alt": "css", "data-ai-hint": "css logo" },
             { "src": "https://i.postimg.cc/v8p7YcKN/nextjs-icon.png", "alt": "nextjs", "data-ai-hint": "nextjs logo" },
             { "src": "https://i.postimg.cc/s2v1GJQN/pngaaa-com-619137.png", "alt": "python", "data-ai-hint": "python logo" },
-            { "src": "https://i.postimg.cc/brK94JXq/pngwing-com.png", "alt": "flutter", "data-ai-hint": "flutter logo" }
+            { "src": "https://i.postimg.cc/brK94JXq/pngwing-com.png", "alt": "flutter", "data-ai-hint": "flutter logo" },
+            { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
+            { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" }
         ]
     },
     "banner": {
