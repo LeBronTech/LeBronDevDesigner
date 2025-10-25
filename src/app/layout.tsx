@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Montserrat, Oxanium } from "next/font/google";
+import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -15,11 +15,6 @@ const montserrat = Montserrat({
   variable: "--font-secondary",
 });
 
-const oxanium = Oxanium({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-oxanium",
-});
 
 export const metadata: Metadata = {
   title: "Lebron Disigner",
@@ -33,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={cn("antialiased", poppins.variable, montserrat.variable, oxanium.variable)}>
+      <body className={cn("antialiased", poppins.variable, montserrat.variable)}>
         {children}
       </body>
     </html>
