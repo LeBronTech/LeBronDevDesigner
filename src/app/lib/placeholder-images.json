@@ -21,15 +21,15 @@
             { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" }
         ],
         "development": [
-            { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" },
-            { "src": "https://i.postimg.cc/xCqfrr35/icons-06.png", "alt": "css", "data-ai-hint": "css logo" },
-            { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
             { "src": "https://i.postimg.cc/g00TPxwS/toppng-com-react-native-svg-transformer-allows-you-import-svg-aperture-science-innovators-logo-986x1.png", "alt": "react", "data-ai-hint": "react logo" },
             { "src": "https://i.postimg.cc/hP7ZDFtt/node-js-png-3-1.png", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
+            { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
             { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
             { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
             { "src": "https://i.postimg.cc/CxNnSgk6/vscode.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
-            { "src": "https://i.postimg.cc/v8p7YcKN/nextjs-icon.png", "alt": "nextjs", "data-ai-hint": "nextjs logo" }
+            { "src": "https://i.postimg.cc/v8p7YcKN/nextjs-icon.png", "alt": "nextjs", "data-ai-hint": "nextjs logo" },
+            { "src": "https://i.postimg.cc/s2v1GJQN/pngaaa-com-619137.png", "alt": "python", "data-ai-hint": "python logo" },
+            { "src": "https://i.postimg.cc/brK94JXq/pngwing-com.png", "alt": "flutter", "data-ai-hint": "flutter logo" }
         ]
     },
     "banner": {
