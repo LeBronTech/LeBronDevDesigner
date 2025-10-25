@@ -1,7 +1,7 @@
 
 'use client';
 import Image from "next/image";
-import { ArrowUp, Github, Instagram, Smartphone, Layout, Slack, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { ArrowUp, Award, BookOpen, Code, Github, Instagram, Layout, Menu, Slack, Smartphone, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useCallback, Fragment } from "react";
 import placeholderImages from './lib/placeholder-images.json';
@@ -9,6 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { ProjectModal } from "@/components/ProjectModal";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 
 const TypingEffect = ({ words }: { words: string[] }) => {
@@ -77,6 +80,37 @@ const ProjectCarousel = ({ projects, allLink }: { projects: any[], allLink: stri
     </div>
 );
 
+
+const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) => {
+  const [progress, setProgress] = useState(0);
+
+  const onScroll = useCallback(() => {
+    const element = document.getElementById(`skill-${skill.toLowerCase().replace(/\s/g, '-')}`);
+    if (element) {
+      const { top } = element.getBoundingClientRect();
+      const isVisible = top < window.innerHeight && top + element.clientHeight >= 0;
+      if (isVisible) {
+        setProgress(percentage);
+      }
+    }
+  }, [percentage, skill]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [onScroll]);
+
+  return (
+    <div id={`skill-${skill.toLowerCase().replace(/\s/g, '-')}`} className="w-full mb-4">
+      <div className="flex justify-between items-center mb-1">
+        <span className="text-foreground">{skill}</span>
+        <span className="text-primary">{progress}%</span>
+      </div>
+      <Progress value={progress} className="w-full h-2 [&>*]:bg-gradient-to-r [&>*]:from-primary [&>*]:to-accent" />
+    </div>
+  );
+};
+
 export default function Home() {
   
   useEffect(() => {
@@ -107,9 +141,18 @@ export default function Home() {
     }
   }, []);
 
+  const navLinks = [
+    { href: "#home", label: "HOME" },
+    { href: "#sobre", label: "SOBRE" },
+    { href: "#portfolio", label: "PORTFÓLIO" },
+    { href: "#curriculo", label: "CURRÍCULO" },
+    { href: "#depoimentos", label: "DEPOIMENTOS" },
+    { href: "#contacts", label: "CONTATO" },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-24">
             <div className="logo">
@@ -119,14 +162,62 @@ export default function Home() {
             </div>
             <nav className="hidden md:flex mainmenu-nav">
               <ul className="primary-menu flex space-x-6">
-                <li><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold" href="#home">HOME</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold" href="#sobre">SOBRE</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold" href="#portfolio">PORTFÓLIO</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold" href="#curriculo">CURRÍCULO</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold" href="#depoimentos">DEPOIMENTOS</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold" href="#contacts">CONTATO</a></li>
+                {navLinks.map((link) => (
+                  <li key={link.href}><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold" href={link.href}>{link.label}</a></li>
+                ))}
               </ul>
             </nav>
+             <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
+                  <div className="flex flex-col h-full">
+                    <div className="p-6 border-b">
+                       <a href="#home">
+                          <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
+                       </a>
+                       <p className="text-muted-foreground mt-4">Site portfólio LeBron Dev-Designer.</p>
+                    </div>
+                    <nav className="flex-1 p-6">
+                       <ul className="primary-menu flex flex-col space-y-4">
+                        {navLinks.map((link) => (
+                          <li key={link.href}><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold text-lg" href={link.href}>{link.label}</a></li>
+                        ))}
+                      </ul>
+                    </nav>
+                     <div className="p-6 border-t">
+                      <span className="title text-sm tracking-wider gradient-title-animation">Me siga!</span>
+                      <ul className="social-share flex list-none gap-4 mt-4">
+                            <li>
+                              <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" data-ai-hint={placeholderImages.behance['data-ai-hint']} />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://wa.me/5561984836034" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Instagram size={30} className="text-primary filter-primary" />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://github.com/LeBronTech" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Github size={30} className="text-primary filter-primary" />
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </header>
@@ -172,28 +263,6 @@ export default function Home() {
                             </li>
                         </ul>
                     </div>
-                     <div className="flex flex-col lg:flex-row gap-8">
-                        <div className="skill-share-inner">
-                            <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas de Design</span>
-                            <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
-                            {placeholderImages.tools.design.map(tool => (
-                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2">
-                                  <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" />
-                                </li>
-                            ))}
-                            </ul>
-                        </div>
-                        <div className="skill-share-inner">
-                            <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas de Desenvolvimento</span>
-                             <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
-                            {placeholderImages.tools.development.map(tool => (
-                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2">
-                                  <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" />
-                                </li>
-                            ))}
-                            </ul>
-                        </div>
-                    </div>
                   </div>
               </div>
               <div className="order-1 lg:order-2 relative flex justify-center">
@@ -228,7 +297,7 @@ export default function Home() {
                     </div>
                     <div className="card-description">
                         <div className="title-area">
-                            <h3 className="title text-3xl font-bold">Criador da Lebron Dev Designer</h3>
+                            <h3 className="text-3xl font-bold">Criador da Lebron Dev Designer</h3>
                             <span className="date text-sm text-gray-400">2021</span>
                         </div>
                         <div className="seperator my-4 h-px bg-gray-700"></div>
@@ -310,8 +379,6 @@ export default function Home() {
                 </div>
                 <ProjectCarousel projects={placeholderImages.portfolio.apps} allLink="/apps" />
             </div>
-
-
           </div>
         </div>
 
@@ -321,6 +388,88 @@ export default function Home() {
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Currículo</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Minhas Habilidades</h2>
             </div>
+            <Tabs defaultValue="formacao" className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="formacao"><Award className="mr-2" />Formação</TabsTrigger>
+                <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
+              </TabsList>
+              <TabsContent value="formacao">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div>
+                        <span className="subtitle text-primary">2018-2020</span>
+                        <h4 className="maintitle text-2xl font-bold mt-2">Faculdade</h4>
+                        <div className="experience-list mt-4 space-y-6">
+                            <Card>
+                                <CardHeader>
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <CardTitle>Web Designer</CardTitle>
+                                            <p className="text-muted-foreground">Faculdade Projeção</p>
+                                        </div>
+                                        <div className="date-of-time">
+                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2018</span>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <p>Formação em Html, CSS, JavaScript e desenvolvimento do primeiro site.</p>
+                                </CardContent>
+                            </Card>
+                             <Card>
+                                <CardHeader>
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <CardTitle>App Mobile</CardTitle>
+                                        </div>
+                                        <div className="date-of-time">
+                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2019</span>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <p>Certificação de desnvolvimento em Android.</p>
+                                </CardContent>
+                            </Card>
+                             <Card>
+                                <CardHeader>
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <CardTitle>Designer</CardTitle>
+                                        </div>
+                                        <div className="date-of-time">
+                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2020</span>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <p>Certificação em photoshop,canvas,figma e coredraw.</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
+              </TabsContent>
+              <TabsContent value="habilidades">
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                  <div>
+                    <h4 className="text-2xl font-bold mb-4">Design</h4>
+                    <SkillBar skill="Photoshop" percentage={75} />
+                    <SkillBar skill="Figma" percentage={75} />
+                    <SkillBar skill="Adobe XD" percentage={60} />
+                    <SkillBar skill="Adobe Illustrator" percentage={70} />
+                    <SkillBar skill="CorelDraw" percentage={70} />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold mb-4">Desenvolvimento</h4>
+                    <SkillBar skill="HTML" percentage={85} />
+                    <SkillBar skill="CSS" percentage={80} />
+                    <SkillBar skill="JavaScript" percentage={70} />
+                    <SkillBar skill="React" percentage={75} />
+                    <SkillBar skill="Node.js" percentage={70} />
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
 
@@ -354,11 +503,9 @@ export default function Home() {
         </div>
       </footer>
 
-      <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer">
-        <button className="w-12 h-12 flex items-center justify-center rounded-full bg-transparent border-2 border-primary">
+       <button className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-transparent border-2 border-primary">
           <ArrowUp className="text-primary" />
         </button>
-      </div>
     </div>
   );
 }

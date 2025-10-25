@@ -222,3 +222,6 @@
   }
 }
 
+.progress-bar-gradient {
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+}
