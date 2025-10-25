@@ -219,7 +219,7 @@ export default function Home() {
       </footer>
 
       <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer">
-        <div className="w-16 h-16 flex items-center justify-center shadow-lg rounded-full rn-btn">
+        <div className="w-16 h-16 flex items-center justify-center rounded-full rn-btn">
           <ArrowUp />
         </div>
       </div>
