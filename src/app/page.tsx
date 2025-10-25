@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { ProjectModal } from "@/components/ProjectModal";
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -46,7 +46,25 @@ const TypingEffect = ({ words }: { words: string[] }) => {
   );
 };
 
-const ProjectCarousel = ({ projects, allLink }: { projects: any[], allLink: string }) => (
+const preloadImages = (projects: any[]) => {
+  projects.forEach((project) => {
+    const img = new (window as any).Image();
+    img.src = project.src;
+    if (project.modalImages) {
+      project.modalImages.forEach((modalImage: any) => {
+        const modalImg = new (window as any).Image();
+        modalImg.src = modalImage.src;
+      });
+    }
+  });
+};
+
+
+const ProjectCarousel = ({ projects, allLink }: { projects: any[], allLink: string }) => {
+  if (!projects || projects.length === 0) {
+    return <div className="text-center text-muted-foreground">Nenhum projeto disponível.</div>;
+  }
+  return (
     <div className="relative">
       <Carousel
           opts={{
@@ -79,31 +97,30 @@ const ProjectCarousel = ({ projects, allLink }: { projects: any[], allLink: stri
       </Carousel>
     </div>
 );
-
+};
 
 const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) => {
   const [progress, setProgress] = useState(0);
+  const skillRef = React.useRef<HTMLDivElement>(null);
 
   const onScroll = useCallback(() => {
-    const element = document.getElementById(`skill-${skill.toLowerCase().replace(/\s/g, '-')}`);
-    if (element) {
-      const { top } = element.getBoundingClientRect();
-      const isVisible = top < window.innerHeight && top + element.clientHeight >= 0;
+    if (skillRef.current) {
+      const { top } = skillRef.current.getBoundingClientRect();
+      const isVisible = top < window.innerHeight && top + skillRef.current.clientHeight >= 0;
       if (isVisible) {
         setProgress(percentage);
       }
     }
-  }, [percentage, skill]);
+  }, [percentage]);
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
-    // Trigger scroll once on mount in case the element is already visible
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
 
   return (
-    <div id={`skill-${skill.toLowerCase().replace(/\s/g, '-')}`} className="w-full mb-4">
+    <div ref={skillRef} className="w-full mb-4">
       <div className="flex justify-between items-center mb-1">
         <span className="text-foreground">{skill}</span>
         <span className="text-primary">{progress}%</span>
@@ -179,11 +196,9 @@ export default function Home() {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
                   <SheetHeader className="p-6 border-b text-left">
-                    <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
-                     <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>
+                    <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>
                         <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
-                     </a>
-                     <p className="text-muted-foreground mt-4">Site portfólio LeBron Dev-Designer.</p>
+                    </a>
                   </SheetHeader>
                   <div className="flex flex-col h-full justify-between">
                     <nav className="flex-1 p-6">
@@ -324,7 +339,7 @@ export default function Home() {
             <div className="inner mb-16">
                 <div className="flex justify-between items-center mb-12">
                   <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Layout className="text-primary"/>Websites</h4>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.websites)}>
                     <Link href="/websites">Ver todos</Link>
                   </Button>
                 </div>
@@ -336,7 +351,7 @@ export default function Home() {
             <div className="inner mb-16">
                 <div className="flex justify-between items-center mb-12">
                     <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Slack className="text-primary"/>Identidade Visual</h4>
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.identities)}>
                       <Link href="/identities">Ver todos</Link>
                     </Button>
                 </div>
@@ -348,7 +363,7 @@ export default function Home() {
             <div className="inner mb-16">
                 <div className="flex justify-between items-center mb-12">
                     <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Instagram className="text-primary"/>Redes Sociais</h4>
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.socials)}>
                       <Link href="/socials">Ver todos</Link>
                     </Button>
                 </div>
@@ -365,7 +380,7 @@ export default function Home() {
                       </div>
                       Logos
                     </h4>
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.logos)}>
                       <Link href="/logos">Ver todos</Link>
                     </Button>
                 </div>
@@ -377,7 +392,7 @@ export default function Home() {
             <div className="inner">
                 <div className="flex justify-between items-center mb-12">
                     <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Smartphone className="text-primary"/>Apps</h4>
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.apps)}>
                       <Link href="/apps">Ver todos</Link>
                     </Button>
                 </div>

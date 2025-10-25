@@ -1,3 +1,4 @@
+
 {
     "logo": {
         "src": "https://i.postimg.cc/tgpJ2Hcy/Lebron-20251025-153441-0000.png",
@@ -51,6 +52,7 @@
                 "url": "https://lebrontech.github.io/Restaurante-Gusto/",
                 "description": "Site responsivo desenvolvido em HTML usando JavaScript e CSS, com design agradavel e intuitivo.",
                 "data-ai-hint": "restaurant website",
+                "category": "Institucional",
                 "tools": [
                     { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
                     { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
@@ -73,6 +75,7 @@
                 "url": "https://ionelourencodecor.lojavirtualnuvem.com.br/",
                 "description": "Site responsivo desenvolvido para MARKETPLACE, com checkout e design minimalista.",
                 "data-ai-hint": "ecommerce website",
+                "category": "Marketplace",
                 "tools": [
                     { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
                     { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
@@ -94,6 +97,7 @@
                 "url": "https://leandrolebron2203.wixsite.com/capital-arte",
                 "description": "Site responsivo, institucional para apresentação da marca.",
                 "data-ai-hint": "art gallery website",
+                "category": "Landing Page",
                 "tools": [
                     { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
                     { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
