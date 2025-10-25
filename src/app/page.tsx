@@ -6,32 +6,38 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
-  const [text, setText] = useState('');
+  const [subIndex, setSubIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('');
 
   useEffect(() => {
-    const handleTyping = () => {
-      const currentWord = words[index];
-      if (isDeleting) {
-        setText(currentWord.substring(0, text.length - 1));
-      } else {
-        setText(currentWord.substring(0, text.length + 1));
-      }
+    if (subIndex === words[index].length + 1 && !isDeleting) {
+      setTimeout(() => setIsDeleting(true), 1000);
+      return;
+    }
 
-      if (!isDeleting && text === currentWord) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setIndex((prev) => (prev + 1) % words.length);
-      }
-    };
+    if (subIndex === 0 && isDeleting) {
+      setIsDeleting(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
 
-    const timeout = setTimeout(handleTyping, isDeleting ? 100 : 150);
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (isDeleting ? -1 : 1));
+    }, isDeleting ? 75 : 150);
+
     return () => clearTimeout(timeout);
-  }, [text, isDeleting, index, words]);
+  }, [subIndex, isDeleting, index, words]);
+
+  useEffect(() => {
+    setText(words[index].substring(0, subIndex));
+  }, [subIndex, index, words]);
+
 
   return (
       <span className="inline-block relative">
@@ -101,8 +107,8 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left">
                   <span className="subtitle uppercase tracking-widest gradient-title-animation">Bem-Vindo</span>
-                  <h1 className="title text-5xl md:text-6xl font-bold mt-4">
-                    Somos a <span className="oxanium-font gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
+                   <h1 className="title text-5xl md:text-6xl font-bold mt-4">
+                    <span className="oxanium-font">Lebr{"{"}o{"}"}n Dev-Designer</span>
                   </h1>
                   <h2 className="text-4xl md:text-5xl mt-4 typing-container">
                     <TypingEffect words={["Apps.", "Websites.", "Logos."]} />
@@ -220,5 +226,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
