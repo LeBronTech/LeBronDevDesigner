@@ -118,12 +118,12 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col lg:flex-row gap-8 mt-8 justify-center lg:justify-start">
                     <div className="social-share-inner-left">
-                        <span className="title uppercase text-sm tracking-wider gradient-title-animation">Siga-nos</span>
+                        <span className="title uppercase text-sm tracking-wider gradient-title-animation">Me siga!</span>
                         <ul className="social-share flex list-none gap-4 mt-4">
-                            <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" /></a></li>
-                            <li><a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" /></a></li>
-                            <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="rn-btn"><Instagram size={30} /></a></li>
-                            <li><a href="https://github.com/LeBronTech" target="_blank" className="rn-btn"><Github size={30} /></a></li>
+                            <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" /></a></li>
+                            <li><a href="https://wa.me/5561984836034" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" /></a></li>
+                            <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Instagram size={30} /></a></li>
+                            <li><a href="https://github.com/LeBronTech" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Github size={30} /></a></li>
                         </ul>
                     </div>
                      <div className="flex flex-col lg:flex-row gap-8">
