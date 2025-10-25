@@ -53,6 +53,9 @@
     @apply bg-background text-foreground;
     font-family: var(--font-primary);
   }
+  h2 {
+    color: #ffffff;
+  }
 }
 
 .gradient-text {
@@ -76,7 +79,7 @@
 }
 
 .gradient-title-animation {
-  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+  background: linear-gradient(to right, #7d6cba, #41b59a, #23a6d5, #7d6cba);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -88,8 +91,7 @@
 }
 
 .gradient-title-animation:hover {
-    color: hsl(var(--primary));
-    -webkit-text-fill-color: hsl(var(--primary));
+    -webkit-text-fill-color: inherit;
 }
 
 
@@ -219,7 +221,7 @@
   left: 50%;
   height: 100%;
   width: 100%;
-  background: linear-gradient(60deg, #7d6cba, #41b59a, #7d6cba);
+  background: linear-gradient(60deg, #7d6cba, #41b59a, #23a6d5, #7d6cba);
   border-radius: 50%;
   z-index: -1;
   animation: animatedgradient 3s ease alternate infinite;
