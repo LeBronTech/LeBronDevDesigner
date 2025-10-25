@@ -52,20 +52,8 @@
                 "url": "https://lebrontech.github.io/Restaurante-Gusto/",
                 "description": "Site responsivo desenvolvido em HTML usando JavaScript e CSS, com design agradavel e intuitivo.",
                 "data-ai-hint": "restaurant website",
-                "category": "Institucional",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
-                    { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
-                    { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                    { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
-                ],
-                "modalImages": [
-                    { "src": "https://i.postimg.cc/J4D6T9z9/p4.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/B6nSMrF4/restaurantegusto2.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/DwybHqsY/restaurantegusto3.png", "data-ai-hint": "website screenshot" }
-                ],
-                "clientLogo": "https://i.postimg.cc/L8p5yswD/client2.png"
+                "mainCategory": "Websites",
+                "category": "Institucional"
             },
             {
                 "src": "https://i.postimg.cc/XqCnJwhd/p2.jpg",
@@ -75,19 +63,8 @@
                 "url": "https://ionelourencodecor.lojavirtualnuvem.com.br/",
                 "description": "Site responsivo desenvolvido para MARKETPLACE, com checkout e design minimalista.",
                 "data-ai-hint": "ecommerce website",
-                "category": "Marketplace",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
-                    { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                    { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
-                ],
-                "modalImages": [
-                    { "src": "https://i.postimg.cc/LsGgLzGv/ione1.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/Wb710C3d/ione3.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/hGvczvQ0/ione2.png", "data-ai-hint": "website screenshot" }
-                ],
-                "clientLogo": "https://i.postimg.cc/prc4y4s0/client1.png"
+                "mainCategory": "Websites",
+                "category": "Marketplace"
             },
             {
                 "src": "https://i.postimg.cc/yxZ7dF5y/p3.jpg",
@@ -97,18 +74,8 @@
                 "url": "https://leandrolebron2203.wixsite.com/capital-arte",
                 "description": "Site responsivo, institucional para apresentação da marca.",
                 "data-ai-hint": "art gallery website",
-                "category": "Landing Page",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                    { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
-                ],
-                 "modalImages": [
-                    { "src": "https://i.postimg.cc/vBHjWjXp/capital1.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/rpS6qJkQ/capital2.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/k47tV78b/capital3.png", "data-ai-hint": "website screenshot" }
-                ],
-                "clientLogo": "https://i.postimg.cc/g2PscWk2/logocapital.jpg"
+                "mainCategory": "Websites",
+                "category": "Landing Page"
             }
         ],
         "apps": [
@@ -116,19 +83,22 @@
                 "src": "https://i.postimg.cc/prg7FpS9/portfolio-02.jpg",
                 "title": "Burger Home",
                 "description": "Em Breve",
-                "data-ai-hint": "burger app"
+                "data-ai-hint": "burger app",
+                 "mainCategory": "Apps"
             },
             {
                 "src": "https://i.postimg.cc/vHqBwQcM/portfolio-01.jpg",
                 "title": "Analise",
                 "description": "Em Breve",
-                "data-ai-hint": "analysis app"
+                "data-ai-hint": "analysis app",
+                 "mainCategory": "Apps"
             },
             {
                 "src": "https://i.postimg.cc/vHqBwQcM/portfolio-01.jpg",
                 "title": "Saude",
                 "description": "Em breve",
-                "data-ai-hint": "health app"
+                "data-ai-hint": "health app",
+                 "mainCategory": "Apps"
             }
         ],
         "identities": [
@@ -140,17 +110,7 @@
                 "url": "https://www.instagram.com/lebrondesign/",
                 "description": "Identidade criada para passar confiança aos donos dos pets, baseada na cor alaranjada.",
                 "data-ai-hint": "pet brand identity",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
-                ],
-                 "modalImages": [
-                    { "src": "https://i.postimg.cc/Yq7Yc9kM/Doo-Dou1.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/C10KjV3B/Doo-Dou2.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/VvP3M5b5/Doo-Dou3.jpg", "data-ai-hint": "brand identity" }
-                ],
-                "clientLogo": "https://i.postimg.cc/xTH2B7z4/Logo-Doo.jpg"
+                "mainCategory": "Identidade Visual"
             },
             {
                 "src": "https://i.postimg.cc/50t0xQb3/Automotic4.jpg",
@@ -160,17 +120,7 @@
                 "url": "https://www.instagram.com/lebrondesign/",
                 "description": "Identidade criada com base na cor amarela, como a logo em formato arrendondado remetendo ao ramo automobilístico.",
                 "data-ai-hint": "car brand identity",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
-                ],
-                 "modalImages": [
-                    { "src": "https://i.postimg.cc/rpR9yP8B/Automotic1.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/vBFp33gP/Automotic2.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/0Q3RDLV3/Automotic3.jpg", "data-ai-hint": "brand identity" }
-                ],
-                "clientLogo": "https://i.postimg.cc/wTCjQfX0/Logo-Auto.jpg"
+                "mainCategory": "Identidade Visual"
             },
             {
                 "src": "https://i.postimg.cc/SRBN7ZCq/Capilar2.jpg",
@@ -180,72 +130,32 @@
                 "url": "https://www.instagram.com/lebrondesign/",
                 "description": "Identidade baseada na cor rosa, fonte arredondada e em minúsculo para passar a impressão amigável.",
                 "data-ai-hint": "hair product identity",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
-                ],
-                 "modalImages": [
-                    { "src": "https://i.postimg.cc/9QyHkGqg/Capilar1.jpg", "data-ai-hint": "brand identity" }
-                ],
-                "clientLogo": "https://i.postimg.cc/wxhb93B0/Logocapilarela.jpg"
+                "mainCategory": "Identidade Visual"
             }
         ],
         "logos": [
              {
                 "src": "https://i.postimg.cc/DwKwSM77/DooDou4.jpg",
                 "title": "Doo&Dou",
-                "client": "DOO&DOU",
-                "services": "Logo e identidade",
-                "url": "https://www.instagram.com/lebrondesign/",
-                "description": "Identidade criada para passar confiança aos donos dos pets, baseada na cor alaranjada.",
-                "data-ai-hint": "pet brand identity"
+                "description": "Logo para Petshop",
+                "data-ai-hint": "pet brand logo",
+                "mainCategory": "Logos"
             }
         ],
         "socials": [
              {
                 "src": "https://i.postimg.cc/PxctT66j/hamburgueriacapa.png",
                 "title": "Hamburgueria",
-                "client": "Portfólio",
-                "services": "Post para rede social",
-                "url": "https://www.behance.net/gallery/189159481/Criativo-para-Rede-Socias",
                 "description": "Criativos de Hamburgueria para redes sociais.",
                 "data-ai-hint": "burger social media",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
-                    { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
-                    { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
-                ],
-                "modalImages": [
-                    { "src": "https://i.postimg.cc/fLZJvWn7/ham1.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/Z5p3XfGf/ham2.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/pT3VdK3K/ham3.png", "data-ai-hint": "social media post" }
-                ],
-                "clientLogo": "https://i.postimg.cc/s2sVbXh9/Lebron.png"
+                "mainCategory": "Redes Sociais"
             },
             {
                 "src": "https://i.postimg.cc/Vk10x60Q/pizzariacapa.png",
                 "title": "Pizzaria",
-                "client": "Portfólio",
-                "services": "Post para rede social",
-                "url": "https://www.behance.net/gallery/189872917/Criativos-para-Pizzaria",
                 "description": "Criativos de pizzaria para redes sociais.",
                 "data-ai-hint": "pizza social media",
-                "tools": [
-                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
-                    { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
-                    { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
-                ],
-                "modalImages": [
-                    { "src": "https://i.postimg.cc/prZz4jD5/pizza1.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/9M9BwHsp/pizza2.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/mD7tB2Yw/pizza3.png", "data-ai-hint": "social media post" }
-                ],
-                "clientLogo": "https://i.postimg.cc/s2sVbXh9/Lebron.png"
+                "mainCategory": "Redes Sociais"
             }
         ]
     },

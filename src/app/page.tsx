@@ -3,15 +3,15 @@
 import Image from "next/image";
 import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Slack, Smartphone, ArrowUp } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { ProjectModal } from "@/components/ProjectModal";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AOS from 'aos';
 
 
 const TypingEffect = ({ words }: { words: string[] }) => {
@@ -46,81 +46,16 @@ const TypingEffect = ({ words }: { words: string[] }) => {
   );
 };
 
-const preloadImages = (projects: any[]) => {
-  projects.forEach((project) => {
-    const img = new (window as any).Image();
-    img.src = project.src;
-    if (project.modalImages) {
-      project.modalImages.forEach((modalImage: any) => {
-        const modalImg = new (window as any).Image();
-        modalImg.src = modalImage.src;
-      });
-    }
-  });
-};
-
-
-const ProjectCarousel = ({ projects, allLink }: { projects: any[], allLink: string }) => {
-  if (!projects || projects.length === 0) {
-    return <div className="text-center text-muted-foreground">Nenhum projeto disponível.</div>;
-  }
-  return (
-    <div className="relative">
-      <Carousel
-          opts={{
-              align: "start",
-              loop: true,
-          }}
-          className="w-full"
-      >
-          <CarouselContent>
-              {projects.map((project, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                      <div className="p-1">
-                          <ProjectModal project={project}>
-                               <Card className="cursor-pointer hover:scale-105 transition-transform duration-300">
-                                  <CardHeader>
-                                      <Image src={project.src} alt={project.title} width={400} height={300} className="rounded-t-lg object-cover h-60 w-full" data-ai-hint={project['data-ai-hint']} />
-                                  </CardHeader>
-                                  <CardContent>
-                                      <CardTitle>{project.title}</CardTitle>
-                                      <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                                  </CardContent>
-                              </Card>
-                          </ProjectModal>
-                      </div>
-                  </CarouselItem>
-              ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
-          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
-      </Carousel>
-    </div>
-);
-};
-
 const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) => {
   const [progress, setProgress] = useState(0);
-  const skillRef = React.useRef<HTMLDivElement>(null);
-
-  const onScroll = useCallback(() => {
-    if (skillRef.current) {
-      const { top } = skillRef.current.getBoundingClientRect();
-      const isVisible = top < window.innerHeight && top + skillRef.current.clientHeight >= 0;
-      if (isVisible) {
-        setProgress(percentage);
-      }
-    }
-  }, [percentage]);
 
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [onScroll]);
+    const timer = setTimeout(() => setProgress(percentage), 100); 
+    return () => clearTimeout(timer);
+  }, [percentage]);
 
   return (
-    <div ref={skillRef} className="w-full mb-4">
+    <div className="w-full mb-4" data-aos="fade-up">
       <div className="flex justify-between items-center mb-1">
         <span className="text-foreground">{skill}</span>
         <span className="text-primary">{progress}%</span>
@@ -130,8 +65,67 @@ const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) 
   );
 };
 
+
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('Todos');
+  const [activeSubFilter, setActiveSubFilter] = useState('Todos');
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
+
+  const portfolio = useMemo(() => [
+      ...placeholderImages.portfolio.websites,
+      ...placeholderImages.portfolio.apps,
+      ...placeholderImages.portfolio.identities,
+      ...placeholderImages.portfolio.logos,
+      ...placeholderImages.portfolio.socials,
+  ], []);
+
+  const mainCategories = useMemo(() => {
+    const cats = new Set(portfolio.map(p => p.mainCategory));
+    return ['Todos', ...Array.from(cats)];
+  }, [portfolio]);
+
+  const subCategories = useMemo(() => {
+    if (activeFilter === 'Todos') return [];
+    const cats = new Set(portfolio.filter(p => p.mainCategory === activeFilter).map(p => p.category).filter(Boolean));
+    return ['Todos', ...Array.from(cats)];
+  }, [activeFilter, portfolio]);
+
+  const filteredProjects = useMemo(() => {
+    let projects = portfolio;
+    if (activeFilter !== 'Todos') {
+      projects = projects.filter(p => p.mainCategory === activeFilter);
+    }
+    if (activeSubFilter !== 'Todos' && subCategories.length > 0) {
+      projects = projects.filter(p => p.category === activeSubFilter);
+    }
+    return projects;
+  }, [portfolio, activeFilter, activeSubFilter, subCategories]);
+
+  const handleFilterClick = (filter: string) => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setActiveFilter(filter);
+      setActiveSubFilter('Todos');
+      setIsAnimating(false);
+    }, 300);
+  };
+  
+  const handleSubFilterClick = (filter: string) => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setActiveSubFilter(filter);
+      setIsAnimating(false);
+    }, 300);
+  };
+
 
   useEffect(() => {
     const backToTop = document.querySelector('.backto-top');
@@ -195,7 +189,8 @@ export default function Home() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
-                  <SheetHeader className="p-6 border-b text-left">
+                   <SheetHeader className="p-6 border-b text-left">
+                     <SheetTitle className="sr-only">Menu Principal</SheetTitle>
                     <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>
                         <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
                     </a>
@@ -245,7 +240,7 @@ export default function Home() {
         <div id="home" className="min-h-screen flex items-center justify-center section-separator relative">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div className="order-2 lg:order-1 text-center lg:text-left">
+              <div className="order-2 lg:order-1 text-center lg:text-left" data-aos="fade-up">
                   <span className="subtitle uppercase tracking-widest gradient-title-animation">Bem-Vindo</span>
                    <h1 className="title text-5xl md:text-6xl font-bold mt-4">
                     <span className="oxanium-font">Lebr{"{"}o{"}"}n Dev-Designer</span>
@@ -284,7 +279,7 @@ export default function Home() {
                     </div>
                   </div>
               </div>
-              <div className="order-1 lg:order-2 relative flex justify-center">
+              <div className="order-1 lg:order-2 relative flex justify-center" data-aos="fade-up" data-aos-delay="200">
                 <div className="thumbnail shadow-lg rounded-lg">
                     <div className="inner">
                         <Image src={placeholderImages.banner.src} width={500} height={500} alt="Personal Portfolio Images" className="rounded-lg w-full" data-ai-hint={placeholderImages.banner['data-ai-hint']}/>
@@ -297,12 +292,12 @@ export default function Home() {
         
         <div id="sobre" className="py-24 section-separator">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
+                <div className="text-center mb-12" data-aos="fade-up">
                     <span className="subtitle uppercase tracking-widest gradient-title-animation">Sobre</span>
                     <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div className="card-info bg-card p-8 rounded-lg shadow-lg">
+                    <div className="card-info bg-card p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
                         <div className="flex flex-col lg:flex-row items-center gap-8">
                             <div className="card-thumbnail">
                                 <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
@@ -314,7 +309,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="card-description">
+                    <div className="card-description" data-aos="fade-up" data-aos-delay="400">
                         <div className="title-area">
                             <h3 className="text-3xl font-bold">Criador da Lebron Dev Designer</h3>
                             <span className="date text-sm text-gray-400">2021</span>
@@ -328,93 +323,84 @@ export default function Home() {
             </div>
         </div>
 
-
         <div id="portfolio" className="py-24 section-separator">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12" data-aos="fade-up">
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Portfólio</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
             
-            <div className="inner mb-16">
-                <div className="flex justify-between items-center mb-12">
-                  <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Layout className="text-primary"/>Websites</h4>
-                  <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.websites)}>
-                    <Link href="/websites">Ver todos</Link>
-                  </Button>
-                </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.websites} allLink="/websites" />
+            <div className="flex justify-center flex-wrap gap-4 mb-8" data-aos="fade-up">
+                {mainCategories.map(category => (
+                    <Button
+                      key={category}
+                      variant={activeFilter === category ? "default" : "outline"}
+                      onClick={() => handleFilterClick(category)}
+                      className="capitalize"
+                    >
+                      {category}
+                    </Button>
+                ))}
             </div>
 
-            <div className="my-12 h-px w-full bg-gray-700"></div>
+            {subCategories.length > 0 && (
+                <div className="flex justify-center flex-wrap gap-2 mb-12 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    {subCategories.map(category => (
+                        <Button
+                          key={category}
+                          variant={activeSubFilter === category ? "secondary" : "ghost"}
+                          size="sm"
+                          onClick={() => handleSubFilterClick(category)}
+                          className="capitalize text-sm"
+                        >
+                          {category}
+                        </Button>
+                    ))}
+                </div>
+            )}
             
-            <div className="inner mb-16">
-                <div className="flex justify-between items-center mb-12">
-                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Slack className="text-primary"/>Identidade Visual</h4>
-                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.identities)}>
-                      <Link href="/identities">Ver todos</Link>
-                    </Button>
-                </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.identities} allLink="/identities" />
-            </div>
-
-            <div className="my-12 h-px w-full bg-gray-700"></div>
-
-            <div className="inner mb-16">
-                <div className="flex justify-between items-center mb-12">
-                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Instagram className="text-primary"/>Redes Sociais</h4>
-                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.socials)}>
-                      <Link href="/socials">Ver todos</Link>
-                    </Button>
-                </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.socials} allLink="/socials" />
-            </div>
-
-            <div className="my-12 h-px w-full bg-gray-700"></div>
-
-            <div className="inner mb-16">
-                <div className="flex justify-between items-center mb-12">
-                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold">
-                      <div className="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center">
-                        <span className="text-primary font-bold text-lg">L</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={`${project.title}-${index}`}
+                  className={`transform transition-all duration-300 ${isAnimating ? 'scale-50 opacity-0' : 'scale-100 opacity-100'}`}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <Card className="cursor-pointer overflow-hidden group">
+                    <CardHeader className="p-0">
+                      <div className="relative">
+                        <Image src={project.src} alt={project.title} width={400} height={300} className="rounded-t-lg object-cover h-60 w-full transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <p className="text-white text-lg font-semibold">{project.title}</p>
+                        </div>
                       </div>
-                      Logos
-                    </h4>
-                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.logos)}>
-                      <Link href="/logos">Ver todos</Link>
-                    </Button>
+                    </CardHeader>
+                    <CardContent className="p-4">
+                      <h3 className="text-xl font-semibold">{project.title}</h3>
+                      <p className="text-sm text-primary">{project.category || project.mainCategory}</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.logos} allLink="/logos" />
-            </div>
-
-            <div className="my-12 h-px w-full bg-gray-700"></div>
-            
-            <div className="inner">
-                <div className="flex justify-between items-center mb-12">
-                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Smartphone className="text-primary"/>Apps</h4>
-                    <Button variant="outline" asChild onMouseEnter={() => preloadImages(placeholderImages.portfolio.apps)}>
-                      <Link href="/apps">Ver todos</Link>
-                    </Button>
-                </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.apps} allLink="/apps" />
+              ))}
             </div>
           </div>
         </div>
 
         <div id="curriculo" className="py-24 section-separator">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12" data-aos="fade-up">
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Currículo</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Minhas Habilidades</h2>
             </div>
             <Tabs defaultValue="formacao" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
+              <TabsList className="grid w-full grid-cols-2" data-aos="fade-up">
                 <TabsTrigger value="formacao"><Award className="mr-2" />Formação</TabsTrigger>
                 <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
               </TabsList>
               <TabsContent value="formacao">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                    <div>
+                    <div data-aos="fade-up">
                         <span className="subtitle text-primary">2018-2020</span>
                         <h4 className="maintitle text-2xl font-bold mt-2">Faculdade</h4>
                         <div className="experience-list mt-4 space-y-6">
@@ -470,7 +456,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="habilidades">
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="200">
                     <h4 className="text-2xl font-bold mb-4">Design</h4>
                     <SkillBar skill="Photoshop" percentage={75} />
                     <SkillBar skill="Figma" percentage={75} />
@@ -478,7 +464,7 @@ export default function Home() {
                     <SkillBar skill="Adobe Illustrator" percentage={70} />
                     <SkillBar skill="CorelDraw" percentage={70} />
                   </div>
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="400">
                     <h4 className="text-2xl font-bold mb-4">Desenvolvimento</h4>
                     <SkillBar skill="HTML" percentage={85} />
                     <SkillBar skill="CSS" percentage={80} />
@@ -494,7 +480,7 @@ export default function Home() {
 
         <div id="depoimentos" className="py-24 section-separator">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12" data-aos="fade-up">
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Depoimentos</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">O que os clientes dizem</h2>
             </div>
@@ -503,7 +489,7 @@ export default function Home() {
         
         <div id="contacts" className="py-24">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12" data-aos="fade-up">
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Contato</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Fale conosco</h2>
             </div>

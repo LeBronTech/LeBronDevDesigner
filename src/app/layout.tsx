@@ -1,6 +1,9 @@
+
 import type { Metadata } from "next";
 import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
+import "@/css/style.css";
+import "@/css/aos.css";
 import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
