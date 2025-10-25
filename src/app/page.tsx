@@ -114,7 +114,8 @@ const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) 
 };
 
 export default function Home() {
-  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const backToTop = document.querySelector('.backto-top');
     if (backToTop) {
@@ -170,7 +171,7 @@ export default function Home() {
               </ul>
             </nav>
              <div className="md:hidden">
-              <Sheet>
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button variant="outline" size="icon">
                     <Menu className="h-6 w-6" />
@@ -179,7 +180,7 @@ export default function Home() {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
                   <SheetHeader className="p-6 border-b text-left">
                     <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
-                     <a href="#home">
+                     <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>
                         <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
                      </a>
                      <p className="text-muted-foreground mt-4">Site portfólio LeBron Dev-Designer.</p>
@@ -188,7 +189,7 @@ export default function Home() {
                     <nav className="flex-1 p-6">
                        <ul className="primary-menu flex flex-col space-y-4">
                         {navLinks.map((link) => (
-                          <li key={link.href}><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold text-lg" href={link.href}>{link.label}</a></li>
+                          <li key={link.href}><a className="nav-link smoth-animation gradient-title-animation uppercase font-bold text-lg" href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.label}</a></li>
                         ))}
                       </ul>
                     </nav>
