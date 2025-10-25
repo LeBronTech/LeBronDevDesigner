@@ -71,6 +71,10 @@ export default function Home() {
     }
   }, []);
 
+  const designTools = placeholderImages.tools.filter(tool => ['photoshop', 'illustrator', 'figma', 'canva', 'coreldraw'].includes(tool.alt));
+  const devTools = placeholderImages.tools.filter(tool => !['photoshop', 'illustrator', 'figma', 'canva', 'coreldraw'].includes(tool.alt));
+
+
   return (
     <div className="min-h-screen bg-background">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
@@ -100,7 +104,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left">
-                  <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Bem-Vindo</span>
+                  <span className="subtitle uppercase tracking-widest gradient-title-animation">Bem-Vindo</span>
                   <h1 className="title text-5xl md:text-6xl font-bold mt-4">
                     Somos a <span className="oxanium-font gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
                   </h1>
@@ -116,27 +120,28 @@ export default function Home() {
                         <ul className="social-share flex list-none gap-4 mt-4">
                             <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" /></a></li>
                             <li><a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" /></a></li>
-                            <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="rn-btn"><Instagram size={30}/></a></li>
-                            <li><a href="https://github.com/LeBronTech" target="_blank" className="rn-btn"><Github size={30}/></a></li>
+                            <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="rn-btn"><Instagram size={30} className="filter-primary"/></a></li>
+                            <li><a href="https://github.com/LeBronTech" target="_blank" className="rn-btn"><Github size={30} className="filter-primary"/></a></li>
                         </ul>
                     </div>
                      <div className="flex flex-col lg:flex-row gap-8">
                         <div className="skill-share-inner">
                             <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas de Design</span>
                             <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
-                            {placeholderImages.tools.slice(0, 3).map(tool => (
-                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2"><Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" /></li>
-                            ))}
-                             {placeholderImages.tools.slice(9, 12).map(tool => (
-                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2"><Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" /></li>
+                            {designTools.map(tool => (
+                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2">
+                                  <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" />
+                                </li>
                             ))}
                             </ul>
                         </div>
                         <div className="skill-share-inner">
                             <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas de Desenvolvimento</span>
                              <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
-                            {placeholderImages.tools.slice(3, 9).map(tool => (
-                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2"><Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" /></li>
+                            {devTools.map(tool => (
+                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2">
+                                  <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" />
+                                </li>
                             ))}
                             </ul>
                         </div>
@@ -144,7 +149,7 @@ export default function Home() {
                   </div>
               </div>
               <div className="order-1 lg:order-2 relative flex justify-center">
-                <div className="thumbnail style-2 shadow-lg rounded-lg">
+                <div className="thumbnail shadow-lg rounded-lg">
                     <div className="inner">
                         <Image src={placeholderImages.banner.src} width={500} height={500} alt="Personal Portfolio Images" className="rounded-lg w-full" data-ai-hint={placeholderImages.banner['data-ai-hint']}/>
                     </div>
