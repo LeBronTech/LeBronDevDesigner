@@ -1,6 +1,7 @@
+
 {
     "logo": {
-        "src": "https://i.postimg.cc/sX8VsnnV/logo.png",
+        "src": "https://i.postimg.cc/tgpJ2Hcy/Lebron-20251025-153441-0000.png",
         "data-ai-hint": "logo"
     },
     "behance": {
@@ -15,9 +16,6 @@
         "design": [
             { "src": "https://i.postimg.cc/hvdKj9w0/photoshop.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
             { "src": "https://i.postimg.cc/HxjYGG9S/ilus.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-            { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" },
-            { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
-            { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
             { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" }
         ],
         "development": [

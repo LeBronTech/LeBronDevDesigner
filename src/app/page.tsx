@@ -83,8 +83,8 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-24">
             <div className="logo">
-              <a href="#home" className="flex items-center gap-2">
-                <span className="text-3xl font-bold oxanium-font gradient-text">Lebr{"{"}o{"}"}n</span>
+              <a href="#home">
+                <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
               </a>
             </div>
             <nav className="hidden md:flex mainmenu-nav">
@@ -211,7 +211,7 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
             <div className="logo mb-4">
                <a href="#home" className="flex items-center gap-2 justify-center">
-                <span className="text-3xl font-bold oxanium-font gradient-text">Lebr{"{"}o{"}"}n</span>
+                <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
               </a>
             </div>
             <p className="description">© 2025. Direitos reservados a <a href="https://github.com/LeBronTech" target="_blank" className="text-primary hover:underline">Lebron Tech</a>.</p>
