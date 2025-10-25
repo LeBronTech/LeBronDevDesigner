@@ -12,22 +12,26 @@
         "src": "https://i.postimg.cc/nhk9pJqZ/whatsapp.png",
         "data-ai-hint": "whatsapp logo"
     },
-    "tools": [
-        { "src": "https://i.postimg.cc/hvdKj9w0/photoshop.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-        { "src": "https://i.postimg.cc/HxjYGG9S/ilus.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-        { "src": "https://i.postimg.cc/sgcGsr5R/word.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
-        { "src": "https://i.postimg.cc/nzMF88Gv/icons-02.png", "alt": "react", "data-ai-hint": "react logo" },
-        { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-        { "src": "https://i.postimg.cc/N0dsPGmd/icons-04.png", "alt": "html", "data-ai-hint": "html logo" },
-        { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "css", "data-ai-hint": "css logo" },
-        { "src": "https://i.postimg.cc/bJdyXX9T/icons-06.png", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
-        { "src": "https://i.postimg.cc/CxNnSgk6/vscode.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
-        { "src": "https://i.postimg.cc/y8B3Mdg0/shopify.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
-        { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" },
-        { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
-        { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
-        { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
-    ],
+    "tools": {
+        "design": [
+            { "src": "https://i.postimg.cc/hvdKj9w0/photoshop.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+            { "src": "https://i.postimg.cc/HxjYGG9S/ilus.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+            { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
+            { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
+            { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
+        ],
+        "development": [
+            { "src": "https://i.postimg.cc/sgcGsr5R/word.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
+            { "src": "https://i.postimg.cc/y8B3Mdg0/shopify.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
+            { "src": "https://i.postimg.cc/nzMF88Gv/icons-02.png", "alt": "react", "data-ai-hint": "react logo" },
+            { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+            { "src": "https://i.postimg.cc/N0dsPGmd/icons-04.png", "alt": "html", "data-ai-hint": "html logo" },
+            { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "css", "data-ai-hint": "css logo" },
+            { "src": "https://i.postimg.cc/bJdyXX9T/icons-06.png", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
+            { "src": "https://i.postimg.cc/CxNnSgk6/vscode.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
+            { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" }
+        ]
+    },
     "banner": {
         "src": "https://i.postimg.cc/TwPwR5fB/banner-03.png",
         "data-ai-hint": "portfolio abstract"
@@ -137,3 +141,5 @@
         "data-ai-hint": "contact us"
     }
 }
+
+    
