@@ -1,7 +1,8 @@
 
+
 'use client';
 import Image from "next/image";
-import { ArrowUp, Github, Instagram } from "lucide-react";
+import { ArrowUp, Github, Instagram, Smartphone, Layout, Slack } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
@@ -120,10 +121,26 @@ export default function Home() {
                     <div className="social-share-inner-left">
                         <span className="title uppercase text-sm tracking-wider gradient-title-animation">Me siga!</span>
                         <ul className="social-share flex list-none gap-4 mt-4">
-                          <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" /></a></li>
-                          <li><a href="https://wa.me/5561984836034" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" /></a></li>
-                          <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Instagram size={30} className="text-primary" /></a></li>
-                          <li><a href="https://github.com/LeBronTech" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Github size={30} className="text-primary" /></a></li>
+                            <li>
+                              <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" data-ai-hint={placeholderImages.behance['data-ai-hint']} />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://wa.me/5561984836034" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Instagram size={30} className="text-primary" />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://github.com/LeBronTech" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Github size={30} className="text-primary" />
+                              </a>
+                            </li>
                         </ul>
                     </div>
                      <div className="flex flex-col lg:flex-row gap-8">
@@ -162,13 +179,38 @@ export default function Home() {
         </div>
         
         <div id="sobre" className="py-24 section-separator">
-          <div className="container mx-auto px-4">
-              <div className="text-center mb-12">
-                <span className="subtitle uppercase tracking-widest gradient-title-animation">Sobre</span>
-                <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
-              </div>
-          </div>
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <span className="subtitle uppercase tracking-widest gradient-title-animation">Sobre</span>
+                    <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div className="card-info bg-card p-8 rounded-lg shadow-lg">
+                        <div className="flex flex-col lg:flex-row items-center gap-8">
+                            <div className="card-thumbnail">
+                                <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
+                            </div>
+                            <div className="card-content">
+                                <span className="subtitle mt-10 lg:mt-0 uppercase text-sm tracking-wider gradient-title-animation">Designer & Programador</span>
+                                <h3 className="title text-3xl font-bold mt-2">Leandro José</h3>
+                                <span className="designation text-lg">Lebron</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card-description">
+                        <div className="title-area">
+                            <h3 className="title text-3xl font-bold">Criador da Lebron Dev Designer</h3>
+                            <span className="date text-sm text-gray-400">2021</span>
+                        </div>
+                        <div className="seperator my-4 h-px bg-gray-700"></div>
+                        <p className="discription text-gray-300">
+                            Olá, me chamo Leandro, conhecido também como LeBron,criador da LeBron Dev Designer,tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <div id="portfolio" className="py-24 section-separator">
           <div className="container mx-auto px-4">
@@ -176,6 +218,203 @@ export default function Home() {
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Portfólio</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
+            
+            <div className="inner">
+                <div className="text-center mb-12">
+                    <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Layout className="text-primary"/>Websites</h4>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.website1.src} alt="Restaurante Gusto" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.website1['data-ai-hint']} />
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Restaurante Gusto</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                            <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.website1.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Site responsivo desenvolvido em HTML usando JavaScript e CSS, com design agradavel e intuitivo</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://lebrontech.github.io/Restaurante-Gusto/" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.website2.src} alt="IoneDecor" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.website2['data-ai-hint']} />
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>IoneDecor</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                             <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.website2.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Site responsivo desenvolvido para MARKETPLACE, com checkout e design minimalista</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://ionelourencodecor.lojavirtualnuvem.com.br/" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.website3.src} alt="Capital Arte" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.website3['data-ai-hint']} />
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Capital Arte</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                             <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.website3.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Site responsivo, institucional para apresentação da marca</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://leandrolebron2203.wixsite.com/capital-arte" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+
+            <div className="my-12 h-px w-full bg-gray-700"></div>
+            
+            <div className="inner">
+                <div className="text-center mb-12">
+                    <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Slack className="text-primary"/>Identidade Visual</h4>
+                </div>
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.identity1.src} alt="Automotic" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.identity1['data-ai-hint']}/>
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Automotic</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                             <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.identity1.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Identidade criada com base na cor amarela, como a logo em formato arrendondado remetendo ao ramo automobilístico</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://www.instagram.com/lebrondesign/" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.identity2.src} alt="Doo&Dou" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.identity2['data-ai-hint']} />
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Doo&Dou</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                             <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.identity2.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Identidade criada para passar confiaça aos donos dos pets, baseada na cor alaranjada</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://www.instagram.com/lebrondesign/" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.identity3.src} alt="Capilar Ela" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.identity3['data-ai-hint']} />
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Capilar Ela</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                             <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.identity3.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Identidade baseada na cor rosa, fonte arredondada e em minúsculo para passar a impressão amigável</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://www.instagram.com/lebrondesign/" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+
+            <div className="my-12 h-px w-full bg-gray-700"></div>
+
+            <div className="inner">
+                <div className="text-center mb-12">
+                    <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Instagram className="text-primary"/>Redes Sociais</h4>
+                </div>
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.social1.src} alt="Hamburgueria" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.social1['data-ai-hint']} />
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Hamburgueria</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                             <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.social1.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Criativos de Hamburgueria para redes sociais</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://www.behance.net/gallery/189159481/Criativo-para-Rede-Socias" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <Image src={placeholderImages.portfolio.social2.src} alt="Pizzaria" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.social2['data-ai-hint']} />
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Pizzaria</CardTitle>
+                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                             <div className="mt-4">
+                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                <ul className="flex flex-wrap gap-2 mt-2">
+                                    {placeholderImages.portfolio.social2.tools.map(tool => (
+                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <p className="mt-4 text-gray-300">Criativos de pizzaria para redes sociais</p>
+                            <Button asChild className="mt-4 w-full"><Link href="https://www.behance.net/gallery/189872917/Criativos-para-Pizzaria" target="_blank">Ver projeto</Link></Button>
+                        </CardContent>
+                    </Card>
+                 </div>
+            </div>
+
           </div>
         </div>
 
@@ -227,3 +466,4 @@ export default function Home() {
   );
 }
 
+    
