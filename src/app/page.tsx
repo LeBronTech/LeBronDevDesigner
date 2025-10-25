@@ -105,8 +105,8 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left">
                   <span className="subtitle uppercase tracking-widest gradient-title-animation">Bem-Vindo</span>
-                  <h1 className="title text-5xl md:text-6xl font-bold mt-4">
-                    Somos a <span className="oxanium-font gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
+                  <h1 className="title text-5xl md:text-6xl font-bold mt-4 oxanium-font">
+                    Somos a <span className="gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
                   </h1>
                   <h2 className="text-4xl md:text-5xl mt-4 typing-container">
                     <TypingEffect words={["Apps.", "Websites.", "Logos."]} />
