@@ -7,8 +7,9 @@ import { useEffect, useState, useCallback, Fragment } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { ProjectModal } from "@/components/ProjectModal";
+
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
@@ -41,43 +42,6 @@ const TypingEffect = ({ words }: { words: string[] }) => {
       </span>
   );
 };
-
-
-const ProjectModal = ({ project, children }: { project: any, children: React.ReactNode }) => (
-    <Dialog>
-        <DialogTrigger asChild>{children}</DialogTrigger>
-        <DialogContent>
-            <DialogHeader>
-                <DialogTitle>{project.title}</DialogTitle>
-                <DialogDescription>{project.description}</DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-                 <div className="info-list">
-                    <ul>
-                        <li><strong>Cliente:</strong> <span>{project.client}</span></li>
-                        <li><strong>Serviços:</strong> <span>{project.services}</span></li>
-                    </ul>
-                </div>
-                 <Button asChild className="w-full">
-                    <Link href={project.url} target="_blank">
-                        Ver projeto <ArrowUp className="w-4 h-4 ml-2 transform -rotate-45" />
-                    </Link>
-                </Button>
-                {project.modalImages?.map((image: any, index: number) => (
-                    <Image
-                        key={index}
-                        src={image.src}
-                        alt={project.title}
-                        width={1200}
-                        height={600}
-                        className="rounded-lg object-cover"
-                        data-ai-hint={image['data-ai-hint']}
-                    />
-                ))}
-            </div>
-        </DialogContent>
-    </Dialog>
-);
 
 const ProjectCarousel = ({ projects }: { projects: any[] }) => (
     <Carousel
@@ -367,3 +331,4 @@ export default function Home() {
     </div>
   );
 }
+
