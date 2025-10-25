@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
@@ -212,8 +212,8 @@ export default function Home() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
-                   <SheetHeader>
-                     <SheetTitleComponent className="sr-only">Menu Principal</SheetTitleComponent>
+                  <SheetHeader>
+                    <SheetTitleComponent className="sr-only">Menu Principal</SheetTitleComponent>
                     <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>
                         <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
                     </a>
@@ -274,33 +274,6 @@ export default function Home() {
                   <p className="description mt-6 mx-auto lg:mx-0 max-w-xl text-lg text-gray-300">
                     Usamos as mais variadas ferramentas do mercado, para trazer aos nossos clientes a melhor experiência e suporte para seu negócio
                   </p>
-                  <div className="flex flex-col lg:flex-row gap-8 mt-8 justify-center lg:justify-start">
-                    <div className="social-share-inner-left">
-                        <span className="title uppercase text-sm tracking-wider gradient-title-animation">Me siga!</span>
-                        <ul className="social-share flex list-none gap-4 mt-4">
-                            <li>
-                              <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" data-ai-hint={placeholderImages.behance['data-ai-hint']} />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="https://wa.me/5561984836034" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Instagram size={30} className="text-primary filter-primary" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="https://github.com/LeBronTech" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Github size={30} className="text-primary filter-primary" />
-                              </a>
-                            </li>
-                        </ul>
-                    </div>
-                  </div>
               </div>
               <div className="order-1 lg:order-2 relative flex justify-center" data-aos="fade-up" data-aos-delay="200">
                 <div className="thumbnail shadow-lg rounded-lg">
@@ -346,6 +319,37 @@ export default function Home() {
             </div>
         </div>
 
+        <div id="ferramentas" className="py-24 section-separator">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12" data-aos="fade-up">
+              <span className="subtitle uppercase tracking-widest gradient-title-animation">Ferramentas</span>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Ferramentas que Usamos</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div data-aos="fade-up" data-aos-delay="200">
+                <h3 className="text-2xl font-bold mb-6 text-center">Design</h3>
+                <div className="flex flex-wrap justify-center gap-6">
+                  {placeholderImages.tools.design.map((tool, index) => (
+                    <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn">
+                      <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-primary"/>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="400">
+                <h3 className="text-2xl font-bold mb-6 text-center">Desenvolvimento</h3>
+                <div className="flex flex-wrap justify-center gap-6">
+                  {placeholderImages.tools.development.map((tool, index) => (
+                    <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn">
+                      <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-primary"/>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div id="portfolio" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12" data-aos="fade-up">
@@ -359,7 +363,7 @@ export default function Home() {
                       key={category}
                       variant={activeFilter === category ? "default" : "outline"}
                       onClick={() => handleFilterClick(category)}
-                      className="capitalize"
+                      className="capitalize rounded-full px-6"
                     >
                       {category}
                     </Button>
@@ -374,7 +378,7 @@ export default function Home() {
                           variant={activeSubFilter === category ? "secondary" : "ghost"}
                           size="sm"
                           onClick={() => handleSubFilterClick(category)}
-                          className="capitalize text-sm"
+                          className="capitalize rounded-full px-4 text-sm"
                         >
                           {category}
                         </Button>
@@ -418,7 +422,7 @@ export default function Home() {
             </div>
             <Tabs defaultValue="formacao" className="w-full">
               <TabsList className="grid w-full grid-cols-2" data-aos="fade-up">
-                <TabsTrigger value="formacao"><Award className="mr-2" />Formação</TabsTrigger>
+                <TabsTrigger value="formacao"><BookOpen className="mr-2" />Formação</TabsTrigger>
                 <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
               </TabsList>
               <TabsContent value="formacao">
@@ -536,3 +540,4 @@ export default function Home() {
         </button>
     </div>
   );
+}
