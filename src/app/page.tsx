@@ -120,10 +120,10 @@ export default function Home() {
                     <div className="social-share-inner-left">
                         <span className="title uppercase text-sm tracking-wider gradient-title-animation">Me siga!</span>
                         <ul className="social-share flex list-none gap-4 mt-4">
-                            <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-16 h-16 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" /></a></li>
-                            <li><a href="https://wa.me/5561984836034" target="_blank" className="w-16 h-16 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" /></a></li>
-                            <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-16 h-16 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Instagram size={30} /></a></li>
-                            <li><a href="https://github.com/LeBronTech" target="_blank" className="w-16 h-16 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Github size={30} /></a></li>
+                          <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" /></a></li>
+                          <li><a href="https://wa.me/5561984836034" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" /></a></li>
+                          <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Instagram size={30} className="text-primary" /></a></li>
+                          <li><a href="https://github.com/LeBronTech" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn"><Github size={30} className="text-primary" /></a></li>
                         </ul>
                     </div>
                      <div className="flex flex-col lg:flex-row gap-8">
@@ -219,10 +219,11 @@ export default function Home() {
       </footer>
 
       <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer">
-        <div className="w-16 h-16 flex items-center justify-center rounded-full rn-btn">
-          <ArrowUp />
-        </div>
+        <button className="w-16 h-16 flex items-center justify-center rounded-full bg-transparent border-2 border-primary rn-btn">
+          <ArrowUp className="text-primary" />
+        </button>
       </div>
     </div>
   );
 }
+
