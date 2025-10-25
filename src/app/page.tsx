@@ -5,10 +5,7 @@ import { ArrowUp, Github, Instagram } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { cn } from "@/lib/utils";
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
@@ -39,7 +36,6 @@ const TypingEffect = ({ words }: { words: string[] }) => {
   return (
       <span className="inline-block relative">
         {text}
-        <span className="absolute top-0 right-0 -mr-1 w-0.5 h-full bg-primary animate-ping"></span>
       </span>
   );
 };
@@ -76,14 +72,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-24">
             <div className="logo">
               <a href="#home" className="flex items-center gap-2">
                 <span className="text-3xl font-bold oxanium-font gradient-text">Lebr{"{"}o{"}"}n</span>
-                <span className="text-sm tracking-widest uppercase">Dev<br/>Designer</span>
               </a>
             </div>
             <nav className="hidden md:flex mainmenu-nav">
@@ -105,7 +100,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left">
-                  <span className="subtitle uppercase tracking-widest text-primary">Bem-Vindo</span>
+                  <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Bem-Vindo</span>
                   <h1 className="title text-5xl md:text-6xl font-bold mt-4">
                     Somos a <span className="oxanium-font gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
                   </h1>
@@ -119,24 +114,37 @@ export default function Home() {
                     <div className="social-share-inner-left">
                         <span className="title uppercase text-sm tracking-wider gradient-title-animation">Siga-nos</span>
                         <ul className="social-share flex list-none gap-4 mt-4">
-                            <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={24} height={24} alt="behance" /></a></li>
-                            <li><a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={24} height={24} alt="whatsapp" /></a></li>
-                            <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="rn-btn"><Instagram /></a></li>
-                            <li><a href="https://github.com/LeBronTech" target="_blank" className="rn-btn"><Github /></a></li>
+                            <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" /></a></li>
+                            <li><a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" /></a></li>
+                            <li><a href="https://www.instagram.com/lebrondesign" target="_blank" className="rn-btn"><Instagram size={30}/></a></li>
+                            <li><a href="https://github.com/LeBronTech" target="_blank" className="rn-btn"><Github size={30}/></a></li>
                         </ul>
                     </div>
-                     <div className="skill-share-inner">
-                        <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas que usamos</span>
-                        <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
-                          {placeholderImages.tools.map(tool => (
-                            <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center"><Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} /></li>
-                          ))}
-                        </ul>
+                     <div className="flex flex-col lg:flex-row gap-8">
+                        <div className="skill-share-inner">
+                            <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas de Design</span>
+                            <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
+                            {placeholderImages.tools.slice(0, 3).map(tool => (
+                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2"><Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" /></li>
+                            ))}
+                             {placeholderImages.tools.slice(9, 12).map(tool => (
+                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2"><Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" /></li>
+                            ))}
+                            </ul>
+                        </div>
+                        <div className="skill-share-inner">
+                            <span className="title uppercase text-sm tracking-wider gradient-title-animation">Ferramentas de Desenvolvimento</span>
+                             <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
+                            {placeholderImages.tools.slice(3, 9).map(tool => (
+                                <li key={tool.alt} className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2"><Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="object-contain" /></li>
+                            ))}
+                            </ul>
+                        </div>
                     </div>
                   </div>
               </div>
               <div className="order-1 lg:order-2 relative flex justify-center">
-                <div className="thumbnail style-2">
+                <div className="thumbnail style-2 shadow-lg rounded-lg">
                     <div className="inner">
                         <Image src={placeholderImages.banner.src} width={500} height={500} alt="Personal Portfolio Images" className="rounded-lg w-full" data-ai-hint={placeholderImages.banner['data-ai-hint']}/>
                     </div>
@@ -149,42 +157,16 @@ export default function Home() {
         <div id="sobre" className="py-24 section-separator">
           <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Sobre</span>
+                <span className="subtitle uppercase tracking-widest gradient-title-animation">Sobre</span>
                 <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
               </div>
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="card-info bg-card p-8 rounded-lg shadow-lg">
-                    <div className="card-thumbnail mb-4">
-                        <Image src={placeholderImages.about.src} alt="Leandro José" width={340} height={250} className="rounded-lg w-full" data-ai-hint={placeholderImages.about['data-ai-hint']} />
-                    </div>
-                    <div className="card-content">
-                        <span className="subtitle mt-4 text-accent">Designer & Programador</span>
-                        <h3 className="title text-3xl font-bold">Leandro José</h3>
-                        <span className="designation text-primary">Lebron</span>
-                    </div>
-                    <Button asChild className="mt-4 w-full">
-                        <Link href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank">
-                            Currículo
-                        </Link>
-                    </Button>
-                </div>
-                <div className="card-description">
-                    <div className="title-area mb-4">
-                        <h3 className="title text-3xl font-bold">Criador da Lebron Dev Designer</h3>
-                        <span className="date text-muted-foreground">2021</span>
-                    </div>
-                    <p className="discription text-lg leading-relaxed">
-                        Olá, me chamo Leandro, conhecido também como LeBron,criador da LeBron Dev Designer,tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
-                    </p>
-                </div>
-            </div>
           </div>
         </div>
 
         <div id="portfolio" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Portfólio</span>
+              <span className="subtitle uppercase tracking-widest gradient-title-animation">Portfólio</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
           </div>
@@ -193,7 +175,7 @@ export default function Home() {
         <div id="curriculo" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Currículo</span>
+              <span className="subtitle uppercase tracking-widest gradient-title-animation">Currículo</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Minhas Habilidades</h2>
             </div>
           </div>
@@ -202,7 +184,7 @@ export default function Home() {
         <div id="depoimentos" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Depoimentos</span>
+              <span className="subtitle uppercase tracking-widest gradient-title-animation">Depoimentos</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">O que os clientes dizem</h2>
             </div>
           </div>
@@ -211,7 +193,7 @@ export default function Home() {
         <div id="contacts" className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="subtitle uppercase tracking-widest text-primary gradient-title-animation">Contato</span>
+              <span className="subtitle uppercase tracking-widest gradient-title-animation">Contato</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Fale conosco</h2>
             </div>
           </div>
