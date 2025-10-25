@@ -1,21 +1,20 @@
 
-
 'use client';
 import Image from "next/image";
-import { ArrowUp, Github, Instagram, Smartphone, Layout, Slack } from "lucide-react";
+import { ArrowUp, Github, Instagram, Smartphone, Layout, Slack, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, Fragment } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [text, setText] = useState('');
-
+  
   useEffect(() => {
     if (subIndex === words[index].length + 1 && !isDeleting) {
       setTimeout(() => setIsDeleting(true), 1000);
@@ -35,18 +34,92 @@ const TypingEffect = ({ words }: { words: string[] }) => {
     return () => clearTimeout(timeout);
   }, [subIndex, isDeleting, index, words]);
 
-  useEffect(() => {
-    setText(words[index].substring(0, subIndex));
-  }, [subIndex, index, words]);
-
-
   return (
       <span className="inline-block relative">
-        {text}
+        {words[index].substring(0, subIndex)}
+        <span className="animate-ping">|</span>
       </span>
   );
 };
 
+
+const ProjectModal = ({ project, children }: { project: any, children: React.ReactNode }) => (
+    <Dialog>
+        <DialogTrigger asChild>{children}</DialogTrigger>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+                <DialogTitle>{project.title}</DialogTitle>
+                <DialogDescription>{project.description}</DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+                 <div className="info-list">
+                    <ul>
+                        <li><strong>Cliente:</strong> <span>{project.client}</span></li>
+                        <li><strong>Serviços:</strong> <span>{project.services}</span></li>
+                    </ul>
+                </div>
+                 <Button asChild className="w-full">
+                    <Link href={project.url} target="_blank">
+                        Ver projeto <ArrowUp className="w-4 h-4 ml-2 transform -rotate-45" />
+                    </Link>
+                </Button>
+                {project.modalImages?.map((image: any, index: number) => (
+                    <Image
+                        key={index}
+                        src={image.src}
+                        alt={project.title}
+                        width={1200}
+                        height={600}
+                        className="rounded-lg object-cover"
+                        data-ai-hint={image['data-ai-hint']}
+                    />
+                ))}
+            </div>
+        </DialogContent>
+    </Dialog>
+);
+
+const ProjectCarousel = ({ projects }: { projects: any[] }) => (
+    <Carousel
+        opts={{
+            align: "start",
+            loop: true,
+        }}
+        className="w-full"
+    >
+        <CarouselContent>
+            {projects.map((project, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                        <ProjectModal project={project}>
+                             <Card className="cursor-pointer hover:scale-105 transition-transform duration-300">
+                                <CardHeader>
+                                    <Image src={project.src} alt={project.title} width={400} height={300} className="rounded-t-lg object-cover h-60 w-full" data-ai-hint={project['data-ai-hint']} />
+                                </CardHeader>
+                                <CardContent>
+                                    <CardTitle>{project.title}</CardTitle>
+                                    <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                                    <div className="mt-4">
+                                        <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
+                                        <ul className="flex flex-wrap gap-2 mt-2">
+                                            {project.tools.map((tool: any) => (
+                                                <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                                    <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </ProjectModal>
+                    </div>
+                </CarouselItem>
+            ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
+        <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
+    </Carousel>
+);
 
 export default function Home() {
   
@@ -219,148 +292,20 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
             
-            <div className="inner">
+            <div className="inner mb-16">
                 <div className="text-center mb-12">
                     <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Layout className="text-primary"/>Websites</h4>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.website1.src} alt="Restaurante Gusto" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.website1['data-ai-hint']} />
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>Restaurante Gusto</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                            <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.website1.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Site responsivo desenvolvido em HTML usando JavaScript e CSS, com design agradavel e intuitivo</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://lebrontech.github.io/Restaurante-Gusto/" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.website2.src} alt="IoneDecor" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.website2['data-ai-hint']} />
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>IoneDecor</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                             <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.website2.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Site responsivo desenvolvido para MARKETPLACE, com checkout e design minimalista</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://ionelourencodecor.lojavirtualnuvem.com.br/" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.website3.src} alt="Capital Arte" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.website3['data-ai-hint']} />
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>Capital Arte</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                             <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.website3.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Site responsivo, institucional para apresentação da marca</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://leandrolebron2203.wixsite.com/capital-arte" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                </div>
+                <ProjectCarousel projects={placeholderImages.portfolio.websites} />
             </div>
 
             <div className="my-12 h-px w-full bg-gray-700"></div>
             
-            <div className="inner">
+            <div className="inner mb-16">
                 <div className="text-center mb-12">
                     <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Slack className="text-primary"/>Identidade Visual</h4>
                 </div>
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.identity1.src} alt="Automotic" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.identity1['data-ai-hint']}/>
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>Automotic</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                             <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.identity1.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Identidade criada com base na cor amarela, como a logo em formato arrendondado remetendo ao ramo automobilístico</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://www.instagram.com/lebrondesign/" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.identity2.src} alt="Doo&Dou" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.identity2['data-ai-hint']} />
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>Doo&Dou</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                             <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.identity2.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Identidade criada para passar confiaça aos donos dos pets, baseada na cor alaranjada</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://www.instagram.com/lebrondesign/" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.identity3.src} alt="Capilar Ela" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.identity3['data-ai-hint']} />
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>Capilar Ela</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                             <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.identity3.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Identidade baseada na cor rosa, fonte arredondada e em minúsculo para passar a impressão amigável</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://www.instagram.com/lebrondesign/" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                </div>
+                <ProjectCarousel projects={placeholderImages.portfolio.identities} />
             </div>
 
             <div className="my-12 h-px w-full bg-gray-700"></div>
@@ -369,50 +314,7 @@ export default function Home() {
                 <div className="text-center mb-12">
                     <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Instagram className="text-primary"/>Redes Sociais</h4>
                 </div>
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                     <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.social1.src} alt="Hamburgueria" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.social1['data-ai-hint']} />
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>Hamburgueria</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                             <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.social1.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Criativos de Hamburgueria para redes sociais</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://www.behance.net/gallery/189159481/Criativo-para-Rede-Socias" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <Image src={placeholderImages.portfolio.social2.src} alt="Pizzaria" width={400} height={300} className="rounded-t-lg" data-ai-hint={placeholderImages.portfolio.social2['data-ai-hint']} />
-                        </CardHeader>
-                        <CardContent>
-                            <CardTitle>Pizzaria</CardTitle>
-                            <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                             <div className="mt-4">
-                                <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                <ul className="flex flex-wrap gap-2 mt-2">
-                                    {placeholderImages.portfolio.social2.tools.map(tool => (
-                                        <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                            <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <p className="mt-4 text-gray-300">Criativos de pizzaria para redes sociais</p>
-                            <Button asChild className="mt-4 w-full"><Link href="https://www.behance.net/gallery/189872917/Criativos-para-Pizzaria" target="_blank">Ver projeto</Link></Button>
-                        </CardContent>
-                    </Card>
-                 </div>
+                <ProjectCarousel projects={placeholderImages.portfolio.socials} />
             </div>
 
           </div>
@@ -458,7 +360,7 @@ export default function Home() {
       </footer>
 
       <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer">
-        <button className="w-12 h-12 flex items-center justify-center rounded-full bg-transparent border-2 border-primary rn-btn">
+        <button className="w-12 h-12 flex items-center justify-center rounded-full bg-transparent border-2 border-primary">
           <ArrowUp className="text-primary" />
         </button>
       </div>

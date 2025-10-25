@@ -42,85 +42,169 @@
         "data-ai-hint": "man portrait"
     },
     "portfolio": {
-        "website1": {
-            "src": "https://i.postimg.cc/Y0Wt91Vh/p1.jpg",
-            "data-ai-hint": "restaurant website",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
-                { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
-                { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
-            ]
-        },
-        "website2": {
-            "src": "https://i.postimg.cc/XqCnJwhd/p2.jpg",
-            "data-ai-hint": "ecommerce website",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
-                { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
-            ]
-        },
-        "website3": {
-            "src": "https://i.postimg.cc/yxZ7dF5y/p3.jpg",
-            "data-ai-hint": "art gallery website",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
-            ]
-        },
-        "identity1": {
-            "src": "https://i.postimg.cc/50t0xQb3/Automotic4.jpg",
-            "data-ai-hint": "pet brand identity",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
-            ]
-        },
-        "identity2": {
-            "src": "https://i.postimg.cc/DwKwSM77/DooDou4.jpg",
-            "data-ai-hint": "car brand identity",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
-            ]
-        },
-        "identity3": {
-            "src": "https://i.postimg.cc/SRBN7ZCq/Capilar2.jpg",
-            "data-ai-hint": "hair product identity",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
-            ]
-        },
-        "social1": {
-            "src": "https://i.postimg.cc/PxctT66j/hamburgueriacapa.png",
-            "data-ai-hint": "burger social media",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
-                { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
-                { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
-            ]
-        },
-        "social2": {
-            "src": "https://i.postimg.cc/Vk10x60Q/pizzariacapa.png",
-            "data-ai-hint": "pizza social media",
-            "tools": [
-                { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
-                { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
-                { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
-                { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
-            ]
-        }
+        "websites": [
+            {
+                "src": "https://i.postimg.cc/Y0Wt91Vh/p1.jpg",
+                "title": "Restaurante Gusto",
+                "client": "Gusto",
+                "services": "Site e Logo",
+                "url": "https://lebrontech.github.io/Restaurante-Gusto/",
+                "description": "Site responsivo desenvolvido em HTML usando JavaScript e CSS, com design agradavel e intuitivo.",
+                "data-ai-hint": "restaurant website",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
+                    { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
+                    { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                    { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
+                ],
+                "modalImages": [
+                    { "src": "https://i.postimg.cc/6T3Jt9gM/p4.png", "data-ai-hint": "website screenshot" },
+                    { "src": "https://i.postimg.cc/sXm7P0vC/restaurantegusto2.png", "data-ai-hint": "website screenshot" },
+                    { "src": "https://i.postimg.cc/Hsm3yK6H/restaurantegusto3.png", "data-ai-hint": "website screenshot" }
+                ]
+            },
+            {
+                "src": "https://i.postimg.cc/XqCnJwhd/p2.jpg",
+                "title": "IoneDecor",
+                "client": "Ione",
+                "services": "Site e Logo",
+                "url": "https://ionelourencodecor.lojavirtualnuvem.com.br/",
+                "description": "Site responsivo desenvolvido para MARKETPLACE, com checkout e design minimalista.",
+                "data-ai-hint": "ecommerce website",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
+                    { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                    { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
+                ],
+                "modalImages": [
+                    { "src": "https://i.postimg.cc/pT3Y3Yv4/ione1.png", "data-ai-hint": "website screenshot" },
+                    { "src": "https://i.postimg.cc/Wb710p4w/ione3.png", "data-ai-hint": "website screenshot" },
+                    { "src": "https://i.postimg.cc/Kj30b5L9/ione2.png", "data-ai-hint": "website screenshot" }
+                ]
+            },
+            {
+                "src": "https://i.postimg.cc/yxZ7dF5y/p3.jpg",
+                "title": "Capital Arte",
+                "client": "Behhur",
+                "services": "Site",
+                "url": "https://leandrolebron2203.wixsite.com/capital-arte",
+                "description": "Site responsivo, institucional para apresentação da marca.",
+                "data-ai-hint": "art gallery website",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                    { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
+                ],
+                 "modalImages": [
+                    { "src": "https://i.postimg.cc/Kj5DqGDD/capital1.png", "data-ai-hint": "website screenshot" },
+                    { "src": "https://i.postimg.cc/VLz9kM6B/capital2.png", "data-ai-hint": "website screenshot" },
+                    { "src": "https://i.postimg.cc/QCRpDMNp/capital3.png", "data-ai-hint": "website screenshot" }
+                ]
+            }
+        ],
+        "identities": [
+            {
+                "src": "https://i.postimg.cc/DwKwSM77/DooDou4.jpg",
+                "title": "Doo&Dou",
+                "client": "DOO&DOU",
+                "services": "Logo e identidade",
+                "url": "https://www.instagram.com/lebrondesign/",
+                "description": "Identidade criada para passar confiança aos donos dos pets, baseada na cor alaranjada.",
+                "data-ai-hint": "pet brand identity",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
+                ],
+                 "modalImages": [
+                    { "src": "https://i.postimg.cc/vBCxHfwJ/Doo-Dou1.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "https://i.postimg.cc/Qx0GgN85/Doo-Dou2.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "https://i.postimg.cc/prgT68Yw/Doo-Dou3.jpg", "data-ai-hint": "brand identity" }
+                ]
+            },
+            {
+                "src": "https://i.postimg.cc/50t0xQb3/Automotic4.jpg",
+                "title": "Automotic",
+                "client": "Automotic",
+                "services": "Logo e identidade",
+                "url": "https://www.instagram.com/lebrondesign/",
+                "description": "Identidade criada com base na cor amarela, como a logo em formato arrendondado remetendo ao ramo automobilístico.",
+                "data-ai-hint": "car brand identity",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
+                ],
+                 "modalImages": [
+                    { "src": "https://i.postimg.cc/PqBYrQ3j/Automotic1.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "https://i.postimg.cc/Rhn8gM3f/Automotic2.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "https://i.postimg.cc/85z1DkXz/Automotic3.jpg", "data-ai-hint": "brand identity" }
+                ]
+            },
+            {
+                "src": "https://i.postimg.cc/SRBN7ZCq/Capilar2.jpg",
+                "title": "Capilar Ela",
+                "client": "Capilar Ela",
+                "services": "Logo e identidade",
+                "url": "https://www.instagram.com/lebrondesign/",
+                "description": "Identidade baseada na cor rosa, fonte arredondada e em minúsculo para passar a impressão amigável.",
+                "data-ai-hint": "hair product identity",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
+                ],
+                 "modalImages": [
+                    { "src": "https://i.postimg.cc/3JvCg0bZ/Capilar1.jpg", "data-ai-hint": "brand identity" }
+                ]
+            }
+        ],
+        "socials": [
+             {
+                "src": "https://i.postimg.cc/PxctT66j/hamburgueriacapa.png",
+                "title": "Hamburgueria",
+                "client": "Portfólio",
+                "services": "Post para rede social",
+                "url": "https://www.behance.net/gallery/189159481/Criativo-para-Rede-Socias",
+                "description": "Criativos de Hamburgueria para redes sociais.",
+                "data-ai-hint": "burger social media",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
+                    { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
+                    { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
+                ],
+                "modalImages": [
+                    { "src": "https://i.postimg.cc/J0vH1v0D/ham1.png", "data-ai-hint": "social media post" },
+                    { "src": "https://i.postimg.cc/pX99gDqW/ham2.png", "data-ai-hint": "social media post" },
+                    { "src": "https://i.postimg.cc/C1Qc8YpP/ham3.png", "data-ai-hint": "social media post" }
+                ]
+            },
+            {
+                "src": "https://i.postimg.cc/Vk10x60Q/pizzariacapa.png",
+                "title": "Pizzaria",
+                "client": "Portfólio",
+                "services": "Post para rede social",
+                "url": "https://www.behance.net/gallery/189872917/Criativos-para-Pizzaria",
+                "description": "Criativos de pizzaria para redes sociais.",
+                "data-ai-hint": "pizza social media",
+                "tools": [
+                    { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
+                    { "src": "https://i.postimg.cc/0ygbpN0x/ai500.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+                    { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
+                    { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
+                    { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
+                ],
+                "modalImages": [
+                    { "src": "https://i.postimg.cc/d0gTQQzD/pizza1.png", "data-ai-hint": "social media post" },
+                    { "src": "https://i.postimg.cc/8C5YgWk3/pizza2.png", "data-ai-hint": "social media post" },
+                    { "src": "https://i.postimg.cc/hG0sF2V3/pizza3.png", "data-ai-hint": "social media post" }
+                ]
+            }
+        ]
     },
     "testimonials": [
         {
