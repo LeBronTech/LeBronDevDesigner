@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -285,9 +285,9 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <div className="md:col-span-1" data-aos="fade-up" data-aos-delay="200">
-                <div className="skill-share-inner">
-                  <span className="title text-sm tracking-wider gradient-title-animation">Siga-nos</span>
-                  <ul className="social-share flex list-none gap-4 mt-4">
+                <div className="skill-share-inner text-center">
+                  <span className="title text-lg font-semibold tracking-wider gradient-title-animation block mb-4">Siga-me</span>
+                  <ul className="social-share flex list-none gap-4 mt-4 justify-center">
                       <li>
                         <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
                           <Image src={placeholderImages.behance.src} width={40} height={40} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
@@ -312,12 +312,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="md:col-span-2" data-aos="fade-up" data-aos-delay="400">
-                <div className="skill-share-inner">
-                    <span className="title text-sm tracking-wider gradient-title-animation mb-4 block">Ferramentas que usamos</span>
+                <div className="skill-share-inner text-center">
+                    <span className="title text-lg font-semibold tracking-wider gradient-title-animation mb-4 block">Ferramentas Usadas</span>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                       <div>
                         <h3 className="text-lg font-semibold mb-4 gradient-title-animation">Design & Edição</h3>
-                        <div className="flex flex-wrap justify-start gap-4">
+                        <div className="flex flex-wrap justify-center gap-4">
                           {placeholderImages.tools.design.map((tool, index) => (
                             <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn" title={tool.alt}>
                               <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
@@ -327,12 +327,12 @@ export default function Home() {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold mb-4 gradient-title-animation">Desenvolvimento</h3>
-                        <div className="flex flex-wrap justify-start gap-4">
+                        <div className="flex flex-wrap justify-center gap-4">
                           {placeholderImages.tools.development.map((tool, index) => {
                              const isSpecial = ['react', 'flutter', 'python'].includes(tool.alt.toLowerCase());
                              return (
                               <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn" title={tool.alt}>
-                                <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={isSpecial ? '' : 'filter-primary'}/>
+                                <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={isSpecial ? 'filter-primary' : ''}/>
                               </div>
                             )
                           })}
@@ -385,7 +385,7 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
             
-            <div className="flex flex-wrap justify-center items-center gap-2 mb-4" data-aos="fade-up">
+            <div className="flex flex-col items-center gap-4 mb-12" data-aos="fade-up">
                 <div className="flex flex-wrap justify-center gap-2 p-2 bg-card rounded-full">
                     {mainCategories.map(category => (
                         <Button
@@ -398,10 +398,7 @@ export default function Home() {
                         </Button>
                     ))}
                 </div>
-            </div>
-            
-            {subCategories.length > 0 && (
-                <div className="flex flex-wrap justify-center items-center gap-1 mb-12" data-aos="fade-up" data-aos-delay="100">
+                {subCategories.length > 0 && (
                    <div className="flex flex-wrap justify-center gap-1 p-1 bg-card/50 rounded-full">
                         {subCategories.map(category => (
                             <Button
@@ -415,8 +412,8 @@ export default function Home() {
                             </Button>
                         ))}
                     </div>
-                </div>
-            )}
+                )}
+            </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
@@ -573,3 +570,4 @@ export default function Home() {
     </div>
   );
 }
+
