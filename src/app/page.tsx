@@ -133,12 +133,12 @@ export default function Home() {
                             </li>
                             <li>
                               <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Instagram size={30} className="text-primary" />
+                                <Instagram size={30} className="text-primary filter-primary" />
                               </a>
                             </li>
                             <li>
                               <a href="https://github.com/LeBronTech" target="_blank" className="w-16 h-16 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Github size={30} className="text-primary" />
+                                <Github size={30} className="text-primary filter-primary" />
                               </a>
                             </li>
                         </ul>
@@ -458,12 +458,10 @@ export default function Home() {
       </footer>
 
       <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer">
-        <button className="w-16 h-16 flex items-center justify-center rounded-full bg-transparent border-2 border-primary rn-btn">
+        <button className="w-12 h-12 flex items-center justify-center rounded-full bg-transparent border-2 border-primary rn-btn">
           <ArrowUp className="text-primary" />
         </button>
       </div>
     </div>
   );
 }
-
-    

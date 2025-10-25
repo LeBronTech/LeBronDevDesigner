@@ -1,4 +1,3 @@
-
 {
     "logo": {
         "src": "https://i.postimg.cc/tgpJ2Hcy/Lebron-20251025-153441-0000.png",
@@ -29,7 +28,9 @@
             { "src": "https://i.postimg.cc/s2v1GJQN/pngaaa-com-619137.png", "alt": "python", "data-ai-hint": "python logo" },
             { "src": "https://i.postimg.cc/brK94JXq/pngwing-com.png", "alt": "flutter", "data-ai-hint": "flutter logo" },
             { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
-            { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" }
+            { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
+            { "src": "https://i.postimg.cc/sXvtdwHX/1024x1024-logo-2582747-960-720.png", "alt": "css", "data-ai-hint": "css logo" },
+            { "src": "https://i.postimg.cc/c4XMw04P/Android-Studio-icon-svg.png", "alt": "android studio", "data-ai-hint": "android studio logo" }
         ]
     },
     "banner": {
@@ -49,8 +50,7 @@
                 { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
                 { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
                 { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
-                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" },
-                { "src": "https://i.postimg.cc/xCqfrr35/icons-06.png", "alt": "css", "data-ai-hint": "css logo" }
+                { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
             ]
         },
         "website2": {
