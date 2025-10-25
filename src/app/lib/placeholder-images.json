@@ -1,4 +1,3 @@
-
 {
     "logo": {
         "src": "https://i.postimg.cc/sX8VsnnV/logo.png",
@@ -16,9 +15,9 @@
         "design": [
             { "src": "https://i.postimg.cc/hvdKj9w0/photoshop.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
             { "src": "https://i.postimg.cc/HxjYGG9S/ilus.png", "alt": "illustrator", "data-ai-hint": "illustrator logo" },
+            { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" },
             { "src": "https://i.postimg.cc/t4H4sM9R/figma500.png", "alt": "figma", "data-ai-hint": "figma logo" },
             { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" },
-            { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" },
             { "src": "https://i.postimg.cc/br7NH6b4/capcuticon.webp", "alt": "capcut", "data-ai-hint": "capcut logo" }
         ],
         "development": [
@@ -29,7 +28,8 @@
             { "src": "https://i.postimg.cc/hP7ZDFtt/node-js-png-3-1.png", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
             { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
             { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
-            { "src": "https://i.postimg.cc/CxNnSgk6/vscode.png", "alt": "vscode", "data-ai-hint": "vscode logo" }
+            { "src": "https://i.postimg.cc/CxNnSgk6/vscode.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
+            { "src": "https://i.postimg.cc/v8p7YcKN/nextjs-icon.png", "alt": "nextjs", "data-ai-hint": "nextjs logo" }
         ]
     },
     "banner": {
@@ -48,7 +48,7 @@
                 { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
                 { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
                 { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
-                { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
                 { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" },
                 { "src": "https://i.postimg.cc/xCqfrr35/icons-06.png", "alt": "css", "data-ai-hint": "css logo" }
             ]
@@ -59,7 +59,7 @@
             "tools": [
                 { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
                 { "src": "https://i.postimg.cc/QdsK2t9f/shopify500.png", "alt": "shopify", "data-ai-hint": "shopify logo" },
-                { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
                 { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
             ]
         },
@@ -68,7 +68,7 @@
             "data-ai-hint": "art gallery website",
             "tools": [
                 { "src": "https://i.postimg.cc/HWqyt3pV/ps500.png", "alt": "photoshop", "data-ai-hint": "photoshop logo" },
-                { "src": "https://i.postimg.cc/250kXjhV/icons-03.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
+                { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
                 { "src": "https://i.postimg.cc/vm0YS8fv/icons-05.png", "alt": "html", "data-ai-hint": "html logo" }
             ]
         },
