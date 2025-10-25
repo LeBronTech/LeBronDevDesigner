@@ -46,7 +46,7 @@ const TypingEffect = ({ words }: { words: string[] }) => {
 const ProjectModal = ({ project, children }: { project: any, children: React.ReactNode }) => (
     <Dialog>
         <DialogTrigger asChild>{children}</DialogTrigger>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="w-[90vw] max-w-[90vw] md:w-full md:max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg">
             <DialogHeader>
                 <DialogTitle>{project.title}</DialogTitle>
                 <DialogDescription>{project.description}</DialogDescription>
@@ -367,3 +367,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
