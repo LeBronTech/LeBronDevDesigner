@@ -37,27 +37,33 @@ export const ProjectModal = ({ project, children }: { project: any, children: Re
                 </div>
                  <div className="md:col-span-1 flex flex-col justify-center">
                     <DialogDescription className="mb-4">{project.description}</DialogDescription>
-                    <div className="info-list mb-4">
-                        <ul>
-                            <li><strong>Cliente:</strong> <span>{project.client}</span></li>
-                            <li><strong>Serviços:</strong> <span>{project.services}</span></li>
-                        </ul>
-                    </div>
-                     <div className="mb-4">
-                        <h4 className="font-semibold mb-2">Ferramentas:</h4>
-                        <ul className="flex flex-wrap gap-2">
-                             {project.tools.map((tool: any, index: number) => (
-                                <li key={index} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                    <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <Button asChild className="w-full mt-auto">
-                        <Link href={project.url} target="_blank">
-                            Ver projeto <ArrowUp className="w-4 h-4 ml-2 transform rotate-45" />
-                        </Link>
-                    </Button>
+                    {project.client && project.services && (
+                        <div className="info-list mb-4">
+                            <ul>
+                                <li><strong>Cliente:</strong> <span>{project.client}</span></li>
+                                <li><strong>Serviços:</strong> <span>{project.services}</span></li>
+                            </ul>
+                        </div>
+                    )}
+                     {project.tools && project.tools.length > 0 && (
+                        <div className="mb-4">
+                            <h4 className="font-semibold mb-2">Ferramentas:</h4>
+                            <ul className="flex flex-wrap gap-2">
+                                {project.tools.map((tool: any, index: number) => (
+                                    <li key={index} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
+                                        <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    {project.url && (
+                        <Button asChild className="w-full mt-auto">
+                            <Link href={project.url} target="_blank">
+                                Ver projeto <ArrowUp className="w-4 h-4 ml-2 transform rotate-45" />
+                            </Link>
+                        </Button>
+                    )}
                 </div>
             </div>
         </DialogContent>

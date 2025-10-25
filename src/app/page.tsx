@@ -1,7 +1,7 @@
 
 'use client';
 import Image from "next/image";
-import { ArrowUp, Github, Instagram, Smartphone, Layout, Slack, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUp, Github, Instagram, Smartphone, Layout, Slack, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useCallback, Fragment } from "react";
 import placeholderImages from './lib/placeholder-images.json';
@@ -43,46 +43,38 @@ const TypingEffect = ({ words }: { words: string[] }) => {
   );
 };
 
-const ProjectCarousel = ({ projects }: { projects: any[] }) => (
-    <Carousel
-        opts={{
-            align: "start",
-            loop: true,
-        }}
-        className="w-full"
-    >
-        <CarouselContent>
-            {projects.map((project, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                        <ProjectModal project={project}>
-                             <Card className="cursor-pointer hover:scale-105 transition-transform duration-300">
-                                <CardHeader>
-                                    <Image src={project.src} alt={project.title} width={400} height={300} className="rounded-t-lg object-cover h-60 w-full" data-ai-hint={project['data-ai-hint']} />
-                                </CardHeader>
-                                <CardContent>
-                                    <CardTitle>{project.title}</CardTitle>
-                                    <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
-                                    <div className="mt-4">
-                                        <span className="subtitle text-sm uppercase gradient-title-animation">Ferramentas</span>
-                                        <ul className="flex flex-wrap gap-2 mt-2">
-                                            {project.tools.map((tool: any) => (
-                                                <li key={tool.alt} className="w-10 h-10 bg-card-foreground/10 rounded-md flex items-center justify-center p-1">
-                                                    <Image src={tool.src} width={24} height={24} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </ProjectModal>
-                    </div>
-                </CarouselItem>
-            ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
-        <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
-    </Carousel>
+const ProjectCarousel = ({ projects, allLink }: { projects: any[], allLink: string }) => (
+    <div className="relative">
+      <Carousel
+          opts={{
+              align: "start",
+              loop: true,
+          }}
+          className="w-full"
+      >
+          <CarouselContent>
+              {projects.map((project, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                          <ProjectModal project={project}>
+                               <Card className="cursor-pointer hover:scale-105 transition-transform duration-300">
+                                  <CardHeader>
+                                      <Image src={project.src} alt={project.title} width={400} height={300} className="rounded-t-lg object-cover h-60 w-full" data-ai-hint={project['data-ai-hint']} />
+                                  </CardHeader>
+                                  <CardContent>
+                                      <CardTitle>{project.title}</CardTitle>
+                                      <p className="mt-2 text-gray-400">Clique na Imagem para ver</p>
+                                  </CardContent>
+                              </Card>
+                          </ProjectModal>
+                      </div>
+                  </CarouselItem>
+              ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
+          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-background/80 border-primary text-primary hover:bg-primary hover:text-primary-foreground" />
+      </Carousel>
+    </div>
 );
 
 export default function Home() {
@@ -257,29 +249,68 @@ export default function Home() {
             </div>
             
             <div className="inner mb-16">
-                <div className="text-center mb-12">
-                    <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Layout className="text-primary"/>Websites</h4>
+                <div className="flex justify-between items-center mb-12">
+                  <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Layout className="text-primary"/>Websites</h4>
+                  <Button variant="outline" asChild>
+                    <Link href="/websites">Ver todos</Link>
+                  </Button>
                 </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.websites} />
+                <ProjectCarousel projects={placeholderImages.portfolio.websites} allLink="/websites" />
             </div>
 
             <div className="my-12 h-px w-full bg-gray-700"></div>
             
             <div className="inner mb-16">
-                <div className="text-center mb-12">
-                    <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Slack className="text-primary"/>Identidade Visual</h4>
+                <div className="flex justify-between items-center mb-12">
+                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Slack className="text-primary"/>Identidade Visual</h4>
+                    <Button variant="outline" asChild>
+                      <Link href="/identities">Ver todos</Link>
+                    </Button>
                 </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.identities} />
+                <ProjectCarousel projects={placeholderImages.portfolio.identities} allLink="/identities" />
             </div>
 
             <div className="my-12 h-px w-full bg-gray-700"></div>
 
-            <div className="inner">
-                <div className="text-center mb-12">
-                    <h4 className="title sec-title flex items-center justify-center gap-2 text-3xl font-bold"><Instagram className="text-primary"/>Redes Sociais</h4>
+            <div className="inner mb-16">
+                <div className="flex justify-between items-center mb-12">
+                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Instagram className="text-primary"/>Redes Sociais</h4>
+                    <Button variant="outline" asChild>
+                      <Link href="/socials">Ver todos</Link>
+                    </Button>
                 </div>
-                <ProjectCarousel projects={placeholderImages.portfolio.socials} />
+                <ProjectCarousel projects={placeholderImages.portfolio.socials} allLink="/socials" />
             </div>
+
+            <div className="my-12 h-px w-full bg-gray-700"></div>
+
+            <div className="inner mb-16">
+                <div className="flex justify-between items-center mb-12">
+                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold">
+                      <div className="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center">
+                        <span className="text-primary font-bold text-lg">L</span>
+                      </div>
+                      Logos
+                    </h4>
+                    <Button variant="outline" asChild>
+                      <Link href="/logos">Ver todos</Link>
+                    </Button>
+                </div>
+                <ProjectCarousel projects={placeholderImages.portfolio.logos} allLink="/logos" />
+            </div>
+
+            <div className="my-12 h-px w-full bg-gray-700"></div>
+            
+            <div className="inner">
+                <div className="flex justify-between items-center mb-12">
+                    <h4 className="title sec-title flex items-center gap-2 text-3xl font-bold"><Smartphone className="text-primary"/>Apps</h4>
+                    <Button variant="outline" asChild>
+                      <Link href="/apps">Ver todos</Link>
+                    </Button>
+                </div>
+                <ProjectCarousel projects={placeholderImages.portfolio.apps} allLink="/apps" />
+            </div>
+
 
           </div>
         </div>
@@ -331,4 +362,3 @@ export default function Home() {
     </div>
   );
 }
-

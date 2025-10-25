@@ -187,6 +187,17 @@
                 "clientLogo": "https://i.postimg.cc/wxhb93B0/Logocapilarela.jpg"
             }
         ],
+        "logos": [
+             {
+                "src": "https://i.postimg.cc/DwKwSM77/DooDou4.jpg",
+                "title": "Doo&Dou",
+                "client": "DOO&DOU",
+                "services": "Logo e identidade",
+                "url": "https://www.instagram.com/lebrondesign/",
+                "description": "Identidade criada para passar confiança aos donos dos pets, baseada na cor alaranjada.",
+                "data-ai-hint": "pet brand identity"
+            }
+        ],
         "socials": [
              {
                 "src": "https://i.postimg.cc/PxctT66j/hamburgueriacapa.png",
