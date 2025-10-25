@@ -1,18 +1,18 @@
 
 'use client';
 import Image from "next/image";
-import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Slack, Smartphone, ArrowUp } from "lucide-react";
+import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Slack, Smartphone, ArrowUp, Circle, AppWindow, Eye } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AOS from 'aos';
-
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
@@ -50,6 +50,8 @@ const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) 
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // This is a simplified way to trigger the animation.
+    // In a real app, you'd use an intersection observer.
     const timer = setTimeout(() => setProgress(percentage), 100); 
     return () => clearTimeout(timer);
   }, [percentage]);
@@ -77,6 +79,11 @@ export default function Home() {
       duration: 1000,
       once: false,
     });
+     const savedPosition = sessionStorage.getItem('scrollPosition');
+    if (savedPosition) {
+      window.scrollTo(0, parseInt(savedPosition, 10));
+      sessionStorage.removeItem('scrollPosition');
+    }
   }, []);
 
   const portfolio = useMemo(() => [
@@ -93,7 +100,7 @@ export default function Home() {
   }, [portfolio]);
 
   const subCategories = useMemo(() => {
-    if (activeFilter === 'Todos') return [];
+    if (activeFilter === 'Todos' || activeFilter === 'Logos' || activeFilter === 'Apps' || activeFilter === 'Redes Sociais') return [];
     const cats = new Set(portfolio.filter(p => p.mainCategory === activeFilter).map(p => p.category).filter(Boolean));
     return ['Todos', ...Array.from(cats)];
   }, [activeFilter, portfolio]);
@@ -125,6 +132,22 @@ export default function Home() {
       setIsAnimating(false);
     }, 300);
   };
+  
+   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    e.preventDefault();
+    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    window.location.href = url;
+  };
+  
+   const handleBackClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      const lastPage = document.referrer;
+      if (lastPage && (lastPage.includes('/websites') || lastPage.includes('/apps'))) {
+        window.history.back();
+      } else {
+        window.location.href = '/';
+      }
+    };
 
 
   useEffect(() => {
@@ -189,8 +212,8 @@ export default function Home() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
-                   <SheetHeader className="p-6 border-b text-left">
-                     <SheetTitle className="sr-only">Menu Principal</SheetTitle>
+                   <SheetHeader>
+                     <SheetTitleComponent className="sr-only">Menu Principal</SheetTitleComponent>
                     <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>
                         <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
                     </a>
@@ -363,7 +386,7 @@ export default function Home() {
               {filteredProjects.map((project, index) => (
                 <div
                   key={`${project.title}-${index}`}
-                  className={`transform transition-all duration-300 ${isAnimating ? 'scale-50 opacity-0' : 'scale-100 opacity-100'}`}
+                  className={`transform transition-all duration-300 ${isAnimating ? 'animate-zoomOut' : 'animate-zoomIn'}`}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
@@ -513,4 +536,3 @@ export default function Home() {
         </button>
     </div>
   );
-}
