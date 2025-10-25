@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -226,12 +226,12 @@ export default function Home() {
                       <ul className="social-share flex list-none gap-4 mt-4">
                             <li>
                               <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" className="filter-primary" data-ai-hint={placeholderImages.behance['data-ai-hint']} />
+                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
                               </a>
                             </li>
                             <li>
                               <a href="https://wa.me/5561984836034" target="_blank" className="w-12 h-12 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" className="filter-primary" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} />
+                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
                               </a>
                             </li>
                             <li>
@@ -283,29 +283,29 @@ export default function Home() {
         
         <div id="siga-me-ferramentas" className="py-24 section-separator">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
               <div className="md:col-span-1" data-aos="fade-up" data-aos-delay="200">
                 <div className="skill-share-inner text-center">
-                  <span className="title text-lg font-semibold tracking-wider gradient-title-animation block mb-4">Siga-me</span>
+                  <h2 className="title text-4xl lg:text-5xl font-bold mt-2">Siga-me</h2>
                   <ul className="social-share flex list-none gap-4 mt-4 justify-center">
                       <li>
                         <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Image src={placeholderImages.behance.src} width={40} height={40} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
+                          <Image src={placeholderImages.behance.src} width={40} height={40} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} />
                         </a>
                       </li>
                       <li>
                         <a href="https://wa.me/5561984836034" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Image src={placeholderImages.whatsapp.src} width={40} height={40} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
+                          <Image src={placeholderImages.whatsapp.src} width={40} height={40} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} />
                         </a>
                       </li>
                       <li>
                         <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Instagram size={40} className="text-primary filter-primary" />
+                          <Instagram size={40} className="text-primary " />
                         </a>
                       </li>
                       <li>
                         <a href="https://github.com/LeBronTech" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Github size={40} className="text-primary filter-primary" />
+                          <Github size={40} className="text-primary " />
                         </a>
                       </li>
                   </ul>
@@ -313,8 +313,8 @@ export default function Home() {
               </div>
               <div className="md:col-span-2" data-aos="fade-up" data-aos-delay="400">
                 <div className="skill-share-inner text-center">
-                    <span className="title text-lg font-semibold tracking-wider gradient-title-animation mb-4 block">Ferramentas Usadas</span>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <h2 className="title text-4xl lg:text-5xl font-bold mt-2">Ferramentas Usadas</h2>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
                       <div>
                         <h3 className="text-lg font-semibold mb-4 gradient-title-animation">Design & Edição</h3>
                         <div className="flex flex-wrap justify-center gap-4">
@@ -399,7 +399,7 @@ export default function Home() {
                     ))}
                 </div>
                 {subCategories.length > 0 && (
-                   <div className="flex flex-wrap justify-center gap-1 p-1 bg-card/50 rounded-full">
+                   <div className="flex flex-wrap justify-center gap-1 p-1 bg-card/50 rounded-full mt-2">
                         {subCategories.map(category => (
                             <Button
                               key={category}
