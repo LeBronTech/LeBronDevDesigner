@@ -21,6 +21,7 @@
         ],
         "development": [
             { "src": "https://i.postimg.cc/g00TPxwS/toppng-com-react-native-svg-transformer-allows-you-import-svg-aperture-science-innovators-logo-986x1.png", "alt": "react", "data-ai-hint": "react logo" },
+            { "src": "https://i.postimg.cc/sXvtdwHX/1024x1024-logo-2582747-960-720.png", "alt": "css", "data-ai-hint": "css logo" },
             { "src": "https://i.postimg.cc/gkh37mNQ/1761417804462.png", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
             { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
             { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" },
@@ -29,7 +30,6 @@
             { "src": "https://i.postimg.cc/brK94JXq/pngwing-com.png", "alt": "flutter", "data-ai-hint": "flutter logo" },
             { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
             { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
-            { "src": "https://i.postimg.cc/sXvtdwHX/1024x1024-logo-2582747-960-720.png", "alt": "css", "data-ai-hint": "css logo" },
             { "src": "https://i.postimg.cc/c4XMw04P/Android-Studio-icon-svg.png", "alt": "android studio", "data-ai-hint": "android studio logo" }
         ]
     },
@@ -59,10 +59,11 @@
                     { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
                 ],
                 "modalImages": [
-                    { "src": "https://i.postimg.cc/6T3Jt9gM/p4.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/sXm7P0vC/restaurantegusto2.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/Hsm3yK6H/restaurantegusto3.png", "data-ai-hint": "website screenshot" }
-                ]
+                    { "src": "images/p4.png", "data-ai-hint": "website screenshot" },
+                    { "src": "images/restaurantegusto2.png", "data-ai-hint": "website screenshot" },
+                    { "src": "images/restaurantegusto3.png", "data-ai-hint": "website screenshot" }
+                ],
+                "clientLogo": "images/client2.png"
             },
             {
                 "src": "https://i.postimg.cc/XqCnJwhd/p2.jpg",
@@ -79,10 +80,11 @@
                     { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
                 ],
                 "modalImages": [
-                    { "src": "https://i.postimg.cc/pT3Y3Yv4/ione1.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/Wb710p4w/ione3.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/Kj30b5L9/ione2.png", "data-ai-hint": "website screenshot" }
-                ]
+                    { "src": "images/ione1.png", "data-ai-hint": "website screenshot" },
+                    { "src": "images/ione3.png", "data-ai-hint": "website screenshot" },
+                    { "src": "images/ione2.png", "data-ai-hint": "website screenshot" }
+                ],
+                "clientLogo": "images/client1.png"
             },
             {
                 "src": "https://i.postimg.cc/yxZ7dF5y/p3.jpg",
@@ -98,10 +100,31 @@
                     { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" }
                 ],
                  "modalImages": [
-                    { "src": "https://i.postimg.cc/Kj5DqGDD/capital1.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/VLz9kM6B/capital2.png", "data-ai-hint": "website screenshot" },
-                    { "src": "https://i.postimg.cc/QCRpDMNp/capital3.png", "data-ai-hint": "website screenshot" }
-                ]
+                    { "src": "images/capital1.png", "data-ai-hint": "website screenshot" },
+                    { "src": "images/capital2.png", "data-ai-hint": "website screenshot" },
+                    { "src": "images/capital3.png", "data-ai-hint": "website screenshot" }
+                ],
+                "clientLogo": "images/logocapital.jpg"
+            }
+        ],
+        "apps": [
+            {
+                "src": "images/portfolio-02.jpg",
+                "title": "Burger Home",
+                "description": "Em Breve",
+                "data-ai-hint": "burger app"
+            },
+            {
+                "src": "images/portfolio-01.jpg",
+                "title": "Analise",
+                "description": "Em Breve",
+                "data-ai-hint": "analysis app"
+            },
+            {
+                "src": "images/portfolio-01.jpg",
+                "title": "Saude",
+                "description": "Em breve",
+                "data-ai-hint": "health app"
             }
         ],
         "identities": [
@@ -119,10 +142,11 @@
                     { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
                 ],
                  "modalImages": [
-                    { "src": "https://i.postimg.cc/vBCxHfwJ/Doo-Dou1.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/Qx0GgN85/Doo-Dou2.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/prgT68Yw/Doo-Dou3.jpg", "data-ai-hint": "brand identity" }
-                ]
+                    { "src": "images/DooDou1.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "images/DooDou2.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "images/DooDou3.jpg", "data-ai-hint": "brand identity" }
+                ],
+                "clientLogo": "images/LogoDoo.jpg"
             },
             {
                 "src": "https://i.postimg.cc/50t0xQb3/Automotic4.jpg",
@@ -138,10 +162,11 @@
                     { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
                 ],
                  "modalImages": [
-                    { "src": "https://i.postimg.cc/PqBYrQ3j/Automotic1.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/Rhn8gM3f/Automotic2.jpg", "data-ai-hint": "brand identity" },
-                    { "src": "https://i.postimg.cc/85z1DkXz/Automotic3.jpg", "data-ai-hint": "brand identity" }
-                ]
+                    { "src": "images/Automotic1.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "images/Automotic2.jpg", "data-ai-hint": "brand identity" },
+                    { "src": "images/Automotic3.jpg", "data-ai-hint": "brand identity" }
+                ],
+                "clientLogo": "images/LogoAuto.jpg"
             },
             {
                 "src": "https://i.postimg.cc/SRBN7ZCq/Capilar2.jpg",
@@ -157,8 +182,9 @@
                     { "src": "https://i.postimg.cc/wMCTcWJS/canva500.png", "alt": "canva", "data-ai-hint": "canva logo" }
                 ],
                  "modalImages": [
-                    { "src": "https://i.postimg.cc/3JvCg0bZ/Capilar1.jpg", "data-ai-hint": "brand identity" }
-                ]
+                    { "src": "images/Capilar1.jpg", "data-ai-hint": "brand identity" }
+                ],
+                "clientLogo": "images/Logocapilarela.jpg"
             }
         ],
         "socials": [
@@ -178,10 +204,11 @@
                     { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
                 ],
                 "modalImages": [
-                    { "src": "https://i.postimg.cc/J0vH1v0D/ham1.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/pX99gDqW/ham2.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/C1Qc8YpP/ham3.png", "data-ai-hint": "social media post" }
-                ]
+                    { "src": "images/ham1.png", "data-ai-hint": "social media post" },
+                    { "src": "images/ham2.png", "data-ai-hint": "social media post" },
+                    { "src": "images/ham3.png", "data-ai-hint": "social media post" }
+                ],
+                "clientLogo": "images/Lebron.png"
             },
             {
                 "src": "https://i.postimg.cc/Vk10x60Q/pizzariacapa.png",
@@ -199,10 +226,11 @@
                     { "src": "https://i.postimg.cc/02SN2s1k/corel500.png", "alt": "coreldraw", "data-ai-hint": "coreldraw logo" }
                 ],
                 "modalImages": [
-                    { "src": "https://i.postimg.cc/d0gTQQzD/pizza1.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/8C5YgWk3/pizza2.png", "data-ai-hint": "social media post" },
-                    { "src": "https://i.postimg.cc/hG0sF2V3/pizza3.png", "data-ai-hint": "social media post" }
-                ]
+                    { "src": "images/pizza1.png", "data-ai-hint": "social media post" },
+                    { "src": "images/pizza2.png", "data-ai-hint": "social media post" },
+                    { "src": "images/pizza3.png", "data-ai-hint": "social media post" }
+                ],
+                "clientLogo": "images/Lebron.png"
             }
         ]
     },
