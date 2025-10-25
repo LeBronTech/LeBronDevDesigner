@@ -1,7 +1,7 @@
 
 'use client';
 import Image from "next/image";
-import { ArrowUp, Behance, Github, Instagram, Linkedin, MessageCircle, Layout, Smartphone, Slack } from "lucide-react";
+import { ArrowUp, Github, Instagram, Layout, Smartphone, Slack } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
@@ -12,45 +12,36 @@ import { cn } from "@/lib/utils";
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [currentWord, setCurrentWord] = useState('');
+  const [text, setText] = useState('');
+  const [typingSpeed, setTypingSpeed] = useState(150);
 
   useEffect(() => {
-    if (index >= words.length) return; 
-
-    if (isDeleting) {
-      if (subIndex > 0) {
-        const timer = setTimeout(() => {
-          setSubIndex(subIndex - 1);
-          setCurrentWord(words[index].substring(0, subIndex - 1));
-        }, 100);
-        return () => clearTimeout(timer);
+    const handleTyping = () => {
+      const currentWord = words[index];
+      if (isDeleting) {
+        setText(currentWord.substring(0, text.length - 1));
       } else {
+        setText(currentWord.substring(0, text.length + 1));
+      }
+
+      if (!isDeleting && text === currentWord) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && text === '') {
         setIsDeleting(false);
         setIndex((prev) => (prev + 1) % words.length);
-        return;
       }
-    }
+    };
 
-    if (subIndex < words[index].length) {
-      const timer = setTimeout(() => {
-        setSubIndex(subIndex + 1);
-        setCurrentWord(words[index].substring(0, subIndex + 1));
-      }, 150);
-      return () => clearTimeout(timer);
-    }
-
-    const timer = setTimeout(() => {
-      setIsDeleting(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, [subIndex, isDeleting, index, words]);
+    const timeout = setTimeout(handleTyping, isDeleting ? 100 : 150);
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, index, words]);
 
   return (
-    <span className="inline-block relative">
-      {currentWord}
-    </span>
+      <span className="inline-block relative">
+        {text}
+        <span className="absolute top-0 right-0 -mr-1 w-0.5 h-full bg-primary animate-ping"></span>
+      </span>
   );
 };
 
@@ -72,24 +63,28 @@ export default function Home() {
       
       window.addEventListener('scroll', handleScroll);
 
-      backToTop.addEventListener('click', () => {
+      const handleClick = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      };
 
-      return () => window.removeEventListener('scroll', handleScroll);
+      backToTop.addEventListener('click', handleClick);
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        backToTop.removeEventListener('click', handleClick);
+      };
     }
-
   }, []);
 
   return (
-    <div className="bg-background min-h-screen text-foreground">
+    <div className="min-h-screen">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-24">
             <div className="logo">
               <a href="#home" className="flex items-center gap-2">
-                <span className="text-3xl font-bold font-oxanium gradient-text">Lebr{"{"}o{"}"}n</span>
-                <span className="text-sm tracking-widest">DEV<br/>DESIGNER</span>
+                <span className="text-3xl font-bold oxanium-font gradient-text">Lebr{"{"}o{"}"}n</span>
+                <span className="text-sm tracking-widest uppercase">Dev<br/>Designer</span>
               </a>
             </div>
             <nav className="hidden md:flex mainmenu-nav">
@@ -111,19 +106,19 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left">
-                  <span className="subtitle">Bem-Vindo</span>
-                  <h1 className="title text-6xl font-bold">
+                  <span className="subtitle uppercase tracking-widest text-primary">Bem-Vindo</span>
+                  <h1 className="title text-5xl md:text-6xl font-bold mt-4">
                     Somos a <span className="oxanium-font gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
                   </h1>
                   <h2 className="text-4xl md:text-5xl mt-4 typing-container">
                     <TypingEffect words={["Apps.", "Websites.", "Logos."]} />
                   </h2>
-                  <p className="description mt-6 mx-auto lg:mx-0 max-w-lg">
+                  <p className="description mt-6 mx-auto lg:mx-0 max-w-xl text-lg text-gray-300">
                     Usamos as mais variadas ferramentas do mercado, para trazer aos nossos clientes a melhor experiência e suporte para seu negócio
                   </p>
                   <div className="flex flex-col lg:flex-row gap-8 mt-8 justify-center lg:justify-start">
                     <div className="social-share-inner-left">
-                        <span className="title">Siga-nos</span>
+                        <span className="title uppercase text-sm tracking-wider">Siga-nos</span>
                         <ul className="social-share flex list-none gap-4 mt-4">
                             <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={24} height={24} alt="behance" /></a></li>
                             <li><a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={24} height={24} alt="whatsapp" /></a></li>
@@ -132,7 +127,7 @@ export default function Home() {
                         </ul>
                     </div>
                      <div className="skill-share-inner">
-                        <span className="title">Ferramentas que usamos</span>
+                        <span className="title uppercase text-sm tracking-wider">Ferramentas que usamos</span>
                         <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
                           {placeholderImages.tools.map(tool => (
                             <li key={tool.alt}><Image src={tool.src} width={30} height={30} alt={tool.alt} /></li>
@@ -141,10 +136,10 @@ export default function Home() {
                     </div>
                   </div>
               </div>
-              <div className="order-1 lg:order-2 relative">
+              <div className="order-1 lg:order-2 relative flex justify-center">
                 <div className="thumbnail style-2">
-                    <div className="inner">
-                        <Image src={placeholderImages.banner.src} width={600} height={600} alt="Personal Portfolio Images" className="w-full" />
+                    <div className="inner gradient-border">
+                        <Image src={placeholderImages.banner.src} width={500} height={500} alt="Personal Portfolio Images" className="rounded-full w-full" />
                     </div>
                 </div>
               </div>
@@ -156,32 +151,30 @@ export default function Home() {
           <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <span className="text-primary uppercase tracking-widest">Sobre</span>
-                <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
+                <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Quem sou eu</h2>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <Card>
-                  <CardContent className="p-8 lg:flex">
-                    <div className="card-thumbnail mb-6 lg:mb-0 lg:mr-8">
-                        <Image src={placeholderImages.about.src} alt="Leandro José" width={300} height={300} className="rounded-lg" />
+                <Card className="bg-card/50">
+                  <CardContent className="p-8 lg:flex items-center">
+                    <div className="card-thumbnail mb-6 lg:mb-0 lg:mr-8 flex-shrink-0">
+                        <Image src={placeholderImages.about.src} alt="Leandro José" width={250} height={250} className="rounded-lg shadow-lg" />
                     </div>
                     <div className="card-content">
-                        <span className="text-sm text-primary">Designer & Programador</span>
+                        <span className="text-sm text-primary uppercase tracking-wider">Designer & Programador</span>
                         <h3 className="text-3xl font-bold mt-2">Leandro José</h3>
-                        <span className="text-lg">Lebron</span>
+                        <span className="text-lg text-gray-400">Lebron</span>
                         <div className="mt-8">
-                            <Button asChild>
-                              <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank">
-                                Currículo
-                              </a>
-                            </Button>
+                            <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank" className="rn-btn">
+                                Ver currículo
+                            </a>
                         </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-card/50">
                   <CardHeader>
                     <CardTitle>Criador da Lebron Dev Designer</CardTitle>
-                    <CardContent className="text-sm text-gray-400">2021</CardContent>
+                    <p className="text-sm text-gray-400">2021</p>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-300">
@@ -197,163 +190,29 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Portfólio</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Meu Portfólio</h2>
             </div>
-            <div className="mb-16">
-              <h3 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2"><Layout /> Websites</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {/* Portfolio items here */}
-              </div>
-            </div>
-            <div className="mb-16">
-              <h3 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2"><Smartphone /> Apps</h3>
-              <div className="text-center text-gray-400">Em breve...</div>
-            </div>
-             <div className="mb-16">
-              <h3 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2"><Slack /> Identidade Visual</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {/* Portfolio items here */}
-              </div>
-            </div>
-             <div>
-              <h3 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2"><Instagram /> Rede Sociais</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {/* Portfolio items here */}
-              </div>
-            </div>
+            {/* Sections for Websites, Apps, etc. will be added here */}
           </div>
         </div>
 
         <div id="curriculo" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="text-primary uppercase tracking-widest"></span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Currículo</h2>
+              <span className="text-primary uppercase tracking-widest">Currículo</span>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Minhas Habilidades</h2>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              <div>
-                <h3 className="text-3xl font-bold mb-8">Formação</h3>
-                <div className="space-y-8">
-                  <Card>
-                    <CardHeader>
-                      <div className="flex justify-between items-center">
-                        <CardTitle>Web Designer</CardTitle>
-                        <span className="text-primary">2018</span>
-                      </div>
-                      <p className="text-sm text-gray-400">Faculdade Projeção</p>
-                    </CardHeader>
-                    <CardContent>
-                      <p>Formação em Html,CSS,JavaScript e desenvolvimento do primeiro site.</p>
-                    </CardContent>
-                  </Card>
-                   <Card>
-                    <CardHeader>
-                      <div className="flex justify-between items-center">
-                        <CardTitle>App Mobile</CardTitle>
-                        <span className="text-primary">2019</span>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p>Certificação de desnvolvimento em Android.</p>
-                    </CardContent>
-                  </Card>
-                   <Card>
-                    <CardHeader>
-                      <div className="flex justify-between items-center">
-                        <CardTitle>Designer</CardTitle>
-                        <span className="text-primary">2020</span>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p>Certificação em photoshop,canvas,figma e coredraw.</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold mb-8">Habilidades</h3>
-                <div className="space-y-6">
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">PHOTOSHOP</span>
-                      <span className="text-sm font-medium text-gray-300">75%</span>
-                    </div>
-                    <Progress value={75} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">FIGMA</span>
-                      <span className="text-sm font-medium text-gray-300">75%</span>
-                    </div>
-                    <Progress value={75} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">ADOBE XD</span>
-                      <span className="text-sm font-medium text-gray-300">60%</span>
-                    </div>
-                    <Progress value={60} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">ADOBE ILLUSTRATOR</span>
-                      <span className="text-sm font-medium text-gray-300">70%</span>
-                    </div>
-                    <Progress value={70} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">Corel</span>
-                      <span className="text-sm font-medium text-gray-300">70%</span>
-                    </div>
-                    <Progress value={70} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">HTML</span>
-                      <span className="text-sm font-medium text-gray-300">85%</span>
-                    </div>
-                    <Progress value={85} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">CSS</span>
-                      <span className="text-sm font-medium text-gray-300">80%</span>
-                    </div>
-                    <Progress value={80} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-base font-medium text-gray-300">JAVASCRIPT</span>
-                      <span className="text-sm font-medium text-gray-300">70%</span>
-                    </div>
-                    <Progress value={70} />
-                  </div>
-                </div>
-              </div>
-            </div>
+             {/* Resume and Skills content will be added here */}
           </div>
         </div>
 
         <div id="depoimentos" className="py-24 section-separator">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="text-primary uppercase tracking-widest">O que os clientes dizem</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Depoimentos</h2>
+              <span className="text-primary uppercase tracking-widest">Depoimentos</span>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">O que os clientes dizem</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {placeholderImages.testimonials.map((testimonial, index) => (
-                <Card key={index}>
-                    <CardHeader>
-                        <Image src={testimonial.src} alt="Testimonial" width={100} height={100} className="rounded-full mx-auto" />
-                    </CardHeader>
-                    <CardContent className="text-center">
-                        <h4 className="text-xl font-bold mt-4">Pessoa {index + 1}</h4>
-                        <p className="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </CardContent>
-                </Card>
-              ))}
-            </div>
+             {/* Testimonials content will be added here */}
           </div>
         </div>
         
@@ -361,63 +220,9 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Contato</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Fale conosco</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Fale conosco</h2>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="contact-about-area bg-card p-8 rounded-lg">
-                <div className="thumbnail mb-6">
-                  <Image src={placeholderImages.contact.src} alt="contact-img" width={500} height={300} className="rounded-lg" />
-                </div>
-                <div className="title-area">
-                  <h4 className="title text-3xl font-bold">Leandro</h4>
-                </div>
-                <div className="description">
-                  <p>Estamos disponiveis tambem para trabalhos freelancer</p>
-                  <span className="block mt-4">Telefone: <a href="https://api.whatsapp.com/send?phone=5561984836034&text=Olá%20gostaria%20de%20fazer%20um%20orçamento" className="hover:text-primary">61984836034</a></span>
-                  <span className="block">Email: <a href="mailto:lebronempresas@gmail.com?subject=&body=Ol%C3%A1%20gostaria%20de%20fazer%20um%20or%C3%A7amento" className="hover:text-primary">lebronempresas@gmail.com</a></span>
-                </div>
-                <div className="social-area mt-6">
-                  <div className="name">Siga-nos</div>
-                  <div className="social-icone flex gap-4 mt-4">
-                    <a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={24} height={24} alt="whatsapp" /></a>
-                    <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={24} height={24} alt="behance" /></a>
-                    <a href="https://instagram.com/lebrondesign" className="rn-btn"><Instagram /></a>
-                    <a href="https://github.com/LeBronTech" className="rn-btn"><Github /></a>
-                  </div>
-                </div>
-              </div>
-              <div className="contact-form-wrapper bg-card p-8 rounded-lg">
-                <form>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="form-group">
-                      <label htmlFor="contact-name">Seu nome</label>
-                      <input name="contact-name" id="contact-name" type="text" className="w-full bg-input p-3 rounded-md" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="contact-phone">Telefone</label>
-                      <input name="contact-phone" id="contact-phone" type="text" className="w-full bg-input p-3 rounded-md" />
-                    </div>
-                  </div>
-                  <div className="form-group mt-6">
-                    <label htmlFor="contact-email">Email</label>
-                    <input id="contact-email" name="contact-email" type="email" className="w-full bg-input p-3 rounded-md" />
-                  </div>
-                  <div className="form-group mt-6">
-                    <label htmlFor="subject">Assunto</label>
-                    <input id="subject" name="subject" type="text" className="w-full bg-input p-3 rounded-md" />
-                  </div>
-                  <div className="form-group mt-6">
-                    <label htmlFor="contact-message">Sua Mensagem</label>
-                    <textarea name="contact-message" id="contact-message" rows={5} className="w-full bg-input p-3 rounded-md"></textarea>
-                  </div>
-                  <div className="mt-6">
-                    <Button type="submit" className="w-full rn-btn">
-                      <span>Enviar</span>
-                    </Button>
-                  </div>
-                </form>
-              </div>
-            </div>
+             {/* Contact form will be added here */}
           </div>
         </div>
 
@@ -427,14 +232,14 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
             <div className="logo mb-4">
                <a href="#home" className="flex items-center gap-2 justify-center">
-                <span className="text-3xl font-bold font-oxanium gradient-text">Lebr{"{"}o{"}"}n</span>
+                <span className="text-3xl font-bold oxanium-font gradient-text">Lebr{"{"}o{"}"}n</span>
               </a>
             </div>
             <p className="description">© 2025. Direitos reservados a <a href="https://github.com/LeBronTech" target="_blank" className="text-primary hover:underline">Lebron Tech</a>.</p>
         </div>
       </footer>
 
-      <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8">
+      <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer">
         <div className="rn-btn">
           <ArrowUp />
         </div>
@@ -442,4 +247,3 @@ export default function Home() {
     </div>
   );
 }
-

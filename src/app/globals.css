@@ -56,12 +56,35 @@
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #7d6cba, #41b59a);
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
 }
+
+@keyframes text-gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-title-animation {
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: text-gradient-animation 4s linear infinite;
+}
+
 
 .typing-container .cd-words-wrapper {
   display: inline-block;
@@ -133,7 +156,7 @@
   border-radius: 6px;
   top: 0;
   left: 0;
-  background: linear-gradient(to right bottom, #212428, #16181c);
+  background: linear-gradient(to right, #7d6cba, #41b59a);
   opacity: 0;
   z-index: -1;
 }
@@ -145,7 +168,6 @@
 
 .rn-btn:hover::before {
   opacity: 1;
-  background: linear-gradient(to right, #7d6cba, #41b59a);
 }
 
 .section-separator::after {
