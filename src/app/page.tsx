@@ -112,13 +112,13 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 text-center lg:text-left">
                   <span className="subtitle">Bem-Vindo</span>
-                  <h1 className="title">
+                  <h1 className="title text-6xl font-bold">
                     Somos a <span className="oxanium-font gradient-text">Lebr{"{"}o{"}"}n Dev-Designer</span>
                   </h1>
                   <h2 className="text-4xl md:text-5xl mt-4 typing-container">
                     <TypingEffect words={["Apps.", "Websites.", "Logos."]} />
                   </h2>
-                  <p className="description mt-6 mx-auto lg:mx-0">
+                  <p className="description mt-6 mx-auto lg:mx-0 max-w-lg">
                     Usamos as mais variadas ferramentas do mercado, para trazer aos nossos clientes a melhor experiência e suporte para seu negócio
                   </p>
                   <div className="flex flex-col lg:flex-row gap-8 mt-8 justify-center lg:justify-start">
@@ -159,32 +159,36 @@ export default function Home() {
                 <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="card-info bg-card p-8 rounded-lg shadow-lg">
-                  <div className="lg:flex">
+                <Card>
+                  <CardContent className="p-8 lg:flex">
                     <div className="card-thumbnail mb-6 lg:mb-0 lg:mr-8">
                         <Image src={placeholderImages.about.src} alt="Leandro José" width={300} height={300} className="rounded-lg" />
                     </div>
                     <div className="card-content">
-                        <span className="subtitle mt--10">Designer & Programador</span>
-                        <h3 className="title text-3xl font-bold mt-2">Leandro José</h3>
-                        <span className="designation">Lebron</span>
+                        <span className="text-sm text-primary">Designer & Programador</span>
+                        <h3 className="text-3xl font-bold mt-2">Leandro José</h3>
+                        <span className="text-lg">Lebron</span>
                         <div className="mt-8">
-                            <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank" className="rn-btn">
-                                <span>Currículo</span>
-                            </a>
+                            <Button asChild>
+                              <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank">
+                                Currículo
+                              </a>
+                            </Button>
                         </div>
                     </div>
-                  </div>
-                </div>
-                <div className="card-description bg-card p-8 rounded-lg shadow-lg">
-                    <div className="title-area mb-4">
-                        <h3 className="title text-2xl font-bold">Criador da Lebron Dev Designer</h3>
-                        <span className="date text-sm text-gray-400">2021</span>
-                    </div>
-                    <p className="discription text-gray-300">
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Criador da Lebron Dev Designer</CardTitle>
+                    <CardContent className="text-sm text-gray-400">2021</CardContent>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-300">
                         Olá, me chamo Leandro, conhecido também como LeBron,criador da LeBron Dev Designer,tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
                     </p>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
           </div>
         </div>
@@ -195,7 +199,6 @@ export default function Home() {
               <span className="text-primary uppercase tracking-widest">Portfólio</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
             </div>
-            {/* Repeat for other categories */}
             <div className="mb-16">
               <h3 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2"><Layout /> Websites</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -221,7 +224,215 @@ export default function Home() {
           </div>
         </div>
 
+        <div id="curriculo" className="py-24 section-separator">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="text-primary uppercase tracking-widest"></span>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Currículo</h2>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              <div>
+                <h3 className="text-3xl font-bold mb-8">Formação</h3>
+                <div className="space-y-8">
+                  <Card>
+                    <CardHeader>
+                      <div className="flex justify-between items-center">
+                        <CardTitle>Web Designer</CardTitle>
+                        <span className="text-primary">2018</span>
+                      </div>
+                      <p className="text-sm text-gray-400">Faculdade Projeção</p>
+                    </CardHeader>
+                    <CardContent>
+                      <p>Formação em Html,CSS,JavaScript e desenvolvimento do primeiro site.</p>
+                    </CardContent>
+                  </Card>
+                   <Card>
+                    <CardHeader>
+                      <div className="flex justify-between items-center">
+                        <CardTitle>App Mobile</CardTitle>
+                        <span className="text-primary">2019</span>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p>Certificação de desnvolvimento em Android.</p>
+                    </CardContent>
+                  </Card>
+                   <Card>
+                    <CardHeader>
+                      <div className="flex justify-between items-center">
+                        <CardTitle>Designer</CardTitle>
+                        <span className="text-primary">2020</span>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p>Certificação em photoshop,canvas,figma e coredraw.</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-3xl font-bold mb-8">Habilidades</h3>
+                <div className="space-y-6">
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">PHOTOSHOP</span>
+                      <span className="text-sm font-medium text-gray-300">75%</span>
+                    </div>
+                    <Progress value={75} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">FIGMA</span>
+                      <span className="text-sm font-medium text-gray-300">75%</span>
+                    </div>
+                    <Progress value={75} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">ADOBE XD</span>
+                      <span className="text-sm font-medium text-gray-300">60%</span>
+                    </div>
+                    <Progress value={60} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">ADOBE ILLUSTRATOR</span>
+                      <span className="text-sm font-medium text-gray-300">70%</span>
+                    </div>
+                    <Progress value={70} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">Corel</span>
+                      <span className="text-sm font-medium text-gray-300">70%</span>
+                    </div>
+                    <Progress value={70} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">HTML</span>
+                      <span className="text-sm font-medium text-gray-300">85%</span>
+                    </div>
+                    <Progress value={85} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">CSS</span>
+                      <span className="text-sm font-medium text-gray-300">80%</span>
+                    </div>
+                    <Progress value={80} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-base font-medium text-gray-300">JAVASCRIPT</span>
+                      <span className="text-sm font-medium text-gray-300">70%</span>
+                    </div>
+                    <Progress value={70} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="depoimentos" className="py-24 section-separator">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="text-primary uppercase tracking-widest">O que os clientes dizem</span>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Depoimentos</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {placeholderImages.testimonials.map((testimonial, index) => (
+                <Card key={index}>
+                    <CardHeader>
+                        <Image src={testimonial.src} alt="Testimonial" width={100} height={100} className="rounded-full mx-auto" />
+                    </CardHeader>
+                    <CardContent className="text-center">
+                        <h4 className="text-xl font-bold mt-4">Pessoa {index + 1}</h4>
+                        <p className="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        <div id="contacts" className="py-24">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="text-primary uppercase tracking-widest">Contato</span>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Fale conosco</h2>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="contact-about-area bg-card p-8 rounded-lg">
+                <div className="thumbnail mb-6">
+                  <Image src={placeholderImages.contact.src} alt="contact-img" width={500} height={300} className="rounded-lg" />
+                </div>
+                <div className="title-area">
+                  <h4 className="title text-3xl font-bold">Leandro</h4>
+                </div>
+                <div className="description">
+                  <p>Estamos disponiveis tambem para trabalhos freelancer</p>
+                  <span className="block mt-4">Telefone: <a href="https://api.whatsapp.com/send?phone=5561984836034&text=Olá%20gostaria%20de%20fazer%20um%20orçamento" className="hover:text-primary">61984836034</a></span>
+                  <span className="block">Email: <a href="mailto:lebronempresas@gmail.com?subject=&body=Ol%C3%A1%20gostaria%20de%20fazer%20um%20or%C3%A7amento" className="hover:text-primary">lebronempresas@gmail.com</a></span>
+                </div>
+                <div className="social-area mt-6">
+                  <div className="name">Siga-nos</div>
+                  <div className="social-icone flex gap-4 mt-4">
+                    <a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={24} height={24} alt="whatsapp" /></a>
+                    <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={24} height={24} alt="behance" /></a>
+                    <a href="https://instagram.com/lebrondesign" className="rn-btn"><Instagram /></a>
+                    <a href="https://github.com/LeBronTech" className="rn-btn"><Github /></a>
+                  </div>
+                </div>
+              </div>
+              <div className="contact-form-wrapper bg-card p-8 rounded-lg">
+                <form>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="form-group">
+                      <label htmlFor="contact-name">Seu nome</label>
+                      <input name="contact-name" id="contact-name" type="text" className="w-full bg-input p-3 rounded-md" />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="contact-phone">Telefone</label>
+                      <input name="contact-phone" id="contact-phone" type="text" className="w-full bg-input p-3 rounded-md" />
+                    </div>
+                  </div>
+                  <div className="form-group mt-6">
+                    <label htmlFor="contact-email">Email</label>
+                    <input id="contact-email" name="contact-email" type="email" className="w-full bg-input p-3 rounded-md" />
+                  </div>
+                  <div className="form-group mt-6">
+                    <label htmlFor="subject">Assunto</label>
+                    <input id="subject" name="subject" type="text" className="w-full bg-input p-3 rounded-md" />
+                  </div>
+                  <div className="form-group mt-6">
+                    <label htmlFor="contact-message">Sua Mensagem</label>
+                    <textarea name="contact-message" id="contact-message" rows={5} className="w-full bg-input p-3 rounded-md"></textarea>
+                  </div>
+                  <div className="mt-6">
+                    <Button type="submit" className="w-full rn-btn">
+                      <span>Enviar</span>
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </main>
+
+      <footer className="py-8 section-separator">
+        <div className="container mx-auto px-4 text-center">
+            <div className="logo mb-4">
+               <a href="#home" className="flex items-center gap-2 justify-center">
+                <span className="text-3xl font-bold font-oxanium gradient-text">Lebr{"{"}o{"}"}n</span>
+              </a>
+            </div>
+            <p className="description">© 2025. Direitos reservados a <a href="https://github.com/LeBronTech" target="_blank" className="text-primary hover:underline">Lebron Tech</a>.</p>
+        </div>
+      </footer>
 
       <div className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8">
         <div className="rn-btn">
@@ -231,3 +442,4 @@ export default function Home() {
     </div>
   );
 }
+
