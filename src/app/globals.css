@@ -83,6 +83,13 @@
   background-clip: text;
   color: transparent;
   animation: text-gradient-animation 4s linear infinite;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.gradient-title-animation:hover {
+    color: hsl(var(--primary));
+    -webkit-text-fill-color: hsl(var(--primary));
 }
 
 

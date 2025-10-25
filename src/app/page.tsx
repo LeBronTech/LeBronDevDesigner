@@ -89,12 +89,12 @@ export default function Home() {
             </div>
             <nav className="hidden md:flex mainmenu-nav">
               <ul className="primary-menu flex space-x-6">
-                <li><a className="nav-link smoth-animation" href="#home">HOME</a></li>
-                <li><a className="nav-link smoth-animation" href="#sobre">SOBRE</a></li>
-                <li><a className="nav-link smoth-animation" href="#portfolio">PORTFÓLIO</a></li>
-                <li><a className="nav-link smoth-animation" href="#curriculo">CURRÍCULO</a></li>
-                <li><a className="nav-link smoth-animation" href="#depoimentos">DEPOIMENTOS</a></li>
-                <li><a className="nav-link smoth-animation" href="#contacts">CONTATO</a></li>
+                <li><a className="nav-link smoth-animation gradient-title-animation" href="#home">HOME</a></li>
+                <li><a className="nav-link smoth-animation gradient-title-animation" href="#sobre">SOBRE</a></li>
+                <li><a className="nav-link smoth-animation gradient-title-animation" href="#portfolio">PORTFÓLIO</a></li>
+                <li><a className="nav-link smoth-animation gradient-title-animation" href="#curriculo">CURRÍCULO</a></li>
+                <li><a className="nav-link smoth-animation gradient-title-animation" href="#depoimentos">DEPOIMENTOS</a></li>
+                <li><a className="nav-link smoth-animation gradient-title-animation" href="#contacts">CONTATO</a></li>
               </ul>
             </nav>
           </div>
@@ -151,7 +151,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <span className="text-primary uppercase tracking-widest">Sobre</span>
-                <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Quem sou eu</h2>
+                <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Quem sou eu</h2>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <Card className="bg-card/50">
@@ -190,7 +190,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Portfólio</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Meu Portfólio</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Meu Portfólio</h2>
             </div>
             {/* Sections for Websites, Apps, etc. will be added here */}
           </div>
@@ -200,7 +200,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Currículo</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Minhas Habilidades</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Minhas Habilidades</h2>
             </div>
              {/* Resume and Skills content will be added here */}
           </div>
@@ -210,7 +210,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Depoimentos</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">O que os clientes dizem</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">O que os clientes dizem</h2>
             </div>
              {/* Testimonials content will be added here */}
           </div>
@@ -220,7 +220,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Contato</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-title-animation">Fale conosco</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Fale conosco</h2>
             </div>
              {/* Contact form will be added here */}
           </div>
