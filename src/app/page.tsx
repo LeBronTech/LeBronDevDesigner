@@ -1,15 +1,15 @@
 
 'use client';
 import Image from "next/image";
-import { ArrowUp, Award, BookOpen, Code, Github, Instagram, Layout, Menu, Slack, Smartphone, X } from "lucide-react";
+import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Slack, Smartphone, ArrowUp } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, useCallback, Fragment } from "react";
+import { useEffect, useState, useCallback } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { ProjectModal } from "@/components/ProjectModal";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -97,6 +97,8 @@ const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) 
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
+    // Trigger scroll once on mount in case the element is already visible
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
 
@@ -175,13 +177,14 @@ export default function Home() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
-                  <div className="flex flex-col h-full">
-                    <div className="p-6 border-b">
-                       <a href="#home">
-                          <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
-                       </a>
-                       <p className="text-muted-foreground mt-4">Site portfólio LeBron Dev-Designer.</p>
-                    </div>
+                  <SheetHeader className="p-6 border-b text-left">
+                    <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
+                     <a href="#home">
+                        <Image src={placeholderImages.logo.src} width={184} height={40} alt="Lebron Dev-Designer logo" data-ai-hint={placeholderImages.logo['data-ai-hint']} />
+                     </a>
+                     <p className="text-muted-foreground mt-4">Site portfólio LeBron Dev-Designer.</p>
+                  </SheetHeader>
+                  <div className="flex flex-col h-full justify-between">
                     <nav className="flex-1 p-6">
                        <ul className="primary-menu flex flex-col space-y-4">
                         {navLinks.map((link) => (
@@ -503,7 +506,7 @@ export default function Home() {
         </div>
       </footer>
 
-       <button className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-transparent border-2 border-primary">
+       <button className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-card shadow-lg border-2 border-primary">
           <ArrowUp className="text-primary" />
         </button>
     </div>
