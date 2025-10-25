@@ -1,13 +1,10 @@
 
 'use client';
 import Image from "next/image";
-import { ArrowUp, Github, Instagram, Layout, Smartphone, Slack } from "lucide-react";
+import { ArrowUp, Behance, Github, Instagram, Layout, Smartphone, Slack } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import placeholderImages from './lib/placeholder-images.json';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
 const TypingEffect = ({ words }: { words: string[] }) => {
@@ -89,12 +86,12 @@ export default function Home() {
             </div>
             <nav className="hidden md:flex mainmenu-nav">
               <ul className="primary-menu flex space-x-6">
-                <li><a className="nav-link smoth-animation gradient-title-animation" href="#home">HOME</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation" href="#sobre">SOBRE</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation" href="#portfolio">PORTFÓLIO</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation" href="#curriculo">CURRÍCULO</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation" href="#depoimentos">DEPOIMENTOS</a></li>
-                <li><a className="nav-link smoth-animation gradient-title-animation" href="#contacts">CONTATO</a></li>
+                <li><a className="nav-link smoth-animation" href="#home">HOME</a></li>
+                <li><a className="nav-link smoth-animation" href="#sobre">SOBRE</a></li>
+                <li><a className="nav-link smoth-animation" href="#portfolio">PORTFÓLIO</a></li>
+                <li><a className="nav-link smoth-animation" href="#curriculo">CURRÍCULO</a></li>
+                <li><a className="nav-link smoth-animation" href="#depoimentos">DEPOIMENTOS</a></li>
+                <li><a className="nav-link smoth-animation" href="#contacts">CONTATO</a></li>
               </ul>
             </nav>
           </div>
@@ -118,7 +115,7 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col lg:flex-row gap-8 mt-8 justify-center lg:justify-start">
                     <div className="social-share-inner-left">
-                        <span className="title uppercase text-sm tracking-wider">Siga-nos</span>
+                        <span className="title uppercase text-sm tracking-wider gradient-text">Siga-nos</span>
                         <ul className="social-share flex list-none gap-4 mt-4">
                             <li><a href="https://www.behance.net/lebrondesigner1" target="_blank" className="rn-btn"><Image src={placeholderImages.behance.src} width={24} height={24} alt="behance" /></a></li>
                             <li><a href="https://wa.me/5561984836034" target="_blank" className="rn-btn"><Image src={placeholderImages.whatsapp.src} width={24} height={24} alt="whatsapp" /></a></li>
@@ -127,10 +124,10 @@ export default function Home() {
                         </ul>
                     </div>
                      <div className="skill-share-inner">
-                        <span className="title uppercase text-sm tracking-wider">Ferramentas que usamos</span>
+                        <span className="title uppercase text-sm tracking-wider gradient-text">Ferramentas que usamos</span>
                         <ul className="skill-share flex flex-wrap list-none gap-4 mt-4">
                           {placeholderImages.tools.map(tool => (
-                            <li key={tool.alt}><Image src={tool.src} width={30} height={30} alt={tool.alt} /></li>
+                            <li key={tool.alt}><Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} /></li>
                           ))}
                         </ul>
                     </div>
@@ -138,7 +135,7 @@ export default function Home() {
               </div>
               <div className="order-1 lg:order-2 relative flex justify-center">
                 <div className="thumbnail style-2">
-                    <div className="inner gradient-border">
+                    <div className="inner">
                         <Image src={placeholderImages.banner.src} width={500} height={500} alt="Personal Portfolio Images" className="rounded-full w-full" />
                     </div>
                 </div>
@@ -151,37 +148,10 @@ export default function Home() {
           <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <span className="text-primary uppercase tracking-widest">Sobre</span>
-                <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Quem sou eu</h2>
+                <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-text">Quem sou eu</h2>
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <Card className="bg-card/50">
-                  <CardContent className="p-8 lg:flex items-center">
-                    <div className="card-thumbnail mb-6 lg:mb-0 lg:mr-8 flex-shrink-0">
-                        <Image src={placeholderImages.about.src} alt="Leandro José" width={250} height={250} className="rounded-lg shadow-lg" />
-                    </div>
-                    <div className="card-content">
-                        <span className="text-sm text-primary uppercase tracking-wider">Designer & Programador</span>
-                        <h3 className="text-3xl font-bold mt-2">Leandro José</h3>
-                        <span className="text-lg text-gray-400">Lebron</span>
-                        <div className="mt-8">
-                            <a href="https://drive.google.com/file/d/13RO1c-w-HJhObvCkXaBUMSgWyjkR2qiI/view?usp=sharing" target="_blank" className="rn-btn">
-                                Ver currículo
-                            </a>
-                        </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-card/50">
-                  <CardHeader>
-                    <CardTitle>Criador da Lebron Dev Designer</CardTitle>
-                    <p className="text-sm text-gray-400">2021</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-300">
-                        Olá, me chamo Leandro, conhecido também como LeBron,criador da LeBron Dev Designer,tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
-                    </p>
-                  </CardContent>
-                </Card>
+              <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
+                 {/* About content will be added here */}
               </div>
           </div>
         </div>
@@ -190,9 +160,9 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Portfólio</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Meu Portfólio</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-text">Meu Portfólio</h2>
             </div>
-            {/* Sections for Websites, Apps, etc. will be added here */}
+            {/* Portfolio content will be added here */}
           </div>
         </div>
 
@@ -200,7 +170,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Currículo</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Minhas Habilidades</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-text">Minhas Habilidades</h2>
             </div>
              {/* Resume and Skills content will be added here */}
           </div>
@@ -210,7 +180,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Depoimentos</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">O que os clientes dizem</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-text">O que os clientes dizem</h2>
             </div>
              {/* Testimonials content will be added here */}
           </div>
@@ -220,7 +190,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary uppercase tracking-widest">Contato</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2 text-white">Fale conosco</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 gradient-text">Fale conosco</h2>
             </div>
              {/* Contact form will be added here */}
           </div>
