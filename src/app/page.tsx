@@ -7,6 +7,14 @@ import { useEffect, useState, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -140,6 +148,7 @@ export default function Home() {
     setTimeout(() => {
       setActiveFilter(filter);
       setActiveSubFilter('Todos');
+      setFlippedCard(null);
       setIsAnimating(false);
     }, 300);
   };
@@ -148,6 +157,7 @@ export default function Home() {
     setIsAnimating(true);
     setTimeout(() => {
       setActiveSubFilter(filter);
+      setFlippedCard(null);
       setIsAnimating(false);
     }, 300);
   };
@@ -438,11 +448,11 @@ export default function Home() {
                           onClick={() => handleToolClick(tool.alt)}
                            className={cn(
                             "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu tool-icon",
-                            activeTool === tool.alt && "tool-icon-active"
+                            activeTool === tool.alt && "tool-icon-active tool-icon-gradient"
                           )}
                           title={tool.alt}
                         >
-                           <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-special-hover' : '' )}/>
+                           <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-white' : '' )}/>
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -456,36 +466,34 @@ export default function Home() {
                 <div data-aos="fade-up" data-aos-delay="400">
                   <h3 className="text-2xl font-semibold mb-6 text-center gradient-title-animation">Desenvolvimento</h3>
                    <div className="flex flex-wrap justify-center gap-4">
-                    {[
-                      ...placeholderImages.tools.development.filter(t => ['html', 'css'].includes(t.alt.toLowerCase())),
-                      ...placeholderImages.tools.development.filter(t => !['html', 'css'].includes(t.alt.toLowerCase()))
-                    ].map((tool, index) => {
-                      if (!tool) return null;
-                       return (
-                        <div 
-                          key={index} 
-                          className="relative group"
-                          data-aos="fade-up"
-                          data-aos-delay={`${index * 100}`}
-                        >
-                          <button 
-                            onClick={() => handleToolClick(tool.alt)}
-                           className={cn(
-                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu tool-icon",
-                            activeTool === tool.alt && "tool-icon-active"
-                          )}
-                            title={tool.alt}
+                     {[
+                        ...placeholderImages.tools.development.filter(t => ['html', 'css'].includes(t.alt.toLowerCase())),
+                        ...placeholderImages.tools.development.filter(t => !['html', 'css'].includes(t.alt.toLowerCase()))
+                      ].map((tool, index) => (
+                          <div 
+                            key={index} 
+                            className="relative group"
+                            data-aos="fade-up"
+                            data-aos-delay={`${index * 100}`}
                           >
-                             <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-special-hover' : '' )}/>
-                          </button>
-                          {activeTool === tool.alt && (
-                            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
-                              {tool.alt}
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
+                            <button 
+                              onClick={() => handleToolClick(tool.alt)}
+                              className={cn(
+                                "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu tool-icon",
+                                activeTool === tool.alt && "tool-icon-active tool-icon-gradient"
+                              )}
+                              title={tool.alt}
+                            >
+                               <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all filter-none", activeTool === tool.alt ? 'filter-special-hover' : '' )}/>
+                            </button>
+                            {activeTool === tool.alt && (
+                              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
+                                {tool.alt}
+                              </div>
+                            )}
+                          </div>
+                        )
+                      )}
                   </div>
                 </div>
               </div>
@@ -499,138 +507,90 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-             <div className="flex flex-wrap gap-4 justify-center mb-8" data-aos="fade-up">
-              {mainCategories.flatMap((category) => {
-                  const subItems = activeFilter === category && subCategories.length > 1 ? subCategories : [];
-                  return [
-                      <Button
-                          key={category}
-                          variant={activeFilter === category ? 'default' : 'outline'}
-                          onClick={() => handleFilterClick(category)}
-                          className="rounded-full px-4 py-2 flex items-center justify-center text-sm"
-                      >
-                          {getCategoryIcon(category)}
-                          <span className="ml-2">{category}</span>
-                      </Button>,
-                      ...subItems.map(sub => (
-                          <Button
-                              key={sub}
-                              variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
-                              onClick={() => handleSubFilterClick(sub)}
-                              className="rounded-full px-3 py-1 text-xs animate-zoomIn"
-                          >
-                              {sub}
-                          </Button>
-                      ))
-                  ];
-              })}
+            <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-start gap-4 mb-8" data-aos="fade-up">
+              {mainCategories.map(category => (
+                <Button
+                  key={category}
+                  variant={activeFilter === category ? 'default' : 'outline'}
+                  onClick={() => handleFilterClick(category)}
+                  className="rounded-full px-6 py-2 flex items-center"
+                >
+                  {getCategoryIcon(category)}
+                  <span>{category}</span>
+                </Button>
+              ))}
+              <div className={cn("w-full justify-center mt-4 sub-filter-container", subCategories.length > 1 && "expanded")}>
+                {subCategories.map(sub => (
+                  <Button
+                    key={sub}
+                    variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
+                    onClick={() => handleSubFilterClick(sub)}
+                    className="rounded-full px-3 py-1 text-xs"
+                  >
+                    {sub}
+                  </Button>
+                ))}
+              </div>
             </div>
 
-            {activeFilter !== 'Logos' && (
-              <div className="flex justify-center mb-8" data-aos="fade-up">
-                <div className="inline-flex rounded-md shadow-sm bg-card p-1">
-                  <Button onClick={() => setPortfolioView('list')} variant={portfolioView === 'list' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
-                    <List className="w-4 h-4 mr-2"/>
-                    Lista
-                  </Button>
-                  <Button onClick={() => setPortfolioView('grid')} variant={portfolioView === 'grid' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
-                    <Grid className="w-4 h-4 mr-2" />
-                    Grid
-                  </Button>
-                </div>
+            <div className="flex justify-center mb-8" data-aos="fade-up">
+              <div className="inline-flex rounded-md shadow-sm bg-card p-1">
+                <Button onClick={() => setPortfolioView('list')} variant={portfolioView === 'list' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
+                  <List className="w-4 h-4 mr-2"/>
+                  Lista
+                </Button>
+                <Button onClick={() => setPortfolioView('grid')} variant={portfolioView === 'grid' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
+                  <Grid className="w-4 h-4 mr-2" />
+                  Grid
+                </Button>
               </div>
-            )}
+            </div>
             
-            {portfolioView === 'list' && activeFilter !== 'Logos' ? (
-                <div className={cn("transition-all duration-300 space-y-8", isAnimating ? 'animate-zoomOut' : 'animate-zoomIn')}>
-                    {filteredProjects.map((project, index) => (
-                        <Card 
-                          key={`${project.title}-${index}-list`} 
-                          className="w-full flex flex-col md:flex-row overflow-hidden" 
-                          data-aos="fade-up" 
-                          data-aos-delay={index * 100}
-                        >
-                          <div className="md:w-1/3">
-                            <Image 
-                              src={project.src} 
-                              alt={project.title}
-                              width={400}
-                              height={300}
-                              className="w-full h-full object-cover" 
-                              data-ai-hint={project['data-ai-hint']}
-                            />
-                          </div>
-                          <div className="md:w-2/3 p-6 flex flex-col justify-center">
-                            <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                            <p className="text-muted-foreground mb-4">{project.description}</p>
-                            {project.url && (
-                                <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm self-start">
-                                  Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
-                                </a>
-                            )}
-                          </div>
-                        </Card>
-                    ))}
-                </div>
-            ) : (
+            <div className={cn("grid grid-cols-2 md:grid-cols-3 gap-8", isAnimating ? 'animate-zoomOut' : 'animate-zoomIn')}>
+              {filteredProjects.map((project, index) => (
                 <div
-                  className={cn(
-                    "grid transition-all duration-300",
-                    isAnimating && 'opacity-0',
-                    activeFilter === 'Logos'
-                      ? 'grid-cols-2 sm:grid-cols-3 gap-4 md:gap-8'
-                      : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'
-                  )}
+                  key={`${project.title}-${index}-grid`}
+                  className="flip-card aspect-square"
+                  onClick={() => handleProjectClick(index)}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
                 >
-                  {filteredProjects.map((project, index) => (
-                    <div
-                      key={`${project.title}-${index}-grid`}
-                      className={cn(
-                        "relative aspect-square cursor-pointer [perspective:1000px] group",
-                         isAnimating ? 'animate-zoomOut' : 'animate-zoomIn',
-                      )}
-                      onClick={() => handleProjectClick(index)}
-                      data-aos="fade-up"
-                      data-aos-delay={index * 100}
-                    >
-                      <Card 
-                        className={cn(
-                          "w-full h-full rounded-lg overflow-hidden flip-card",
-                          flippedCard === index && "flipped"
-                        )}
-                      >
-                       <div className="flip-card-inner w-full h-full relative">
-                          <div className="flip-card-front">
-                            <Image 
-                              src={project.src} 
-                              alt={project.title} 
-                              layout="fill" 
-                              objectFit="cover"
-                              data-ai-hint={project['data-ai-hint']}
-                            />
-                             {activeFilter === 'Logos' && (
-                                <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-2 text-center">
-                                    <h3 className="text-sm font-bold text-white truncate">{project.title}</h3>
-                                </div>
-                            )}
-                          </div>
-                          <div className="flip-card-back p-6 flex flex-col justify-end rounded-lg">
-                            <div>
-                              <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                              <p className="text-gray-300 text-sm mb-4">{project.description}</p>
-                               {project.url && (
-                                <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm" onClick={(e) => e.stopPropagation()}>
-                                  Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
-                                </a>
-                               )}
+                  <div 
+                    className={cn(
+                      "w-full h-full rounded-lg overflow-hidden cursor-pointer flip-card-inner",
+                      flippedCard === index && "flipped"
+                    )}
+                  >
+                      <div className="flip-card-front">
+                        <Image 
+                          src={project.src} 
+                          alt={project.title} 
+                          layout="fill" 
+                          objectFit="cover"
+                          data-ai-hint={project['data-ai-hint']}
+                        />
+                        {activeFilter === 'Logos' && (
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-2 text-center">
+                                <h3 className="text-sm font-bold text-white truncate">{project.title}</h3>
                             </div>
-                          </div>
+                        )}
+                      </div>
+                      <div className="flip-card-back p-6 flex flex-col justify-end rounded-lg">
+                        <div>
+                          <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                          <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+                           {project.url && (
+                            <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm" onClick={(e) => e.stopPropagation()}>
+                              Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
+                            </a>
+                           )}
                         </div>
-                      </Card>
-                    </div>
-                  ))}
+                      </div>
+                  </div>
                 </div>
-            )}
+              ))}
+            </div>
+
           </div>
         </div>
 
@@ -642,7 +602,7 @@ export default function Home() {
             </div>
             <Tabs defaultValue="habilidades" className="w-full">
               <TabsList className="grid w-full grid-cols-2" data-aos="fade-up">
-                 <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
+                <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
                 <TabsTrigger value="formacao"><BookOpen className="mr-2" />Formação</TabsTrigger>
               </TabsList>
                <TabsContent value="habilidades">
