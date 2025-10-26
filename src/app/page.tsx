@@ -2,9 +2,9 @@
 'use client';
 import * as React from "react";
 import Image from "next/image";
-import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Slack, Smartphone, ArrowUp, Circle, AppWindow, Eye } from "lucide-react";
+import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Eye, Smartphone, List, Grid, Circle, ArrowUpRight, ArrowUp } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -71,6 +71,7 @@ export default function Home() {
   const [activeSubFilter, setActiveSubFilter] = useState('Todos');
   const [isAnimating, setIsAnimating] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
+  const [portfolioView, setPortfolioView] = useState('list');
 
   const handleToolClick = (toolName: string) => {
     setActiveTool(activeTool === toolName ? null : toolName);
@@ -146,12 +147,19 @@ export default function Home() {
     }, 300);
   };
 
+  const LogoIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+      <path d="M9 8L9 16L15 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+
   const getCategoryIcon = (category: string) => {
     switch(category) {
       case 'Websites': return <Layout className="mr-2 h-4 w-4" />;
-      case 'Apps': return <AppWindow className="mr-2 h-4 w-4" />;
+      case 'Apps': return <Smartphone className="mr-2 h-4 w-4" />;
       case 'Identidade Visual': return <Eye className="mr-2 h-4 w-4" />;
-      case 'Logos': return <Award className="mr-2 h-4 w-4" />;
+      case 'Logos': return <LogoIcon />;
       case 'Social Mídia': return <Instagram className="mr-2 h-4 w-4" />;
       case 'Todos': return <Circle className="mr-2 h-4 w-4" />;
       default: return null;
@@ -252,7 +260,7 @@ export default function Home() {
                       </ul>
                     </nav>
                      <div className="p-6 border-t">
-                      <h4 className="text-xl font-bold mb-4 gradient-title-animation">Siga-me</h4>
+                      <h4 className="text-xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
                       <ul className="social-share flex list-none gap-4 mt-2 justify-center">
                           <li>
                             <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
@@ -312,28 +320,27 @@ export default function Home() {
         </div>
         
         <div id="sobre" className="py-24 section-separator">
-          <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1">
-                  <Card className="p-8" data-aos="fade-up" data-aos-delay="200">
-                      <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
-                          <div className="card-thumbnail flex-shrink-0">
-                              <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
-                          </div>
-                          <div className="card-content flex-grow">
-                              <div className="text-center lg:text-left mb-4">
-                                  <span className="subtitle uppercase text-xl tracking-wider gradient-title-animation">Designer & Programador</span>
-                                  <h3 className="title text-3xl font-bold mt-1 mb-1">Leandro José</h3>
-                                  <span className="designation text-xl">Lebron</span>
-                              </div>
-                              <div className="mt-4 mb-6">
-                                  <p className="discription text-base text-gray-300 max-w-4xl mx-auto lg:mx-0">
-                                      Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
-                                  </p>
-                              </div>
-                              <div className="flex justify-center lg:justify-start">
-                                <div className="skill-share-inner text-center lg:text-left">
+            <div className="container mx-auto px-4">
+                <div className="grid grid-cols-1">
+                    <Card className="p-8" data-aos="fade-up" data-aos-delay="200">
+                        <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
+                            <div className="card-thumbnail flex-shrink-0">
+                                <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
+                            </div>
+                            <div className="card-content flex-grow">
+                                <div className="text-center lg:text-left mb-2">
+                                    <span className="subtitle uppercase text-2xl tracking-wider gradient-title-animation">Designer & Programador</span>
+                                    <h3 className="title text-3xl font-bold mt-1 mb-1">Leandro José</h3>
+                                    <span className="designation text-xl">Lebron</span>
+                                </div>
+                                <div className="mt-4 mb-4">
+                                    <p className="discription text-lg text-gray-300 max-w-4xl mx-auto lg:mx-0">
+                                        Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
+                                    </p>
+                                </div>
+                                 <div className="skill-share-inner text-center lg:text-left">
                                   <h4 className="text-2xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
-                                  <ul className="social-share flex list-none gap-4 mt-2 justify-center">
+                                  <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
                                       <li>
                                         <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
                                           <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
@@ -356,12 +363,11 @@ export default function Home() {
                                       </li>
                                   </ul>
                                 </div>
-                              </div>
-                          </div>
-                      </div>
-                  </Card>
-              </div>
-          </div>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            </div>
         </div>
 
         <div id="ferramentas" className="py-24 section-separator">
@@ -376,13 +382,13 @@ export default function Home() {
                     {placeholderImages.tools.design.map((tool, index) => (
                       <div 
                         key={index} 
-                        className="relative"
+                        className="relative group"
                         data-aos="fade-up"
                         data-aos-delay={`${index * 100}`}
                       >
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
-                          className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
+                          className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu ${activeTool === tool.alt ? 'tool-icon-gradient-active scale-110' : 'tool-icon-gradient'}`}
                           title={tool.alt}
                         >
                           <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-none" />
@@ -404,16 +410,16 @@ export default function Home() {
                        return (
                         <div 
                           key={index} 
-                          className="relative"
+                          className="relative group"
                           data-aos="fade-up"
                           data-aos-delay={`${index * 100}`}
                         >
-                          <button 
+                           <button 
                             onClick={() => handleToolClick(tool.alt)}
-                            className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
+                            className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu ${activeTool === tool.alt ? 'tool-icon-gradient-active scale-110' : 'tool-icon-gradient'}`}
                             title={tool.alt}
                           >
-                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={isSpecial ? 'filter-primary' : 'filter-none'}/>
+                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={`${isSpecial ? 'filter-primary' : 'filter-none'} ${activeTool === tool.alt && 'filter-special-hover'}`}/>
                           </button>
                           {activeTool === tool.alt && (
                             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -436,13 +442,13 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center mb-4 max-w-2xl mx-auto" data-aos="fade-up">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 justify-center mb-8 max-w-3xl mx-auto" data-aos="fade-up">
               {mainCategories.map((category) => (
                 <Button
                   key={category}
                   variant={activeFilter === category ? 'default' : 'outline'}
                   onClick={() => handleFilterClick(category)}
-                  className="w-full rounded-full flex items-center justify-center"
+                  className="w-full rounded-full flex items-center justify-center text-xs md:text-sm"
                 >
                   {getCategoryIcon(category)}
                   {category}
@@ -450,21 +456,46 @@ export default function Home() {
               ))}
             </div>
 
-            <div className={`flex flex-wrap gap-2 justify-center mb-12 transition-all duration-500 ease-in-out ${subCategories.length > 1 ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-                {subCategories.map((sub, index) => (
+            {subCategories.length > 1 && (
+              <div className="flex flex-wrap gap-2 justify-center mb-12">
+                {subCategories.map((sub) => (
                   <Button
                     key={sub}
                     variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
                     onClick={() => handleSubFilterClick(sub)}
                     className="rounded-full px-3 py-1 text-xs"
-                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {sub}
                   </Button>
                 ))}
-            </div>
+              </div>
+            )}
+             
+            {activeFilter !== 'Logos' && (
+              <div className="flex justify-center mb-8" data-aos="fade-up">
+                <div className="inline-flex rounded-md shadow-sm bg-card p-1">
+                  <Button onClick={() => setPortfolioView('list')} variant={portfolioView === 'list' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
+                    <List className="w-4 h-4 mr-2"/>
+                    Lista
+                  </Button>
+                  <Button onClick={() => setPortfolioView('grid')} variant={portfolioView === 'grid' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
+                    <Grid className="w-4 h-4 mr-2" />
+                    Grid
+                  </Button>
+                </div>
+              </div>
+            )}
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              className={`
+                ${activeFilter === 'Logos' 
+                  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8' 
+                  : portfolioView === 'grid' 
+                  ? 'grid grid-cols-1 lg:grid-cols-2 gap-8' 
+                  : 'space-y-8'
+                }
+              `}
+            >
               {filteredProjects.map((project, index) => (
                 <div
                   key={`${project.title}-${index}`}
@@ -472,25 +503,53 @@ export default function Home() {
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
-                  <Card className="cursor-pointer overflow-hidden group bg-card">
-                    <CardHeader className="p-0">
-                      <div className="relative">
-                        <Image src={project.src} alt={project.title} width={400} height={300} className="rounded-t-lg object-cover h-60 w-full transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
-                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <p className="text-white text-lg font-semibold">{project.title}</p>
-                        </div>
+                  {activeFilter === 'Logos' ? (
+                     <Card className="cursor-pointer overflow-hidden group bg-card h-full flex flex-col items-center justify-center p-4">
+                      <div className="relative w-full h-48 mb-4">
+                         <Image src={project.src} alt={project.title} layout="fill" objectFit="contain" className="transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
                       </div>
-                    </CardHeader>
-                    <CardContent className="p-4">
-                      <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-                      <CardDescription className="text-sm text-primary">{project.category || project.mainCategory}</CardDescription>
-                    </CardContent>
-                  </Card>
+                      <h3 className="font-semibold text-lg">{project.title}</h3>
+                     </Card>
+                  ) : portfolioView === 'grid' ? (
+                     <Card className="cursor-pointer overflow-hidden group bg-card h-full">
+                       <CardHeader className="p-0">
+                         <div className="relative h-60">
+                           <Image src={project.src} alt={project.title} layout="fill" objectFit="cover" className="rounded-t-lg transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
+                           <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                             <p className="text-white text-lg font-semibold">{project.title}</p>
+                           </div>
+                         </div>
+                       </CardHeader>
+                       <CardContent className="p-4">
+                         <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
+                         <CardDescription className="text-sm text-primary">{project.category || project.mainCategory}</CardDescription>
+                       </CardContent>
+                     </Card>
+                  ) : (
+                    <Card className="overflow-hidden group bg-card">
+                       <div className="flex flex-col md:flex-row">
+                          <div className="md:w-1/3 relative overflow-hidden">
+                            <Image src={project.src} alt={project.title} width={400} height={300} className="object-cover h-full w-full transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
+                          </div>
+                          <div className="md:w-2/3">
+                            <CardHeader>
+                              <CardTitle>{project.title}</CardTitle>
+                              <CardDescription>{project.category || project.mainCategory}</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                              <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                              {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center">Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/></a>}
+                            </CardContent>
+                          </div>
+                       </div>
+                    </Card>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </div>
+
 
         <div id="curriculo" className="py-24 section-separator">
           <div className="container mx-auto px-4">
@@ -498,68 +557,12 @@ export default function Home() {
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Currículo</span>
               <h2 className="text-4xl lg:text-5xl font-bold mt-2">Minhas Habilidades</h2>
             </div>
-            <Tabs defaultValue="formacao" className="w-full">
+            <Tabs defaultValue="habilidades" className="w-full">
               <TabsList className="grid w-full grid-cols-2" data-aos="fade-up">
+                 <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
                 <TabsTrigger value="formacao"><BookOpen className="mr-2" />Formação</TabsTrigger>
-                <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
               </TabsList>
-              <TabsContent value="formacao">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                    <div data-aos="fade-up">
-                        <span className="subtitle text-primary">2018-2020</span>
-                        <h4 className="maintitle text-2xl font-bold mt-2">Faculdade</h4>
-                        <div className="experience-list mt-4 space-y-6">
-                            <Card>
-                                <CardHeader>
-                                    <div className="flex justify-between items-center">
-                                        <div>
-                                            <CardTitle>Web Designer</CardTitle>
-                                            <CardDescription>Faculdade Projeção</CardDescription>
-                                        </div>
-                                        <div className="date-of-time">
-                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2018</span>
-                                        </div>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <p>Formação em Html, CSS, JavaScript e desenvolvimento do primeiro site.</p>
-                                </CardContent>
-                            </Card>
-                             <Card>
-                                <CardHeader>
-                                    <div className="flex justify-between items-center">
-                                        <div>
-                                            <CardTitle>App Mobile</CardTitle>
-                                        </div>
-                                        <div className="date-of-time">
-                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2019</span>
-                                        </div>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <p>Certificação de desnvolvimento em Android.</p>
-                                </CardContent>
-                            </Card>
-                             <Card>
-                                <CardHeader>
-                                    <div className="flex justify-between items-center">
-                                        <div>
-                                            <CardTitle>Designer</CardTitle>
-                                        </div>
-                                        <div className="date-of-time">
-                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2020</span>
-                                        </div>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <p>Certificação em photoshop,canvas,figma e coredraw.</p>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </div>
-                </div>
-              </TabsContent>
-              <TabsContent value="habilidades">
+               <TabsContent value="habilidades">
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
                   <div data-aos="fade-up" data-aos-delay="200">
                     <h4 className="text-2xl font-bold mb-4">Design</h4>
@@ -577,6 +580,62 @@ export default function Home() {
                     <SkillBar skill="React" percentage={75} />
                     <SkillBar skill="Node.js" percentage={70} />
                   </div>
+                </div>
+              </TabsContent>
+              <TabsContent value="formacao">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div data-aos="fade-up">
+                        <span className="subtitle text-primary">2018-2020</span>
+                        <h4 className="maintitle text-2xl font-bold mt-2">Faculdade</h4>
+                        <div className="experience-list mt-4 space-y-6">
+                            <Card className="rounded-2xl">
+                                <CardHeader>
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <CardTitle>Web Designer</CardTitle>
+                                            <CardDescription>Faculdade Projeção</CardDescription>
+                                        </div>
+                                        <div className="date-of-time">
+                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2018</span>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <p>Formação em Html, CSS, JavaScript e desenvolvimento do primeiro site.</p>
+                                </CardContent>
+                            </Card>
+                             <Card className="rounded-2xl">
+                                <CardHeader>
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <CardTitle>App Mobile</CardTitle>
+                                        </div>
+                                        <div className="date-of-time">
+                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2019</span>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <p>Certificação de desnvolvimento em Android.</p>
+                                </CardContent>
+                            </Card>
+                             <Card className="rounded-2xl">
+                                <CardHeader>
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <CardTitle>Designer</CardTitle>
+                                        </div>
+                                        <div className="date-of-time">
+                                            <span className="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm">2020</span>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <p>Certificação em photoshop,canvas,figma e coredraw.</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </div>
                 </div>
               </TabsContent>
             </Tabs>
@@ -613,10 +672,9 @@ export default function Home() {
         </div>
       </footer>
 
-       <button className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-card shadow-lg border-2 border-primary">
+       <button className="backto-top opacity-0 transition-opacity fixed bottom-8 right-8 cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-card shadow-lg border-2 border-primary z-50">
           <ArrowUp className="text-primary" />
         </button>
     </div>
   );
-
-    
+}

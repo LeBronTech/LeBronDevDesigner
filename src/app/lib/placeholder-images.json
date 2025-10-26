@@ -25,13 +25,13 @@
             { "src": "https://i.postimg.cc/gkh37mNQ/1761417804462.png", "alt": "nodejs", "data-ai-hint": "nodejs logo" },
             { "src": "https://i.postimg.cc/J07yTCY9/logo-javascript-png-javascript-tutorials-400.png", "alt": "javascript", "data-ai-hint": "javascript logo" },
             { "src": "https://i.postimg.cc/pXMmp8Bv/1024x1024-logo-2582748-1280.png", "alt": "html", "data-ai-hint": "html logo" },
+            { "src": "https://i.postimg.cc/sXvtdwHX/1024x1024-logo-2582747-960-720.png", "alt": "css", "data-ai-hint": "css logo"},
             { "src": "https://i.postimg.cc/v8p7YcKN/nextjs-icon.png", "alt": "nextjs", "data-ai-hint": "nextjs logo" },
             { "src": "https://i.postimg.cc/s2v1GJQN/pngaaa-com-619137.png", "alt": "python", "data-ai-hint": "python logo" },
             { "src": "https://i.postimg.cc/brK94JXq/pngwing-com.png", "alt": "flutter", "data-ai-hint": "flutter logo" },
             { "src": "https://i.postimg.cc/GmQTdCvb/word500.png", "alt": "wordpress", "data-ai-hint": "wordpress logo" },
             { "src": "https://i.postimg.cc/QdbKh31z/vscode500.png", "alt": "vscode", "data-ai-hint": "vscode logo" },
-            { "src": "https://i.postimg.cc/c4XMw04P/Android-Studio-icon-svg.png", "alt": "android studio", "data-ai-hint": "android studio logo" },
-            { "src": "https://i.postimg.cc/sXvtdwHX/1024x1024-logo-2582747-960-720.png", "alt": "css", "data-ai-hint": "css logo"}
+            { "src": "https://i.postimg.cc/c4XMw04P/Android-Studio-icon-svg.png", "alt": "android studio", "data-ai-hint": "android studio logo" }
         ]
     },
     "banner": {
@@ -135,10 +135,45 @@
         ],
         "logos": [
              {
-                "src": "https://i.postimg.cc/DwKwSM77/DooDou4.jpg",
-                "title": "Doo&Dou",
-                "description": "Logo para Petshop",
-                "data-ai-hint": "pet brand logo",
+                "src": "https://picsum.photos/seed/logo1/300/200",
+                "title": "AstroDev",
+                "description": "Logo para startup de tecnologia.",
+                "data-ai-hint": "tech logo",
+                "mainCategory": "Logos"
+            },
+            {
+                "src": "https://picsum.photos/seed/logo2/300/200",
+                "title": "Sabor & Prosa",
+                "description": "Logo para um café literário.",
+                "data-ai-hint": "cafe logo",
+                "mainCategory": "Logos"
+            },
+            {
+                "src": "https://picsum.photos/seed/logo3/300/200",
+                "title": "Verde Viver",
+                "description": "Logo para loja de produtos naturais.",
+                "data-ai-hint": "nature logo",
+                "mainCategory": "Logos"
+            },
+            {
+                "src": "https://picsum.photos/seed/logo4/300/200",
+                "title": "Cineclube Retrô",
+                "description": "Logo para um clube de cinema clássico.",
+                "data-ai-hint": "cinema logo",
+                "mainCategory": "Logos"
+            },
+            {
+                "src": "https://picsum.photos/seed/logo5/300/200",
+                "title": "Maré Alta",
+                "description": "Logo para uma marca de surfwear.",
+                "data-ai-hint": "surf logo",
+                "mainCategory": "Logos"
+            },
+            {
+                "src": "https://picsum.photos/seed/logo6/300/200",
+                "title": "Ponto & Letra",
+                "description": "Logo para uma editora de livros.",
+                "data-ai-hint": "book logo",
                 "mainCategory": "Logos"
             }
         ],
@@ -147,15 +182,17 @@
                 "src": "https://i.postimg.cc/PxctT66j/hamburgueriacapa.png",
                 "title": "Hamburgueria",
                 "description": "Criativos de Hamburgueria para redes sociais.",
+                "url": "https://www.behance.net/gallery/189159481/Criativo-para-Rede-Socias",
                 "data-ai-hint": "burger social media",
-                "mainCategory": "Redes Sociais"
+                "mainCategory": "Social Mídia"
             },
             {
                 "src": "https://i.postimg.cc/Vk10x60Q/pizzariacapa.png",
                 "title": "Pizzaria",
                 "description": "Criativos de pizzaria para redes sociais.",
+                "url": "https://www.behance.net/gallery/189872917/Criativos-para-Pizzaria",
                 "data-ai-hint": "pizza social media",
-                "mainCategory": "Redes Sociais"
+                "mainCategory": "Social Mídia"
             }
         ]
     },
