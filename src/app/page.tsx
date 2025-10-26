@@ -67,7 +67,6 @@ const SkillBar = ({ skill, percentage }: { skill: string; percentage: number }) 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState('Todos');
-  const [activeSubFilter, setActiveSubFilter] = useState('Todos');
   const [isAnimating, setIsAnimating] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
 
@@ -107,42 +106,18 @@ export default function Home() {
     return ['Todos', 'Websites', 'Apps', 'Identidade Visual', 'Logos', 'Redes Sociais'].filter(c => c === 'Todos' || categories.has(c));
   }, [portfolio]);
   
-  const getSubCategories = useCallback((category: string) => {
-    if (category === 'Todos') return [];
-    const cats = new Set(portfolio.filter(p => p.mainCategory === category).map(p => p.category).filter(Boolean) as string[]);
-    return cats.size > 0 ? ['Todos', ...Array.from(cats)] : [];
-  }, [portfolio]);
-
   const filteredProjects = useMemo(() => {
     let projects = portfolio;
     if (activeFilter !== 'Todos') {
       projects = projects.filter(p => p.mainCategory === activeFilter);
     }
-    if (activeSubFilter !== 'Todos' && getSubCategories(activeFilter).length > 0) {
-      projects = projects.filter(p => p.category === activeSubFilter);
-    }
     return projects;
-  }, [portfolio, activeFilter, activeSubFilter, getSubCategories]);
+  }, [portfolio, activeFilter]);
 
   const handleFilterClick = (filter: string) => {
     setIsAnimating(true);
     setTimeout(() => {
-      setActiveFilter(prevFilter => {
-        if (prevFilter === filter) {
-          setActiveSubFilter('Todos');
-          return 'Todos';
-        }
-        setActiveSubFilter('Todos');
-        return filter;
-      });
-      setIsAnimating(false);
-    }, 300);
-  };
-  
-  const handleSubFilterClick = (filter: string) => {
-    setIsAnimating(true);
-    setTimeout(() => {
-      setActiveSubFilter(filter);
+      setActiveFilter(filter);
       setIsAnimating(false);
     }, 300);
   };
@@ -245,22 +220,22 @@ export default function Home() {
                       <ul className="social-share flex list-none gap-4 mt-2 justify-center">
                           <li>
                             <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                              <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.1s' }}/>
+                              <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
                             </a>
                           </li>
                           <li>
                             <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                              <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.2s' }} />
+                              <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
                             </a>
                           </li>
                           <li>
                             <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                              <Instagram size={30} className="text-primary filter-primary" style={{ animationDelay: '0.3s' }} />
+                              <Instagram size={30} className="text-primary filter-primary" />
                             </a>
                           </li>
                           <li>
                             <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                              <Github size={30} className="text-primary filter-primary" style={{ animationDelay: '0.4s' }} />
+                              <Github size={30} className="text-primary filter-primary" />
                             </a>
                           </li>
                       </ul>
@@ -309,7 +284,7 @@ export default function Home() {
                             <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
                         </div>
                         <div className="card-content flex-grow">
-                          <div className="text-center lg:text-left">
+                           <div className="text-center lg:text-left">
                             <span className="subtitle uppercase text-xl tracking-wider gradient-title-animation">Designer & Programador</span>
                             <h3 className="title text-3xl font-bold mt-2 mb-2">Leandro José</h3>
                             <span className="designation text-xl">Lebron</span>
@@ -320,33 +295,31 @@ export default function Home() {
                               Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
                             </p>
                           </div>
-                            <div className="mt-6">
-                              <div className="flex justify-center lg:justify-start">
-                                  <div className="skill-share-inner text-center lg:text-left">
-                                      <h4 className="text-xl font-bold mb-4 gradient-title-animation">Siga-me</h4>
-                                      <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
-                                            <li>
-                                              <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.1s' }}/>
-                                              </a>
-                                            </li>
-                                            <li>
-                                              <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.2s' }} />
-                                              </a>
-                                            </li>
-                                            <li>
-                                              <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                <Instagram size={30} className="text-primary filter-primary" style={{ animationDelay: '0.3s' }} />
-                                              </a>
-                                            </li>
-                                            <li>
-                                              <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                <Github size={30} className="text-primary filter-primary" style={{ animationDelay: '0.4s' }} />
-                                              </a>
-                                            </li>
-                                        </ul>
-                                  </div>
+                             <div className="mt-6 flex justify-center lg:justify-start">
+                              <div className="skill-share-inner text-center lg:text-left">
+                                  <h4 className="text-xl font-bold mb-4 gradient-title-animation">Siga-me</h4>
+                                  <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
+                                        <li>
+                                          <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                            <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                            <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                            <Instagram size={30} className="text-primary filter-primary" />
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                            <Github size={30} className="text-primary filter-primary" />
+                                          </a>
+                                        </li>
+                                    </ul>
                               </div>
                           </div>
                         </div>
@@ -374,7 +347,7 @@ export default function Home() {
                       >
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
-                          className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110 ${activeTool === tool.alt ? '' : 'tool-icon-gradient'}`}
+                          className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
                           title={tool.alt}
                         >
                           <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-none" />
@@ -402,10 +375,10 @@ export default function Home() {
                         >
                           <button 
                             onClick={() => handleToolClick(tool.alt)}
-                            className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110 ${activeTool === tool.alt ? '' : 'tool-icon-gradient'}`}
+                            className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
                             title={tool.alt}
                           >
-                             <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={activeTool === tool.alt ? '' : isSpecial ? 'filter-primary' : 'filter-none'}/>
+                             <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={isSpecial ? 'filter-primary' : 'filter-none'}/>
                           </button>
                           {activeTool === tool.alt && (
                             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -428,31 +401,24 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-12" data-aos="fade-up">
-              {mainCategories.map((category) => (
-                <React.Fragment key={category}>
-                  <Button
-                    variant={activeFilter === category ? "default" : "outline"}
-                    onClick={() => handleFilterClick(category)}
-                    className="capitalize rounded-full px-4 py-2 text-base transition-all duration-300"
-                  >
-                    {category}
-                  </Button>
-                </React.Fragment>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center mb-12" data-aos="fade-up">
+              {['Todos', 'Websites', 'Apps'].map((category, index) => (
+                <Button
+                  key={category}
+                  variant={activeFilter === category ? 'default' : 'outline'}
+                  onClick={() => handleFilterClick(category)}
+                  className={`w-full rounded-md ${index === 2 ? 'col-span-2 md:col-span-1' : ''}`}
+                >
+                  {category}
+                </Button>
               ))}
-               <div className={`w-full flex flex-wrap justify-center gap-2 mt-4 sub-filter-container ${activeFilter !== 'Todos' && getSubCategories(activeFilter).length > 0 ? 'expanded' : ''}`}>
-                {activeFilter !== 'Todos' && getSubCategories(activeFilter).map(subCategory => (
-                  <Button
-                      key={subCategory}
-                      variant={activeSubFilter === subCategory ? "secondary" : "ghost"}
-                      size="sm"
-                      onClick={() => handleSubFilterClick(subCategory)}
-                      className="capitalize rounded-full px-4 py-1 text-sm transition-all duration-300"
-                  >
-                      {subCategory}
-                  </Button>
-                ))}
-              </div>
+               <Button
+                  variant={activeFilter === 'Identidade Visual' ? 'default' : 'outline'}
+                  onClick={() => handleFilterClick('Identidade Visual')}
+                  className="col-span-2 rounded-md"
+                >
+                  Identidade Visual
+                </Button>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
