@@ -1,4 +1,3 @@
-
 'use client';
 import * as React from "react";
 import Image from "next/image";
@@ -7,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -243,7 +242,7 @@ export default function Home() {
                     </nav>
                      <div className="p-6 border-t">
                       <h4 className="text-xl font-bold mb-4 gradient-title-animation">Siga-me</h4>
-                      <ul className="social-share flex list-none gap-4 mt-2 justify-start">
+                      <ul className="social-share flex list-none gap-4 mt-2 justify-center">
                           <li>
                             <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
                               <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.1s' }}/>
@@ -303,55 +302,57 @@ export default function Home() {
         
         <div id="sobre" className="py-24 section-separator">
           <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1">
-                  <Card className="p-8" data-aos="fade-up" data-aos-delay="200">
-                      <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
-                          <div className="card-thumbnail flex-shrink-0">
-                              <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
+            <div className="grid grid-cols-1">
+                <Card className="p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
+                        <div className="card-thumbnail flex-shrink-0">
+                            <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
+                        </div>
+                        <div className="card-content flex-grow">
+                          <div className="text-center lg:text-left">
+                            <span className="subtitle uppercase text-xl tracking-wider gradient-title-animation">Designer & Programador</span>
+                            <h3 className="title text-3xl font-bold mt-2 mb-2">Leandro José</h3>
+                            <span className="designation text-xl">Lebron</span>
                           </div>
-                          <div className="card-content flex-grow">
-                            <div className="text-center lg:text-left">
-                              <span className="subtitle mt-4 lg:mt-0 uppercase text-xl tracking-wider gradient-title-animation">Designer & Programador</span>
-                              <h3 className="title text-3xl font-bold mt-1">Leandro José</h3>
-                              <span className="designation text-xl mt-1">Lebron</span>
-                            </div>
-                              
-                            <p className="discription text-lg text-gray-300 max-w-4xl mx-auto lg:mx-0 mt-4">
+                          
+                          <div className="mt-4">
+                            <p className="discription text-lg text-gray-300 max-w-4xl mx-auto lg:mx-0">
                               Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
                             </p>
-                              <div className="mt-6">
-                                <div className="flex justify-center lg:justify-start">
-                                    <div className="skill-share-inner text-center lg:text-left">
-                                        <h4 className="text-xl font-bold mb-4 gradient-title-animation">Siga-me</h4>
-                                        <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
-                                              <li>
-                                                <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                  <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.1s' }}/>
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                  <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.2s' }} />
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                  <Instagram size={30} className="text-primary filter-primary" style={{ animationDelay: '0.3s' }} />
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                                  <Github size={30} className="text-primary filter-primary" style={{ animationDelay: '0.4s' }} />
-                                                </a>
-                                              </li>
-                                          </ul>
-                                    </div>
-                                </div>
-                            </div>
                           </div>
-                      </div>
-                  </Card>
-              </div>
+                            <div className="mt-6">
+                              <div className="flex justify-center lg:justify-start">
+                                  <div className="skill-share-inner text-center lg:text-left">
+                                      <h4 className="text-xl font-bold mb-4 gradient-title-animation">Siga-me</h4>
+                                      <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
+                                            <li>
+                                              <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.1s' }}/>
+                                              </a>
+                                            </li>
+                                            <li>
+                                              <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" style={{ animationDelay: '0.2s' }} />
+                                              </a>
+                                            </li>
+                                            <li>
+                                              <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                                <Instagram size={30} className="text-primary filter-primary" style={{ animationDelay: '0.3s' }} />
+                                              </a>
+                                            </li>
+                                            <li>
+                                              <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                                <Github size={30} className="text-primary filter-primary" style={{ animationDelay: '0.4s' }} />
+                                              </a>
+                                            </li>
+                                        </ul>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </Card>
+            </div>
           </div>
         </div>
 
@@ -373,10 +374,10 @@ export default function Home() {
                       >
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
-                           className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110 ${activeTool === tool.alt ? '' : 'tool-icon-gradient'}`}
+                          className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110 ${activeTool === tool.alt ? '' : 'tool-icon-gradient'}`}
                           title={tool.alt}
                         >
-                          <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={`${activeTool === tool.alt ? '' : 'filter-none'}`} />
+                          <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-none" />
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -427,39 +428,31 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-             <div className="flex flex-wrap items-center justify-center gap-2 mb-12" data-aos="fade-up">
-              {mainCategories.map(category => {
-                const subCategories = getSubCategories(category);
-                const isActive = activeFilter === category;
-
-                return (
-                  <React.Fragment key={category}>
-                    <Button
-                      variant={isActive ? "default" : "outline"}
-                      onClick={() => handleFilterClick(category)}
-                      className="capitalize rounded-full px-6 py-2 text-base transition-all duration-300"
-                    >
-                      {category}
-                    </Button>
-                    
-                    {isActive && subCategories.length > 0 && (
-                      <div className="flex flex-wrap gap-2 items-center ml-2 sub-filter-container expanded">
-                        {subCategories.map(subCategory => (
-                          <Button
-                              key={subCategory}
-                              variant={activeSubFilter === subCategory ? "secondary" : "ghost"}
-                              size="sm"
-                              onClick={() => handleSubFilterClick(subCategory)}
-                              className="capitalize rounded-full px-4 py-1 text-sm transition-all duration-300"
-                          >
-                              {subCategory}
-                          </Button>
-                        ))}
-                      </div>
-                    )}
-                  </React.Fragment>
-                );
-              })}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-12" data-aos="fade-up">
+              {mainCategories.map((category) => (
+                <React.Fragment key={category}>
+                  <Button
+                    variant={activeFilter === category ? "default" : "outline"}
+                    onClick={() => handleFilterClick(category)}
+                    className="capitalize rounded-full px-4 py-2 text-base transition-all duration-300"
+                  >
+                    {category}
+                  </Button>
+                </React.Fragment>
+              ))}
+               <div className={`w-full flex flex-wrap justify-center gap-2 mt-4 sub-filter-container ${activeFilter !== 'Todos' && getSubCategories(activeFilter).length > 0 ? 'expanded' : ''}`}>
+                {activeFilter !== 'Todos' && getSubCategories(activeFilter).map(subCategory => (
+                  <Button
+                      key={subCategory}
+                      variant={activeSubFilter === subCategory ? "secondary" : "ghost"}
+                      size="sm"
+                      onClick={() => handleSubFilterClick(subCategory)}
+                      className="capitalize rounded-full px-4 py-1 text-sm transition-all duration-300"
+                  >
+                      {subCategory}
+                  </Button>
+                ))}
+              </div>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
