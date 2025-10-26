@@ -269,26 +269,28 @@
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
+.tool-icon {
+  background-color: hsl(var(--card));
+  transition: all 0.3s ease-in-out;
+}
+
 .tool-icon-gradient {
   background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
 }
-.tool-icon-gradient-active {
-  background: hsl(var(--card));
-  transform: scale(1.1);
+
+.tool-icon .filter-primary,
+.tool-icon .filter-none {
+  filter: brightness(0) saturate(100%) invert(43%) sepia(21%) saturate(1209%) hue-rotate(219deg) brightness(91%) contrast(88%);
 }
 
-.tool-icon-gradient .filter-none,
-.tool-icon-gradient .filter-primary {
+.tool-icon-gradient .filter-primary,
+.tool-icon-gradient .filter-none {
    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
-.tool-icon-gradient-active .filter-primary {
-  filter: brightness(0) saturate(100%) invert(43%) sepia(21%) saturate(1209%) hue-rotate(219deg) brightness(91%) contrast(88%);
+.tool-icon-active {
+    transform: scale(1.1);
 }
-.tool-icon-gradient-active .filter-none {
-  filter: none;
-}
-
 
 @keyframes sequential-color-pulse {
   0%, 100% {
@@ -338,9 +340,11 @@
 
 .project-detail-overlay {
   transform: translateY(100%);
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
 }
 .project-detail-overlay.active {
   transform: translateY(0);
 }
+
 

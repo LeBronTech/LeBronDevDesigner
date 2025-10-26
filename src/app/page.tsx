@@ -1,10 +1,8 @@
 
 'use client';
-import * as React from "react";
-import Image from "next/image";
-import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Eye, Smartphone, List, Grid, Circle, ArrowUpRight, ArrowUp, X as CloseIcon } from "lucide-react";
+import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Eye, Smartphone, List, Grid, Circle, ArrowUpRight, X as CloseIcon, ArrowUp } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -13,6 +11,8 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AOS from 'aos';
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
@@ -74,7 +74,6 @@ export default function Home() {
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [portfolioView, setPortfolioView] = useState('list');
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
-
 
   const handleToolClick = (toolName: string) => {
     setActiveTool(activeTool === toolName ? null : toolName);
@@ -271,7 +270,7 @@ export default function Home() {
                       </ul>
                     </nav>
                      <div className="p-6 border-t">
-                      <h4 className="text-xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
+                      <h4 className="text-2xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
                       <ul className="social-share flex list-none gap-4 mt-2 justify-center">
                           <li>
                             <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
@@ -331,54 +330,54 @@ export default function Home() {
         </div>
         
         <div id="sobre" className="py-24 section-separator">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1">
-                    <Card className="p-8" data-aos="fade-up" data-aos-delay="200">
-                        <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
-                            <div className="card-thumbnail flex-shrink-0">
-                                <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
-                            </div>
-                            <div className="card-content flex-grow">
-                                <div className="text-center lg:text-left mb-2">
-                                    <span className="subtitle uppercase text-2xl tracking-wider gradient-title-animation">Designer & Programador</span>
-                                    <h3 className="title text-3xl font-bold mt-1 mb-1">Leandro José</h3>
-                                    <span className="designation text-xl">Lebron</span>
-                                </div>
-                                <div className="mt-4 mb-4">
-                                    <p className="discription text-lg text-gray-300 max-w-4xl mx-auto lg:mx-0">
-                                        Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
-                                    </p>
-                                </div>
-                                 <div className="skill-share-inner text-center lg:text-left">
-                                  <h4 className="text-2xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
-                                  <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
-                                      <li>
-                                        <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                          <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                          <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                          <Instagram size={30} className="text-primary filter-primary" />
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                          <Github size={30} className="text-primary filter-primary" />
-                                        </a>
-                                      </li>
-                                  </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </Card>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1">
+              <Card className="p-6 lg:p-8" data-aos="fade-up">
+                <div className="flex flex-col lg:flex-row items-center gap-8">
+                  <div className="card-thumbnail flex-shrink-0">
+                    <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg shadow-lg" data-ai-hint={placeholderImages.about['data-ai-hint']}/>
+                  </div>
+                  <div className="card-content flex-grow text-center lg:text-left">
+                    <div className="mb-4">
+                        <h4 className="text-2xl font-bold mb-2 gradient-title-animation">Designer & Programador</h4>
+                        <h3 className="title text-3xl font-bold">Leandro José</h3>
+                        <span className="designation text-xl text-primary">Lebron</span>
+                    </div>
+                    <div className="mb-6">
+                        <p className="discription text-lg text-muted-foreground leading-relaxed">
+                            Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
+                        </p>
+                    </div>
+                    <div className="skill-share-inner">
+                        <h4 className="text-xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
+                        <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
+                            <li>
+                              <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Instagram size={30} className="text-primary filter-primary" />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                <Github size={30} className="text-primary filter-primary" />
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
                 </div>
+              </Card>
             </div>
+          </div>
         </div>
 
         <div id="ferramentas" className="py-24 section-separator">
@@ -398,14 +397,14 @@ export default function Home() {
                         data-aos-delay={`${index * 100}`}
                       >
                         <button 
-                           onClick={() => handleToolClick(tool.alt)}
-                           className={cn(
-                            "w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
-                            activeTool === tool.alt ? "tool-icon-gradient" : "bg-card"
+                          onClick={() => handleToolClick(tool.alt)}
+                          className={cn(
+                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu tool-icon",
+                            activeTool === tool.alt ? "tool-icon-active" : "tool-icon-gradient"
                           )}
                           title={tool.alt}
                         >
-                          <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("filter-none transition-all", activeTool === tool.alt ? "" : "filter-primary")} />
+                          <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("filter-primary transition-all")} />
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -419,7 +418,12 @@ export default function Home() {
                 <div data-aos="fade-up" data-aos-delay="400">
                   <h3 className="text-2xl font-semibold mb-6 text-center gradient-title-animation">Desenvolvimento</h3>
                   <div className="flex flex-wrap justify-center gap-4">
-                    {placeholderImages.tools.development.map((tool, index) => {
+                    {[
+                      ...placeholderImages.tools.development.slice(0, 4),
+                      placeholderImages.tools.development.find(t => t.alt === 'css'),
+                      ...placeholderImages.tools.development.slice(4).filter(t => t.alt !== 'css')
+                    ].map((tool, index) => {
+                      if (!tool) return null;
                        const isSpecial = ['react', 'flutter', 'python'].includes(tool.alt.toLowerCase());
                        return (
                         <div 
@@ -428,19 +432,19 @@ export default function Home() {
                           data-aos="fade-up"
                           data-aos-delay={`${index * 100}`}
                         >
-                           <button 
-                             onClick={() => handleToolClick(tool.alt)}
-                             className={cn(
-                               "w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
-                               activeTool === tool.alt ? "tool-icon-gradient" : "bg-card"
-                             )}
-                             title={tool.alt}
-                           >
-                              <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn(
-                                "transition-all",
-                                isSpecial && ! (activeTool === tool.alt) ? 'filter-primary' : 'filter-none'
-                              )}/>
-                           </button>
+                          <button 
+                            onClick={() => handleToolClick(tool.alt)}
+                            className={cn(
+                              "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu tool-icon",
+                              activeTool === tool.alt ? "tool-icon-active" : "tool-icon-gradient"
+                            )}
+                            title={tool.alt}
+                          >
+                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn(
+                               "transition-all",
+                               activeTool === tool.alt ? "filter-none" : "filter-primary"
+                             )}/>
+                          </button>
                           {activeTool === tool.alt && (
                             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
                               {tool.alt}
@@ -462,16 +466,16 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center mb-8" data-aos="fade-up">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 justify-center mb-8" data-aos="fade-up">
               {mainCategories.map((category) => (
                   <div key={category} className="flex flex-col items-center">
                       <Button
                           variant={activeFilter === category ? 'default' : 'outline'}
                           onClick={() => handleFilterClick(category)}
-                          className="rounded-full w-full px-4 py-2 flex items-center justify-center text-xs md:text-sm"
+                          className="rounded-full w-full px-2 py-1 md:px-4 md:py-2 flex items-center justify-center text-xs md:text-sm"
                       >
                           {getCategoryIcon(category)}
-                          {category}
+                          <span className="ml-2">{category}</span>
                       </Button>
                       {activeFilter === category && subCategories.length > 1 && (
                           <div className="flex flex-wrap gap-2 justify-center mt-2">
@@ -510,8 +514,8 @@ export default function Home() {
               className={cn(
                 "transition-all duration-300",
                 isAnimating && 'opacity-0',
-                activeFilter === 'Logos' 
-                  ? 'columns-1 sm:columns-2 lg:columns-3 gap-8' 
+                activeFilter === 'Logos'
+                  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'
                   : portfolioView === 'grid' 
                   ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
                   : 'space-y-8'
@@ -521,74 +525,77 @@ export default function Home() {
                 <div
                   key={`${project.title}-${index}`}
                   className={cn(
-                    "break-inside-avoid mb-8 transition-all duration-300",
-                    isAnimating ? 'animate-zoomOut' : 'animate-zoomIn'
+                    "break-inside-avoid transition-all duration-300",
+                    isAnimating ? 'animate-zoomOut' : 'animate-zoomIn',
+                    portfolioView === 'list' && activeFilter !== 'Logos' ? 'mb-8' : ''
                   )}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
-                  {activeFilter === 'Logos' ? (
-                     <Card className="overflow-hidden group bg-card h-full flex flex-col items-center justify-center p-4">
-                      <div className="relative w-full aspect-video mb-4">
-                         <Image src={project.src} alt={project.title} layout="fill" objectFit="contain" className="transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
+                  <Card 
+                    className="overflow-hidden group bg-card h-full relative"
+                    onClick={() => portfolioView === 'grid' && activeFilter !== 'Logos' && handleProjectClick(project)}
+                  >
+                    <div className={cn(
+                        "relative w-full",
+                        portfolioView === 'grid' || activeFilter === 'Logos' ? 'aspect-square' : 'aspect-video md:aspect-auto',
+                        portfolioView === 'list' && activeFilter !== 'Logos' ? 'md:w-1/3' : ''
+                    )}>
+                      <Image 
+                        src={project.src} 
+                        alt={project.title} 
+                        layout="fill" 
+                        objectFit="cover" 
+                        className="transition-transform duration-500 group-hover:scale-110" 
+                        data-ai-hint={project['data-ai-hint']}
+                      />
+                    </div>
+                    {portfolioView === 'grid' && activeFilter !== 'Logos' && (
+                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                        <p className="text-white text-lg font-semibold text-center">{project.title}</p>
                       </div>
-                      <h3 className="font-semibold text-lg text-center">{project.title}</h3>
-                     </Card>
-                  ) : portfolioView === 'grid' ? (
-                    <Card className="cursor-pointer overflow-hidden group bg-card h-full" onClick={() => handleProjectClick(project)}>
-                      <div className="relative aspect-video">
-                        <Image src={project.src} alt={project.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
-                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                         <p className="text-white text-lg font-semibold text-center">{project.title}</p>
+                    )}
+                    
+                    {portfolioView === 'grid' && activeFilter !== 'Logos' ? null : activeFilter === 'Logos' ? (
+                       <CardContent className="p-4 text-center">
+                          <CardTitle className="text-lg">{project.title}</CardTitle>
+                       </CardContent>
+                    ) : (
+                      <div className="md:w-2/3 p-6">
+                        <CardHeader className="p-0">
+                          <CardTitle>{project.title}</CardTitle>
+                          <CardDescription>{project.category || project.mainCategory}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-0 mt-4">
+                          <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                          {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center">Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/></a>}
+                        </CardContent>
+                      </div>
+                    )}
+                    
+                    {selectedProject?.title === project.title && portfolioView === 'grid' && activeFilter !== 'Logos' && (
+                        <div
+                          className={cn(
+                            "project-detail-overlay absolute inset-0 bg-card/90 p-6 flex flex-col justify-end",
+                            selectedProject?.title === project.title && "active"
+                          )}
+                        >
+                          <button onClick={(e) => { e.stopPropagation(); handleCloseProjectDetail(); }} className="absolute top-4 right-4 text-white hover:text-primary z-10">
+                            <CloseIcon size={24} />
+                          </button>
+                          <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
+                          <p className="text-gray-300 mb-4">{selectedProject.description}</p>
+                          <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center self-start">
+                            Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
+                          </a>
                         </div>
-                      </div>
-                    </Card>
-                  ) : (
-                    <Card className="overflow-hidden group bg-card">
-                       <div className="flex flex-col md:flex-row">
-                          <div className="md:w-1/3 relative overflow-hidden">
-                            <Image src={project.src} alt={project.title} width={400} height={300} className="object-cover h-full w-full transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
-                          </div>
-                          <div className="md:w-2/3">
-                            <CardHeader>
-                              <CardTitle>{project.title}</CardTitle>
-                              <CardDescription>{project.category || project.mainCategory}</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                              <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-                              {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center">Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/></a>}
-                            </CardContent>
-                          </div>
-                       </div>
-                    </Card>
-                  )}
+                      )}
+                  </Card>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        {selectedProject && (
-          <div className="fixed inset-0 bg-black/80 z-[60] flex items-end" onClick={handleCloseProjectDetail}>
-            <div
-              className={cn(
-                "project-detail-overlay w-full bg-card rounded-t-2xl p-8 relative",
-                selectedProject ? 'active' : ''
-              )}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button onClick={handleCloseProjectDetail} className="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <CloseIcon size={24} />
-              </button>
-              <h2 className="text-3xl font-bold mb-2">{selectedProject.title}</h2>
-              <p className="text-primary mb-4">{selectedProject.category || selectedProject.mainCategory}</p>
-              <p className="text-muted-foreground mb-6">{selectedProject.description}</p>
-              <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center">
-                Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2" />
-              </a>
-            </div>
-          </div>
-        )}
 
         <div id="curriculo" className="py-24 section-separator">
           <div className="container mx-auto px-4">
@@ -598,7 +605,7 @@ export default function Home() {
             </div>
             <Tabs defaultValue="habilidades" className="w-full">
               <TabsList className="grid w-full grid-cols-2" data-aos="fade-up">
-                 <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
+                <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
                 <TabsTrigger value="formacao"><BookOpen className="mr-2" />Formação</TabsTrigger>
               </TabsList>
                <TabsContent value="habilidades">
