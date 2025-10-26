@@ -3,17 +3,17 @@
 import * as React from "react";
 import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Eye, Smartphone, List, Grid, Circle, ArrowUpRight, X as CloseIcon, ArrowUp } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useState, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import AOS from 'aos';
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
@@ -379,6 +379,45 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="rn-service-area py-24 section-separator" id="features">
+          <div className="container mx-auto px-4">
+              <div className="text-center mb-12" data-aos="fade-up">
+                  <span className="subtitle uppercase tracking-widest gradient-title-animation">O que fazemos</span>
+                  <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Nossos Serviços</h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  <Card className="text-center p-6" data-aos="fade-up" data-aos-delay="100">
+                      <div className="icon mx-auto mb-4 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Layout className="w-8 h-8 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl mb-2">Websites</CardTitle>
+                      <CardDescription>Criação de websites e landing pages responsivas, utilizando as tecnologias mais recentes para garantir performance e escalabilidade.</CardDescription>
+                  </Card>
+                  <Card className="text-center p-6" data-aos="fade-up" data-aos-delay="200">
+                      <div className="icon mx-auto mb-4 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Smartphone className="w-8 h-8 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl mb-2">Aplicativos Mobile</CardTitle>
+                      <CardDescription>Desenvolvimento de aplicativos nativos e multiplataforma para iOS e Android, focados em usabilidade e experiência do usuário.</CardDescription>
+                  </Card>
+                  <Card className="text-center p-6" data-aos="fade-up" data-aos-delay="300">
+                      <div className="icon mx-auto mb-4 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Eye className="w-8 h-8 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl mb-2">Identidade Visual</CardTitle>
+                      <CardDescription>Construção de identidades visuais completas, do conceito do logotipo à aplicação da marca em diversos pontos de contato (branding, UI/UX).</CardDescription>
+                  </Card>
+                  <Card className="text-center p-6" data-aos="fade-up" data-aos-delay="400">
+                      <div className="icon mx-auto mb-4 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Instagram className="w-8 h-8 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl mb-2">Social Mídia</CardTitle>
+                      <CardDescription>Criação e gerenciamento de conteúdo visual para mídias sociais, otimizando o engajamento e a presença digital da marca.</CardDescription>
+                  </Card>
+              </div>
+          </div>
+        </div>
+
         <div id="ferramentas" className="py-24 section-separator">
           <div className="container mx-auto px-4">
               <div className="text-center mb-12" data-aos="fade-up">
@@ -398,13 +437,12 @@ export default function Home() {
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
                            className={cn(
-                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu",
-                            activeTool === tool.alt ? "tool-icon-gradient" : "tool-icon",
+                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu tool-icon",
                             activeTool === tool.alt && "tool-icon-active"
                           )}
                           title={tool.alt}
                         >
-                           <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : '' )}/>
+                           <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-special-hover' : '' )}/>
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -417,7 +455,7 @@ export default function Home() {
                 </div>
                 <div data-aos="fade-up" data-aos-delay="400">
                   <h3 className="text-2xl font-semibold mb-6 text-center gradient-title-animation">Desenvolvimento</h3>
-                  <div className="flex flex-wrap justify-center gap-4">
+                   <div className="flex flex-wrap justify-center gap-4">
                     {[
                       ...placeholderImages.tools.development.filter(t => ['html', 'css'].includes(t.alt.toLowerCase())),
                       ...placeholderImages.tools.development.filter(t => !['html', 'css'].includes(t.alt.toLowerCase()))
@@ -433,13 +471,12 @@ export default function Home() {
                           <button 
                             onClick={() => handleToolClick(tool.alt)}
                            className={cn(
-                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu",
-                            activeTool === tool.alt ? "tool-icon-gradient" : "tool-icon",
+                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu tool-icon",
                             activeTool === tool.alt && "tool-icon-active"
                           )}
                             title={tool.alt}
                           >
-                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : '' )}/>
+                             <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-special-hover' : '' )}/>
                           </button>
                           {activeTool === tool.alt && (
                             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -462,33 +499,31 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 justify-center mb-8" data-aos="fade-up">
-              {mainCategories.map((category) => (
-                  <div key={category} className="flex flex-col items-center">
+             <div className="flex flex-wrap gap-4 justify-center mb-8" data-aos="fade-up">
+              {mainCategories.flatMap((category) => {
+                  const subItems = activeFilter === category && subCategories.length > 1 ? subCategories : [];
+                  return [
                       <Button
+                          key={category}
                           variant={activeFilter === category ? 'default' : 'outline'}
                           onClick={() => handleFilterClick(category)}
-                          className="rounded-full w-full px-2 py-1 md:px-4 md:py-2 flex items-center justify-center text-xs md:text-sm"
+                          className="rounded-full px-4 py-2 flex items-center justify-center text-sm"
                       >
                           {getCategoryIcon(category)}
                           <span className="ml-2">{category}</span>
-                      </Button>
-                      {activeFilter === category && subCategories.length > 1 && (
-                          <div className="flex flex-wrap gap-2 justify-center mt-2">
-                              {subCategories.map(sub => (
-                                  <Button
-                                      key={sub}
-                                      variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
-                                      onClick={() => handleSubFilterClick(sub)}
-                                      className="rounded-full px-3 py-1 text-xs"
-                                  >
-                                      {sub}
-                                  </Button>
-                              ))}
-                          </div>
-                      )}
-                  </div>
-              ))}
+                      </Button>,
+                      ...subItems.map(sub => (
+                          <Button
+                              key={sub}
+                              variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
+                              onClick={() => handleSubFilterClick(sub)}
+                              className="rounded-full px-3 py-1 text-xs animate-zoomIn"
+                          >
+                              {sub}
+                          </Button>
+                      ))
+                  ];
+              })}
             </div>
 
             {activeFilter !== 'Logos' && (
@@ -544,7 +579,7 @@ export default function Home() {
                     isAnimating && 'opacity-0',
                     activeFilter === 'Logos'
                       ? 'grid-cols-2 sm:grid-cols-3 gap-4 md:gap-8'
-                      : 'grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'
+                      : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'
                   )}
                 >
                   {filteredProjects.map((project, index) => (
@@ -690,13 +725,41 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="depoimentos" className="py-24 section-separator">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12" data-aos="fade-up">
-              <span className="subtitle uppercase tracking-widest gradient-title-animation">Depoimentos</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2">O que os clientes dizem</h2>
+         <div id="depoimentos" className="py-24 section-separator">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12" data-aos="fade-up">
+                    <span className="subtitle uppercase tracking-widest gradient-title-animation">Depoimentos</span>
+                    <h2 className="text-4xl lg:text-5xl font-bold mt-2">O que os clientes dizem</h2>
+                </div>
+                <Carousel
+                    opts={{ align: "start", loop: true }}
+                    className="w-full max-w-4xl mx-auto"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+                    <CarouselContent>
+                        {placeholderImages.testimonials.map((testimonial, index) => (
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/1">
+                                <Card className="testimonial m-4">
+                                    <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                                        <Image src={testimonial.src} alt={testimonial.name} width={100} height={100} className="rounded-full mb-4 border-2 border-primary" data-ai-hint={testimonial['data-ai-hint']} />
+                                        <div className="rating mb-4 flex">
+                                            {[...Array(5)].map((_, i) => (
+                                              <Image key={i} src="https://i.postimg.cc/yYFfQZzY/rating.png" alt="rating" width={20} height={20} />
+                                            ))}
+                                        </div>
+                                        <h3 className="title text-xl font-bold mb-1">{testimonial.title}</h3>
+                                        <span className="designation text-sm text-muted-foreground mb-4">{testimonial.designation}</span>
+                                        <p className="discription text-lg leading-relaxed">{testimonial.description}</p>
+                                    </CardContent>
+                                </Card>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-[-50px]" />
+                    <CarouselNext className="right-[-50px]" />
+                </Carousel>
             </div>
-          </div>
         </div>
         
         <div id="contacts" className="py-24">
@@ -726,4 +789,3 @@ export default function Home() {
     </div>
   );
 }
-
