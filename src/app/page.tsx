@@ -72,7 +72,7 @@ export default function Home() {
   const [activeSubFilter, setActiveSubFilter] = useState('Todos');
   const [isAnimating, setIsAnimating] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
-  const [portfolioView, setPortfolioView] = useState('list');
+  const [portfolioView, setPortfolioView] = useState('grid');
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
   const handleToolClick = (toolName: string) => {
@@ -106,10 +106,11 @@ export default function Home() {
       ...placeholderImages.portfolio.socials,
   ], []);
 
- const mainCategories = useMemo(() => {
+  const mainCategories = useMemo(() => {
     const categories = new Set(portfolio.map(p => p.mainCategory));
     return ['Todos', 'Websites', 'Apps', 'Identidade Visual', 'Logos', 'Social Mídia'].filter(c => c === 'Todos' || categories.has(c));
   }, [portfolio]);
+
 
   const subCategories = useMemo(() => {
     if (activeFilter === 'Todos' || !activeFilter) return [];
@@ -402,7 +403,7 @@ export default function Home() {
                           )}
                           title={tool.alt}
                         >
-                          <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : 'filter-primary' )} />
+                          <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : '' )} />
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -437,7 +438,7 @@ export default function Home() {
                             )}
                             title={tool.alt}
                           >
-                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : 'filter-primary' )}/>
+                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : '' )}/>
                           </button>
                           {activeTool === tool.alt && (
                             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -504,63 +505,96 @@ export default function Home() {
               </div>
             )}
             
-            <div
-              className={cn(
-                "transition-all duration-300",
-                isAnimating && 'opacity-0',
-                activeFilter === 'Logos'
-                  ? 'grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-8'
-                  : portfolioView === 'grid' 
-                  ? 'grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'
-                  : 'space-y-8'
-              )}
-            >
-              {filteredProjects.map((project, index) => (
-                <div
-                  key={`${project.title}-${index}`}
-                  className={cn(
-                    "transition-all duration-300 [perspective:1000px]",
-                    isAnimating ? 'animate-zoomOut' : 'animate-zoomIn',
-                    portfolioView === 'list' && activeFilter !== 'Logos' ? 'mb-8' : '',
-                    (portfolioView === 'grid' || activeFilter === 'Logos') ? 'aspect-square' : ''
-                  )}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
-                  <Card 
-                    className={cn(
-                      "w-full h-full relative cursor-pointer flip-card",
-                      flippedCard === index && "flipped"
-                    )}
-                    onClick={() => handleProjectClick(index)}
-                  >
-                   <div className="flip-card-inner w-full h-full relative">
-                      <div className="flip-card-front">
-                        <Image 
-                          src={project.src} 
-                          alt={project.title} 
-                          layout="fill" 
-                          objectFit="cover" 
-                          className="rounded-lg" 
-                          data-ai-hint={project['data-ai-hint']}
-                        />
-                      </div>
-                      <div className="flip-card-back p-6 flex flex-col justify-end rounded-lg">
-                        <div>
-                          <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                          <p className="text-gray-300 text-sm mb-4">{project.description}</p>
-                           {project.url && (
-                            <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm" onClick={(e) => e.stopPropagation()}>
-                              Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
-                            </a>
-                           )}
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
+            {portfolioView === 'list' && activeFilter !== 'Logos' ? (
+                <div className={cn("transition-all duration-300 space-y-8", isAnimating ? 'animate-zoomOut' : 'animate-zoomIn')}>
+                    {filteredProjects.map((project, index) => (
+                        <Card 
+                          key={`${project.title}-${index}-list`} 
+                          className="w-full flex flex-col md:flex-row overflow-hidden" 
+                          data-aos="fade-up" 
+                          data-aos-delay={index * 100}
+                        >
+                          <div className="md:w-1/3">
+                            <Image 
+                              src={project.src} 
+                              alt={project.title}
+                              width={400}
+                              height={300}
+                              className="w-full h-full object-cover" 
+                              data-ai-hint={project['data-ai-hint']}
+                            />
+                          </div>
+                          <div className="md:w-2/3 p-6 flex flex-col justify-center">
+                            <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                            <p className="text-muted-foreground mb-4">{project.description}</p>
+                            {project.url && (
+                                <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm self-start">
+                                  Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
+                                </a>
+                            )}
+                          </div>
+                        </Card>
+                    ))}
                 </div>
-              ))}
-            </div>
+            ) : (
+                <div
+                  className={cn(
+                    "grid transition-all duration-300",
+                    isAnimating && 'opacity-0',
+                    activeFilter === 'Logos'
+                      ? 'grid-cols-2 sm:grid-cols-3 gap-4 md:gap-8'
+                      : 'grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'
+                  )}
+                >
+                  {filteredProjects.map((project, index) => (
+                    <div
+                      key={`${project.title}-${index}-grid`}
+                      className={cn(
+                        "relative aspect-square cursor-pointer [perspective:1000px] group",
+                         isAnimating ? 'animate-zoomOut' : 'animate-zoomIn',
+                      )}
+                      onClick={() => handleProjectClick(index)}
+                      data-aos="fade-up"
+                      data-aos-delay={index * 100}
+                    >
+                      <Card 
+                        className={cn(
+                          "w-full h-full rounded-lg overflow-hidden flip-card",
+                          flippedCard === index && "flipped"
+                        )}
+                      >
+                       <div className="flip-card-inner w-full h-full relative">
+                          <div className="flip-card-front">
+                            <Image 
+                              src={project.src} 
+                              alt={project.title} 
+                              layout="fill" 
+                              objectFit="cover"
+                              data-ai-hint={project['data-ai-hint']}
+                            />
+                             {activeFilter === 'Logos' && (
+                                <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-2 text-center">
+                                    <h3 className="text-sm font-bold text-white truncate">{project.title}</h3>
+                                </div>
+                            )}
+                          </div>
+                          <div className="flip-card-back p-6 flex flex-col justify-end rounded-lg">
+                            <div>
+                              <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                              <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+                               {project.url && (
+                                <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm" onClick={(e) => e.stopPropagation()}>
+                                  Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
+                                </a>
+                               )}
+                            </div>
+                          </div>
+                        </div>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+            )}
           </div>
         </div>
 
@@ -691,4 +725,3 @@ export default function Home() {
     </div>
   );
 }
-
