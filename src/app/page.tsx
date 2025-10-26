@@ -280,47 +280,48 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
+
         <div id="siga-me-ferramentas" className="py-24 section-separator">
           <div className="container mx-auto px-4">
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-              <div className="md:col-span-1" data-aos="fade-up" data-aos-delay="200">
+            <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
+              <div data-aos="fade-up" data-aos-delay="200">
                 <div className="skill-share-inner text-center">
-                  <h2 className="title text-4xl lg:text-5xl font-bold mt-2">Siga-me</h2>
+                  <h2 className="title text-4xl lg:text-5xl font-bold mt-2 mb-4 font-secondary">Siga-me</h2>
                   <ul className="social-share flex list-none gap-4 mt-4 justify-center">
                       <li>
-                        <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Image src={placeholderImages.behance.src} width={40} height={40} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} />
+                        <a href="https://www.behance.net/lebrondesigner1" target="_blank" className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                          <Image src={placeholderImages.behance.src} width={40} height={40} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
                         </a>
                       </li>
                       <li>
-                        <a href="https://wa.me/5561984836034" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Image src={placeholderImages.whatsapp.src} width={40} height={40} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} />
+                        <a href="https://wa.me/5561984836034" target="_blank" className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                          <Image src={placeholderImages.whatsapp.src} width={40} height={40} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Instagram size={40} className="text-primary " />
+                        <a href="https://www.instagram.com/lebrondesign" target="_blank" className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                          <Instagram size={40} className="text-primary filter-primary" />
                         </a>
                       </li>
                       <li>
-                        <a href="https://github.com/LeBronTech" target="_blank" className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                          <Github size={40} className="text-primary " />
+                        <a href="https://github.com/LeBronTech" target="_blank" className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                          <Github size={40} className="text-primary filter-primary" />
                         </a>
                       </li>
                   </ul>
                 </div>
               </div>
-              <div className="md:col-span-2" data-aos="fade-up" data-aos-delay="400">
+            </div>
+            <div className="mt-16" data-aos="fade-up" data-aos-delay="400">
                 <div className="skill-share-inner text-center">
-                    <h2 className="title text-4xl lg:text-5xl font-bold mt-2">Ferramentas Usadas</h2>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
+                    <h2 className="title text-4xl lg:text-5xl font-bold mt-2 font-secondary">Ferramentas Usadas</h2>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
                       <div>
                         <h3 className="text-lg font-semibold mb-4 gradient-title-animation">Design & Edição</h3>
                         <div className="flex flex-wrap justify-center gap-4">
                           {placeholderImages.tools.design.map((tool, index) => (
-                            <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn" title={tool.alt}>
-                              <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
+                            <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-20 h-20 justify-center rn-btn" title={tool.alt}>
+                              <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} />
                             </div>
                           ))}
                         </div>
@@ -331,8 +332,8 @@ export default function Home() {
                           {placeholderImages.tools.development.map((tool, index) => {
                              const isSpecial = ['react', 'flutter', 'python'].includes(tool.alt.toLowerCase());
                              return (
-                              <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-24 h-24 justify-center rn-btn" title={tool.alt}>
-                                <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={isSpecial ? 'filter-primary' : ''}/>
+                              <div key={index} className="flex flex-col items-center gap-2 p-4 bg-card rounded-lg w-20 h-20 justify-center rn-btn" title={tool.alt}>
+                                <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={isSpecial ? 'filter-primary' : ''}/>
                               </div>
                             )
                           })}
@@ -341,38 +342,31 @@ export default function Home() {
                     </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
-
+        
         <div id="sobre" className="py-24 section-separator">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12" data-aos="fade-up">
                     <span className="subtitle uppercase tracking-widest gradient-title-animation">Sobre</span>
                     <h2 className="text-4xl lg:text-5xl font-bold mt-2">Quem sou eu</h2>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div className="grid grid-cols-1">
                     <div className="card-info bg-card p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                        <div className="flex flex-col lg:flex-row items-center gap-8">
-                            <div className="card-thumbnail">
+                        <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
+                            <div className="card-thumbnail flex-shrink-0">
                                 <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
                             </div>
-                            <div className="card-content">
+                            <div className="card-content flex-grow">
                                 <span className="subtitle mt-10 lg:mt-0 uppercase text-sm tracking-wider gradient-title-animation">Designer & Programador</span>
                                 <h3 className="title text-3xl font-bold mt-2">Leandro José</h3>
                                 <span className="designation text-lg">Lebron</span>
+                                <div className="seperator my-4 h-px bg-gray-700"></div>
+                                <p className="discription text-gray-300 max-w-2xl mx-auto lg:mx-0">
+                                    Olá, me chamo Leandro, conhecido também como LeBron,criador da LeBron Dev Designer,tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
+                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div className="card-description" data-aos="fade-up" data-aos-delay="400">
-                        <div className="title-area">
-                            <h3 className="text-3xl font-bold">Criador da Lebron Dev Designer</h3>
-                            <span className="date text-sm text-gray-400">2021</span>
-                        </div>
-                        <div className="seperator my-4 h-px bg-gray-700"></div>
-                        <p className="discription text-gray-300">
-                            Olá, me chamo Leandro, conhecido também como LeBron,criador da LeBron Dev Designer,tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -382,10 +376,10 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12" data-aos="fade-up">
               <span className="subtitle uppercase tracking-widest gradient-title-animation">Portfólio</span>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-2">Meu Portfólio</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-            <div className="flex flex-col items-center gap-4 mb-12" data-aos="fade-up">
+             <div className="flex flex-col items-center gap-4 mb-12" data-aos="fade-up">
                 <div className="flex flex-wrap justify-center gap-2 p-2 bg-card rounded-full">
                     {mainCategories.map(category => (
                         <Button
@@ -399,7 +393,7 @@ export default function Home() {
                     ))}
                 </div>
                 {subCategories.length > 0 && (
-                   <div className="flex flex-wrap justify-center gap-1 p-1 bg-card/50 rounded-full mt-2">
+                   <div className="flex flex-wrap justify-center gap-1 p-1 bg-card/50 rounded-full mt-4">
                         {subCategories.map(category => (
                             <Button
                               key={category}
@@ -434,7 +428,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent className="p-4">
                       <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-                      <p className="text-sm text-primary">{project.category || project.mainCategory}</p>
+                      <CardDescription className="text-sm text-primary">{project.category || project.mainCategory}</CardDescription>
                     </CardContent>
                   </Card>
                 </div>
@@ -571,3 +565,4 @@ export default function Home() {
   );
 }
 
+    
