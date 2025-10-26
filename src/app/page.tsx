@@ -7,14 +7,7 @@ import { useEffect, useState, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -507,7 +500,7 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 justify-center items-start mb-8" data-aos="fade-up">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4 justify-center items-start mb-8" data-aos="fade-up">
               {mainCategories.map(category => (
                 <Button
                   key={category}
@@ -549,7 +542,7 @@ export default function Home() {
             
             <div className={cn('transition-opacity duration-300', isAnimating ? 'opacity-0' : 'opacity-100')}>
               {portfolioView === 'grid' || activeFilter === 'Logos' ? (
-                <div className={cn("grid gap-8", activeFilter === 'Logos' ? "grid-cols-2 md:grid-cols-3" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3")}>
+                <div className={cn("grid gap-8", activeFilter === 'Logos' ? "grid-cols-2 md:grid-cols-3" : "grid-cols-1 md:grid-cols-2")}>
                   {filteredProjects.map((project, index) => (
                     <div
                       key={`${project.title}-${index}-grid`}
@@ -596,9 +589,11 @@ export default function Home() {
                       <Image src={project.src} alt={project.title} width={340} height={250} className="rounded-lg object-cover w-full md:w-1/3" data-ai-hint={project['data-ai-hint']} />
                       <div className="flex-1 text-center md:text-left">
                         <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                        <div className="text-sm text-muted-foreground mb-4">
-                          <span><strong>Cliente:</strong> {project.client}</span> | <span><strong>Serviços:</strong> {project.services}</span>
-                        </div>
+                         {'client' in project && 'services' in project && (
+                          <div className="text-sm text-muted-foreground mb-4">
+                            <span><strong>Cliente:</strong> {project.client}</span> | <span><strong>Serviços:</strong> {project.services}</span>
+                          </div>
+                        )}
                         <p className="mb-4">{project.description}</p>
                         {project.url && (
                           <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm">
