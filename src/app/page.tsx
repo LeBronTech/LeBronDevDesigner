@@ -2,7 +2,7 @@
 'use client';
 import * as React from "react";
 import Image from "next/image";
-import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Eye, Smartphone, List, Grid, Circle, ArrowUpRight, ArrowUp } from "lucide-react";
+import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Eye, Smartphone, List, Grid, Circle, ArrowUpRight, ArrowUp, X as CloseIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
@@ -12,6 +12,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, Sh
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AOS from 'aos';
+import { cn } from "@/lib/utils";
 
 const TypingEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
@@ -72,6 +73,8 @@ export default function Home() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [portfolioView, setPortfolioView] = useState('list');
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+
 
   const handleToolClick = (toolName: string) => {
     setActiveTool(activeTool === toolName ? null : toolName);
@@ -146,6 +149,14 @@ export default function Home() {
       setIsAnimating(false);
     }, 300);
   };
+  
+  const handleProjectClick = (project: any) => {
+    setSelectedProject(project);
+  };
+  
+  const handleCloseProjectDetail = () => {
+    setSelectedProject(null);
+  };
 
   const LogoIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4">
@@ -219,6 +230,17 @@ export default function Home() {
     { href: "#depoimentos", label: "DEPOIMENTOS" },
     { href: "#contacts", label: "CONTATO" },
   ];
+
+  const dynamicFilters = useMemo(() => {
+    const filters: { type: 'main' | 'sub'; label: string }[] = [];
+    mainCategories.forEach(cat => {
+      filters.push({ type: 'main', label: cat });
+      if (cat === activeFilter && subCategories.length > 1) {
+        subCategories.forEach(sub => filters.push({ type: 'sub', label: sub }));
+      }
+    });
+    return filters;
+  }, [mainCategories, activeFilter, subCategories]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -388,7 +410,10 @@ export default function Home() {
                       >
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
-                          className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu ${activeTool === tool.alt ? 'tool-icon-gradient-active scale-110' : 'tool-icon-gradient'}`}
+                           className={cn(
+                            "w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
+                            activeTool === tool.alt ? "tool-icon-gradient-active scale-110" : "tool-icon-gradient"
+                          )}
                           title={tool.alt}
                         >
                           <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-none" />
@@ -416,10 +441,13 @@ export default function Home() {
                         >
                            <button 
                             onClick={() => handleToolClick(tool.alt)}
-                            className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu ${activeTool === tool.alt ? 'tool-icon-gradient-active scale-110' : 'tool-icon-gradient'}`}
+                            className={cn(
+                                "w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
+                                activeTool === tool.alt ? "tool-icon-gradient-active scale-110" : "tool-icon-gradient"
+                            )}
                             title={tool.alt}
                           >
-                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={`${isSpecial ? 'filter-primary' : 'filter-none'} ${activeTool === tool.alt && 'filter-special-hover'}`}/>
+                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn(isSpecial ? 'filter-primary' : 'filter-none')}/>
                           </button>
                           {activeTool === tool.alt && (
                             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -442,35 +470,39 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 justify-center mb-8 max-w-3xl mx-auto" data-aos="fade-up">
-              {mainCategories.map((category) => (
-                <Button
-                  key={category}
-                  variant={activeFilter === category ? 'default' : 'outline'}
-                  onClick={() => handleFilterClick(category)}
-                  className="w-full rounded-full flex items-center justify-center text-xs md:text-sm"
-                >
-                  {getCategoryIcon(category)}
-                  {category}
-                </Button>
-              ))}
+             <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center mb-8" data-aos="fade-up">
+              {dynamicFilters.map((filter, index) => {
+                const isMain = filter.type === 'main';
+                const isActive = isMain ? activeFilter === filter.label : activeSubFilter === filter.label;
+
+                if (isMain) {
+                  return (
+                    <Button
+                      key={`${filter.label}-${index}`}
+                      variant={isActive ? 'default' : 'outline'}
+                      onClick={() => handleFilterClick(filter.label)}
+                      className="rounded-full px-4 py-2 flex items-center justify-center text-xs md:text-sm"
+                    >
+                      {getCategoryIcon(filter.label)}
+                      {filter.label}
+                    </Button>
+                  );
+                }
+                
+                // Subfilter
+                return (
+                    <Button
+                      key={`${filter.label}-${index}`}
+                      variant={isActive ? 'secondary' : 'ghost'}
+                      onClick={() => handleSubFilterClick(filter.label)}
+                      className="rounded-full px-3 py-1 text-xs sub-filter-enter"
+                    >
+                      {filter.label}
+                    </Button>
+                );
+              })}
             </div>
 
-            {subCategories.length > 1 && (
-              <div className="flex flex-wrap gap-2 justify-center mb-12">
-                {subCategories.map((sub) => (
-                  <Button
-                    key={sub}
-                    variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
-                    onClick={() => handleSubFilterClick(sub)}
-                    className="rounded-full px-3 py-1 text-xs"
-                  >
-                    {sub}
-                  </Button>
-                ))}
-              </div>
-            )}
-             
             {activeFilter !== 'Logos' && (
               <div className="flex justify-center mb-8" data-aos="fade-up">
                 <div className="inline-flex rounded-md shadow-sm bg-card p-1">
@@ -487,19 +519,20 @@ export default function Home() {
             )}
             
             <div
-              className={`
-                ${activeFilter === 'Logos' 
-                  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8' 
-                  : portfolioView === 'grid' 
-                  ? 'grid grid-cols-1 lg:grid-cols-2 gap-8' 
-                  : 'space-y-8'
-                }
-              `}
+              className={cn(
+                  "transition-all duration-300",
+                  isAnimating && 'opacity-0',
+                  activeFilter === 'Logos' 
+                    ? 'columns-1 sm:columns-2 lg:columns-3 gap-8' 
+                    : portfolioView === 'grid' 
+                    ? 'columns-1 lg:columns-2 gap-8'
+                    : 'space-y-8'
+              )}
             >
               {filteredProjects.map((project, index) => (
                 <div
                   key={`${project.title}-${index}`}
-                  className={`transform transition-all duration-300 ${isAnimating ? 'animate-zoomOut' : 'animate-zoomIn'}`}
+                  className={`break-inside-avoid mb-8 transform transition-all duration-300 ${isAnimating ? 'animate-zoomOut' : 'animate-zoomIn'}`}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
@@ -511,20 +544,14 @@ export default function Home() {
                       <h3 className="font-semibold text-lg">{project.title}</h3>
                      </Card>
                   ) : portfolioView === 'grid' ? (
-                     <Card className="cursor-pointer overflow-hidden group bg-card h-full">
-                       <CardHeader className="p-0">
-                         <div className="relative h-60">
-                           <Image src={project.src} alt={project.title} layout="fill" objectFit="cover" className="rounded-t-lg transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
-                           <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                             <p className="text-white text-lg font-semibold">{project.title}</p>
-                           </div>
-                         </div>
-                       </CardHeader>
-                       <CardContent className="p-4">
-                         <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-                         <CardDescription className="text-sm text-primary">{project.category || project.mainCategory}</CardDescription>
-                       </CardContent>
-                     </Card>
+                    <Card className="cursor-pointer overflow-hidden group bg-card" onClick={() => handleProjectClick(project)}>
+                      <div className="relative aspect-w-16 aspect-h-9">
+                        <Image src={project.src} alt={project.title} layout="fill" objectFit="cover" className="transition-transform duration-500 group-hover:scale-110" data-ai-hint={project['data-ai-hint']} />
+                        <div className={cn("absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center", project.mainCategory === "Websites" && "aspect-[1.78]", project.mainCategory === "Social Mídia" && "aspect-[1]")}>
+                         <p className="text-white text-lg font-semibold">{project.title}</p>
+                        </div>
+                      </div>
+                    </Card>
                   ) : (
                     <Card className="overflow-hidden group bg-card">
                        <div className="flex flex-col md:flex-row">
@@ -550,6 +577,27 @@ export default function Home() {
           </div>
         </div>
 
+        {selectedProject && (
+          <div className="fixed inset-0 bg-black/80 z-[60] flex items-end" onClick={handleCloseProjectDetail}>
+            <div
+              className={cn(
+                "project-detail-overlay w-full bg-card rounded-t-2xl p-8 relative",
+                selectedProject ? 'active' : ''
+              )}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button onClick={handleCloseProjectDetail} className="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <CloseIcon size={24} />
+              </button>
+              <h2 className="text-3xl font-bold mb-2">{selectedProject.title}</h2>
+              <p className="text-primary mb-4">{selectedProject.category || selectedProject.mainCategory}</p>
+              <p className="text-muted-foreground mb-6">{selectedProject.description}</p>
+              <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center">
+                Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2" />
+              </a>
+            </div>
+          </div>
+        )}
 
         <div id="curriculo" className="py-24 section-separator">
           <div className="container mx-auto px-4">
@@ -588,7 +636,7 @@ export default function Home() {
                         <span className="subtitle text-primary">2018-2020</span>
                         <h4 className="maintitle text-2xl font-bold mt-2">Faculdade</h4>
                         <div className="experience-list mt-4 space-y-6">
-                            <Card className="rounded-2xl">
+                            <Card className="rounded-full">
                                 <CardHeader>
                                     <div className="flex justify-between items-center">
                                         <div>
@@ -604,7 +652,7 @@ export default function Home() {
                                     <p>Formação em Html, CSS, JavaScript e desenvolvimento do primeiro site.</p>
                                 </CardContent>
                             </Card>
-                             <Card className="rounded-2xl">
+                             <Card className="rounded-full">
                                 <CardHeader>
                                     <div className="flex justify-between items-center">
                                         <div>
@@ -619,7 +667,7 @@ export default function Home() {
                                     <p>Certificação de desnvolvimento em Android.</p>
                                 </CardContent>
                             </Card>
-                             <Card className="rounded-2xl">
+                             <Card className="rounded-full">
                                 <CardHeader>
                                     <div className="flex justify-between items-center">
                                         <div>
@@ -678,3 +726,4 @@ export default function Home() {
     </div>
   );
 }
+
