@@ -277,55 +277,54 @@ export default function Home() {
         
         <div id="sobre" className="py-24 section-separator">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1">
-                <Card className="p-8" data-aos="fade-up" data-aos-delay="200">
-                    <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
-                        <div className="card-thumbnail flex-shrink-0">
-                            <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
-                        </div>
-                        <div className="card-content flex-grow">
-                           <div className="text-center lg:text-left">
-                            <span className="subtitle uppercase text-xl tracking-wider gradient-title-animation">Designer & Programador</span>
-                            <h3 className="title text-3xl font-bold mt-2 mb-2">Leandro José</h3>
-                            <span className="designation text-xl">Lebron</span>
+              <div className="grid grid-cols-1">
+                  <Card className="p-8" data-aos="fade-up" data-aos-delay="200">
+                      <div className="flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
+                          <div className="card-thumbnail flex-shrink-0">
+                              <Image src={placeholderImages.about.src} width={250} height={250} alt="Leandro José" className="rounded-lg" data-ai-hint={placeholderImages.about['data-ai-hint']} />
                           </div>
-                          
-                          <div className="mt-4">
-                            <p className="discription text-lg text-gray-300 max-w-4xl mx-auto lg:mx-0">
-                              Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
-                            </p>
-                          </div>
-                             <div className="mt-6 flex justify-center lg:justify-start">
-                              <div className="skill-share-inner text-center lg:text-left">
-                                  <h4 className="text-xl font-bold mb-4 gradient-title-animation">Siga-me</h4>
+                          <div className="card-content flex-grow">
+                              <div className="text-center lg:text-left">
+                                  <span className="subtitle uppercase text-xl tracking-wider gradient-title-animation">Designer & Programador</span>
+                                  <h3 className="title text-3xl font-bold mt-2 mb-2">Leandro José</h3>
+                                  <span className="designation text-xl">Lebron</span>
+                              </div>
+                              <div className="mt-4">
+                                  <p className="discription text-base text-gray-300 max-w-4xl mx-auto lg:mx-0">
+                                      Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
+                                  </p>
+                              </div>
+                              <div className="mt-6 flex justify-center lg:justify-start">
+                                <div className="skill-share-inner text-center lg:text-left">
+                                  <h4 className="text-2xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
                                   <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
-                                        <li>
-                                          <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                            <Image src={placeholderImages.behance.src} width={30} height={30} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
-                                          </a>
-                                        </li>
-                                        <li>
-                                          <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                            <Image src={placeholderImages.whatsapp.src} width={30} height={30} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
-                                          </a>
-                                        </li>
-                                        <li>
-                                          <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                            <Instagram size={30} className="text-primary filter-primary" />
-                                          </a>
-                                        </li>
-                                        <li>
-                                          <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
-                                            <Github size={30} className="text-primary filter-primary" />
-                                          </a>
-                                        </li>
-                                    </ul>
+                                      <li>
+                                        <a href="https://www.behance.net/lebrondesigner1" onClick={(e) => handleDelayedLinkClick(e, 'https://www.behance.net/lebrondesigner1')} className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                          <Image src={placeholderImages.behance.src} width={40} height={40} alt="behance" data-ai-hint={placeholderImages.behance['data-ai-hint']} className="filter-primary" />
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="https://wa.me/5561984836034" onClick={(e) => handleDelayedLinkClick(e, 'https://wa.me/5561984836034')} className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                          <Image src={placeholderImages.whatsapp.src} width={40} height={40} alt="whatsapp" data-ai-hint={placeholderImages.whatsapp['data-ai-hint']} className="filter-primary" />
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="https://www.instagram.com/lebrondesign" onClick={(e) => handleDelayedLinkClick(e, 'https://www.instagram.com/lebrondesign')} className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                          <Instagram size={40} className="text-primary filter-primary" />
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="https://github.com/LeBronTech" onClick={(e) => handleDelayedLinkClick(e, 'https://github.com/LeBronTech')} className="w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn">
+                                          <Github size={40} className="text-primary filter-primary" />
+                                        </a>
+                                      </li>
+                                  </ul>
+                                </div>
                               </div>
                           </div>
-                        </div>
-                    </div>
-                </Card>
-            </div>
+                      </div>
+                  </Card>
+              </div>
           </div>
         </div>
 
@@ -347,7 +346,7 @@ export default function Home() {
                       >
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
-                          className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
+                          className={`w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
                           title={tool.alt}
                         >
                           <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-none" />
@@ -375,7 +374,7 @@ export default function Home() {
                         >
                           <button 
                             onClick={() => handleToolClick(tool.alt)}
-                            className={`w-20 h-20 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
+                            className={`w-24 h-24 bg-card shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform hover:scale-110`}
                             title={tool.alt}
                           >
                              <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={isSpecial ? 'filter-primary' : 'filter-none'}/>
@@ -401,24 +400,17 @@ export default function Home() {
               <h2 className="text-4xl lg:text-5xl font-bold mt-2 font-secondary">Meu Portfólio</h2>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center mb-12" data-aos="fade-up">
-              {['Todos', 'Websites', 'Apps'].map((category, index) => (
+             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center mb-12 max-w-2xl mx-auto" data-aos="fade-up">
+              {mainCategories.map((category) => (
                 <Button
                   key={category}
                   variant={activeFilter === category ? 'default' : 'outline'}
                   onClick={() => handleFilterClick(category)}
-                  className={`w-full rounded-md ${index === 2 ? 'col-span-2 md:col-span-1' : ''}`}
+                  className="w-full rounded-full"
                 >
                   {category}
                 </Button>
               ))}
-               <Button
-                  variant={activeFilter === 'Identidade Visual' ? 'default' : 'outline'}
-                  onClick={() => handleFilterClick('Identidade Visual')}
-                  className="col-span-2 rounded-md"
-                >
-                  Identidade Visual
-                </Button>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
