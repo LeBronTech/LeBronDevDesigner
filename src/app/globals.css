@@ -276,10 +276,8 @@
   background: hsl(var(--card));
   transform: scale(1.1);
 }
-.tool-icon-gradient .filter-none {
-   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-}
 
+.tool-icon-gradient .filter-none,
 .tool-icon-gradient .filter-primary {
    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
@@ -345,3 +343,4 @@
 .project-detail-overlay.active {
   transform: translateY(0);
 }
+
