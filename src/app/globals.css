@@ -297,3 +297,16 @@
   animation-fill-mode: forwards;
 }
 
+.sub-filter-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.sub-filter-container.expanded {
+  max-height: 200px; /* Adjust as needed */
+}
+
