@@ -73,7 +73,7 @@ export default function Home() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [portfolioView, setPortfolioView] = useState('list');
-  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+  const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
   const handleToolClick = (toolName: string) => {
     setActiveTool(activeTool === toolName ? null : toolName);
@@ -106,7 +106,7 @@ export default function Home() {
       ...placeholderImages.portfolio.socials,
   ], []);
 
-  const mainCategories = useMemo(() => {
+ const mainCategories = useMemo(() => {
     const categories = new Set(portfolio.map(p => p.mainCategory));
     return ['Todos', 'Websites', 'Apps', 'Identidade Visual', 'Logos', 'Social Mídia'].filter(c => c === 'Todos' || categories.has(c));
   }, [portfolio]);
@@ -115,8 +115,9 @@ export default function Home() {
     if (activeFilter === 'Todos' || !activeFilter) return [];
     const subs = new Set(
       portfolio
-        .filter(p => p.mainCategory === activeFilter && p.category)
-        .map(p => p.category)
+        .filter(p => p.mainCategory === activeFilter && 'category' in p && p.category)
+        .map(p => (p as { category?: string }).category)
+        .filter(Boolean) as string[]
     );
     return ['Todos', ...Array.from(subs)];
   }, [portfolio, activeFilter]);
@@ -127,7 +128,7 @@ export default function Home() {
       projects = projects.filter(p => p.mainCategory === activeFilter);
     }
     if (activeSubFilter !== 'Todos' && subCategories.length > 1) {
-      projects = projects.filter(p => p.category === activeSubFilter);
+      projects = projects.filter(p => 'category' in p && p.category === activeSubFilter);
     }
     return projects;
   }, [portfolio, activeFilter, activeSubFilter, subCategories]);
@@ -149,14 +150,10 @@ export default function Home() {
     }, 300);
   };
   
-  const handleProjectClick = (project: any) => {
-    setSelectedProject(project);
+  const handleProjectClick = (index: number) => {
+    setFlippedCard(flippedCard === index ? null : index);
   };
   
-  const handleCloseProjectDetail = () => {
-    setSelectedProject(null);
-  };
-
   const LogoIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4">
       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
@@ -348,7 +345,7 @@ export default function Home() {
                             Olá, me chamo Leandro, conhecido também como LeBron, criador da LeBron Dev Designer, tenho 24 anos, sou de Brasília. Designer autodidata há 1 anos e programador a 2 anos, trabalho especialmente na criação de identidades visuais, post para rede sociais e desenvolvimento de sites e aplicativos. Atuo como freelancer e gosto de encarar novos projetos e atender clientes de diferentes segmentos. Tenho como motivação a ideia de que uma boa marca merece ser conhecida, e através dos meus conhecimentos eu posso fazer isso acontecer.
                         </p>
                     </div>
-                    <div className="skill-share-inner">
+                     <div className="skill-share-inner">
                         <h4 className="text-xl font-bold mb-4 gradient-title-animation">Social Mídia</h4>
                         <ul className="social-share flex list-none gap-4 mt-2 justify-center lg:justify-start">
                             <li>
@@ -399,12 +396,13 @@ export default function Home() {
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
                           className={cn(
-                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu tool-icon",
-                            activeTool === tool.alt ? "tool-icon-active" : "tool-icon-gradient"
+                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
+                            activeTool === tool.alt ? "tool-icon-gradient" : "tool-icon",
+                            activeTool === tool.alt && "tool-icon-active"
                           )}
                           title={tool.alt}
                         >
-                          <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("filter-primary transition-all")} />
+                          <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : 'filter-primary' )} />
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -419,12 +417,10 @@ export default function Home() {
                   <h3 className="text-2xl font-semibold mb-6 text-center gradient-title-animation">Desenvolvimento</h3>
                   <div className="flex flex-wrap justify-center gap-4">
                     {[
-                      ...placeholderImages.tools.development.slice(0, 4),
-                      placeholderImages.tools.development.find(t => t.alt === 'css'),
-                      ...placeholderImages.tools.development.slice(4).filter(t => t.alt !== 'css')
+                      ...placeholderImages.tools.development.filter(t => ['html', 'css'].includes(t.alt.toLowerCase())),
+                      ...placeholderImages.tools.development.filter(t => !['html', 'css'].includes(t.alt.toLowerCase()))
                     ].map((tool, index) => {
                       if (!tool) return null;
-                       const isSpecial = ['react', 'flutter', 'python'].includes(tool.alt.toLowerCase());
                        return (
                         <div 
                           key={index} 
@@ -435,15 +431,13 @@ export default function Home() {
                           <button 
                             onClick={() => handleToolClick(tool.alt)}
                             className={cn(
-                              "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu tool-icon",
-                              activeTool === tool.alt ? "tool-icon-active" : "tool-icon-gradient"
+                              "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
+                              activeTool === tool.alt ? "tool-icon-gradient" : "tool-icon",
+                              activeTool === tool.alt && "tool-icon-active"
                             )}
                             title={tool.alt}
                           >
-                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn(
-                               "transition-all",
-                               activeTool === tool.alt ? "filter-none" : "filter-primary"
-                             )}/>
+                             <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : 'filter-primary' )}/>
                           </button>
                           {activeTool === tool.alt && (
                             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -515,9 +509,9 @@ export default function Home() {
                 "transition-all duration-300",
                 isAnimating && 'opacity-0',
                 activeFilter === 'Logos'
-                  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'
+                  ? 'grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-8'
                   : portfolioView === 'grid' 
-                  ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
+                  ? 'grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8'
                   : 'space-y-8'
               )}
             >
@@ -525,71 +519,44 @@ export default function Home() {
                 <div
                   key={`${project.title}-${index}`}
                   className={cn(
-                    "break-inside-avoid transition-all duration-300",
+                    "transition-all duration-300 [perspective:1000px]",
                     isAnimating ? 'animate-zoomOut' : 'animate-zoomIn',
-                    portfolioView === 'list' && activeFilter !== 'Logos' ? 'mb-8' : ''
+                    portfolioView === 'list' && activeFilter !== 'Logos' ? 'mb-8' : '',
+                    (portfolioView === 'grid' || activeFilter === 'Logos') ? 'aspect-square' : ''
                   )}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
                   <Card 
-                    className="overflow-hidden group bg-card h-full relative"
-                    onClick={() => portfolioView === 'grid' && activeFilter !== 'Logos' && handleProjectClick(project)}
+                    className={cn(
+                      "w-full h-full relative cursor-pointer flip-card",
+                      flippedCard === index && "flipped"
+                    )}
+                    onClick={() => handleProjectClick(index)}
                   >
-                    <div className={cn(
-                        "relative w-full",
-                        portfolioView === 'grid' || activeFilter === 'Logos' ? 'aspect-square' : 'aspect-video md:aspect-auto',
-                        portfolioView === 'list' && activeFilter !== 'Logos' ? 'md:w-1/3' : ''
-                    )}>
-                      <Image 
-                        src={project.src} 
-                        alt={project.title} 
-                        layout="fill" 
-                        objectFit="cover" 
-                        className="transition-transform duration-500 group-hover:scale-110" 
-                        data-ai-hint={project['data-ai-hint']}
-                      />
-                    </div>
-                    {portfolioView === 'grid' && activeFilter !== 'Logos' && (
-                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
-                        <p className="text-white text-lg font-semibold text-center">{project.title}</p>
+                   <div className="flip-card-inner w-full h-full relative">
+                      <div className="flip-card-front">
+                        <Image 
+                          src={project.src} 
+                          alt={project.title} 
+                          layout="fill" 
+                          objectFit="cover" 
+                          className="rounded-lg" 
+                          data-ai-hint={project['data-ai-hint']}
+                        />
                       </div>
-                    )}
-                    
-                    {portfolioView === 'grid' && activeFilter !== 'Logos' ? null : activeFilter === 'Logos' ? (
-                       <CardContent className="p-4 text-center">
-                          <CardTitle className="text-lg">{project.title}</CardTitle>
-                       </CardContent>
-                    ) : (
-                      <div className="md:w-2/3 p-6">
-                        <CardHeader className="p-0">
-                          <CardTitle>{project.title}</CardTitle>
-                          <CardDescription>{project.category || project.mainCategory}</CardDescription>
-                        </CardHeader>
-                        <CardContent className="p-0 mt-4">
-                          <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-                          {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center">Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/></a>}
-                        </CardContent>
-                      </div>
-                    )}
-                    
-                    {selectedProject?.title === project.title && portfolioView === 'grid' && activeFilter !== 'Logos' && (
-                        <div
-                          className={cn(
-                            "project-detail-overlay absolute inset-0 bg-card/90 p-6 flex flex-col justify-end",
-                            selectedProject?.title === project.title && "active"
-                          )}
-                        >
-                          <button onClick={(e) => { e.stopPropagation(); handleCloseProjectDetail(); }} className="absolute top-4 right-4 text-white hover:text-primary z-10">
-                            <CloseIcon size={24} />
-                          </button>
-                          <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
-                          <p className="text-gray-300 mb-4">{selectedProject.description}</p>
-                          <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center self-start">
-                            Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
-                          </a>
+                      <div className="flip-card-back p-6 flex flex-col justify-end rounded-lg">
+                        <div>
+                          <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                          <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+                           {project.url && (
+                            <a href={project.url} target="_blank" rel="noopener noreferrer" className="rn-btn inline-flex items-center text-sm" onClick={(e) => e.stopPropagation()}>
+                              Ver Projeto <ArrowUpRight className="w-4 h-4 ml-2"/>
+                            </a>
+                           )}
                         </div>
-                      )}
+                      </div>
+                    </div>
                   </Card>
                 </div>
               ))}
@@ -724,3 +691,4 @@ export default function Home() {
     </div>
   );
 }
+
