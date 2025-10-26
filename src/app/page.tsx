@@ -7,7 +7,7 @@ import { useEffect, useState, useMemo } from "react";
 import placeholderImages from './lib/placeholder-images.json';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle as SheetTitleComponent, SheetTrigger } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -440,12 +440,12 @@ export default function Home() {
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
                           className={cn(
-                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu",
-                            activeTool === tool.alt ? "tool-icon-active tool-icon-gradient" : "tool-icon"
+                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu tool-icon",
+                            activeTool === tool.alt && "tool-icon-active"
                           )}
                           title={tool.alt}
                         >
-                           <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-white' : '' )}/>
+                           <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-none" />
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -472,12 +472,12 @@ export default function Home() {
                             <button 
                               onClick={() => handleToolClick(tool.alt)}
                               className={cn(
-                                "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu",
-                                activeTool === tool.alt ? "tool-icon-active tool-icon-gradient" : "tool-icon"
+                                "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu tool-icon",
+                                activeTool === tool.alt && "tool-icon-active"
                               )}
                               title={tool.alt}
                             >
-                               <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-white' : 'filter-none' )}/>
+                               <Image src={tool.src} width={40} height={40} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className="filter-none"/>
                             </button>
                             {activeTool === tool.alt && (
                               <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -512,37 +512,36 @@ export default function Home() {
                   <span>{category}</span>
                 </Button>
               ))}
-              </div>
-              <div className={cn("w-full flex justify-center mt-4 sub-filter-container", subCategories.length > 1 && "expanded")}>
-                {subCategories.map(sub => (
-                  <Button
-                    key={sub}
-                    variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
-                    onClick={() => handleSubFilterClick(sub)}
-                    className="rounded-full px-3 py-1 text-xs"
-                  >
-                    {sub}
-                  </Button>
-                ))}
-              </div>
+            </div>
+            <div className={cn("w-full flex justify-center mt-4 sub-filter-container", subCategories.length > 1 && "expanded")}>
+              {subCategories.map(sub => (
+                <Button
+                  key={sub}
+                  variant={activeSubFilter === sub ? 'secondary' : 'ghost'}
+                  onClick={() => handleSubFilterClick(sub)}
+                  className="rounded-full px-3 py-1 text-xs"
+                >
+                  {sub}
+                </Button>
+              ))}
+            </div>
             
-
             <div className="flex justify-center mb-8 mt-4" data-aos="fade-up">
               <div className="inline-flex rounded-md shadow-sm bg-card p-1">
-                <Button onClick={() => setPortfolioView('list')} variant={portfolioView === 'list' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
-                  <List className="w-4 h-4 mr-2"/>
-                  Lista
-                </Button>
                 <Button onClick={() => setPortfolioView('grid')} variant={portfolioView === 'grid' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
                   <Grid className="w-4 h-4 mr-2" />
                   Grid
                 </Button>
+                <Button onClick={() => setPortfolioView('list')} variant={portfolioView === 'list' ? 'default' : 'ghost'} className="px-4 py-2 text-sm font-medium">
+                  <List className="w-4 h-4 mr-2"/>
+                  Lista
+                </Button>
               </div>
             </div>
             
-            <div className={cn('transition-opacity duration-300', isAnimating ? 'opacity-0' : 'opacity-100')}>
+             <div className={cn('transition-opacity duration-300', isAnimating ? 'opacity-0' : 'opacity-100')}>
               {portfolioView === 'grid' || activeFilter === 'Logos' ? (
-                <div className={cn("grid gap-8", activeFilter === 'Logos' ? "grid-cols-2 md:grid-cols-3" : "grid-cols-1 md:grid-cols-2")}>
+                 <div className={cn("grid gap-8", "grid-cols-1 md:grid-cols-2")}>
                   {filteredProjects.map((project, index) => (
                     <div
                       key={`${project.title}-${index}-grid`}

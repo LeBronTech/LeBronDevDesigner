@@ -274,6 +274,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+.tool-icon.tool-icon-active {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+}
+
 .tool-icon-gradient {
   background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
 }
@@ -338,7 +342,7 @@
 }
 
 .flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
 }
 
 .flip-card-front,
@@ -351,7 +355,7 @@
 }
 
 .flip-card-back {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
   background-color: rgba(0,0,0,0.7);
   backdrop-filter: blur(4px);
 }
