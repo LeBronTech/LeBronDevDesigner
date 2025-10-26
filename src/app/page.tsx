@@ -1,5 +1,6 @@
 
 'use client';
+import * as React from "react";
 import { Award, BookOpen, Code, Github, Instagram, Layout, Menu, Eye, Smartphone, List, Grid, Circle, ArrowUpRight, X as CloseIcon, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useMemo, useRef } from "react";
@@ -396,14 +397,14 @@ export default function Home() {
                       >
                         <button 
                           onClick={() => handleToolClick(tool.alt)}
-                          className={cn(
-                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
+                           className={cn(
+                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu",
                             activeTool === tool.alt ? "tool-icon-gradient" : "tool-icon",
                             activeTool === tool.alt && "tool-icon-active"
                           )}
                           title={tool.alt}
                         >
-                          <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : '' )} />
+                           <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : '' )}/>
                         </button>
                         {activeTool === tool.alt && (
                           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-400 bg-background/80 px-2 py-1 rounded-md z-10 whitespace-nowrap">
@@ -431,11 +432,11 @@ export default function Home() {
                         >
                           <button 
                             onClick={() => handleToolClick(tool.alt)}
-                            className={cn(
-                              "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 rn-btn transition-all duration-300 transform-gpu",
-                              activeTool === tool.alt ? "tool-icon-gradient" : "tool-icon",
-                              activeTool === tool.alt && "tool-icon-active"
-                            )}
+                           className={cn(
+                            "w-20 h-20 shadow-lg rounded-lg flex items-center justify-center p-2 transition-all duration-300 transform-gpu",
+                            activeTool === tool.alt ? "tool-icon-gradient" : "tool-icon",
+                            activeTool === tool.alt && "tool-icon-active"
+                          )}
                             title={tool.alt}
                           >
                              <Image src={tool.src} width={30} height={30} alt={tool.alt} data-ai-hint={tool['data-ai-hint']} className={cn("transition-all", activeTool === tool.alt ? 'filter-none' : '' )}/>
@@ -606,7 +607,7 @@ export default function Home() {
             </div>
             <Tabs defaultValue="habilidades" className="w-full">
               <TabsList className="grid w-full grid-cols-2" data-aos="fade-up">
-                <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
+                 <TabsTrigger value="habilidades"><Code className="mr-2" />Habilidades</TabsTrigger>
                 <TabsTrigger value="formacao"><BookOpen className="mr-2" />Formação</TabsTrigger>
               </TabsList>
                <TabsContent value="habilidades">
@@ -725,3 +726,4 @@ export default function Home() {
     </div>
   );
 }
+

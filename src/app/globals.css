@@ -278,16 +278,6 @@
   background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
 }
 
-.tool-icon .filter-primary,
-.tool-icon .filter-none {
-  filter: brightness(0) saturate(100%) invert(43%) sepia(21%) saturate(1209%) hue-rotate(219deg) brightness(91%) contrast(88%);
-}
-
-.tool-icon-gradient .filter-primary,
-.tool-icon-gradient .filter-none {
-   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-}
-
 .tool-icon-active {
     transform: scale(1.1);
 }
@@ -361,4 +351,3 @@
   background-color: rgba(0,0,0,0.7);
   backdrop-filter: blur(4px);
 }
-
